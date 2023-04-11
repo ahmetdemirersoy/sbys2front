@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover"
+    data-sidebar-image="none" data-preloader="disable">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>SBYS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/SBYS.png">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+
+    <style>
+        .avatar-sm {
+            height: 3rem;
+            width: 3rem
+        }
+
+        .job-navbar .dropdown-menu .dropdown-item .avatar-sm {
+            height: 2.5rem;
+            width: 2.5rem
+        }
+
+        .fullscreen-enable [data-toggle=fullscreen] .bx-fullscreen::before {
+            content: "\eacb"
+        }
+
+        /* .stretch-card>.card {
+            width: 100%;
+            min-width: 100%
+        } */
+
+       
+
+        /* .owl-carousel .item {
+            margin: 3px
+        }
+
+        .owl-carousel .item img {
+            display: block;
+            width: 100%;
+            height: 100%
+        }
+
+        .owl-carousel .item {
+            margin: 3px
+        }
+
+        .owl-carousel {
+            margin-bottom: 15px;
+
+        } */ 
+
+        .marquee3 {
+            width: auto;
+            overflow: hidden;
+        }
+
+        .marquee3 span.line {
+            /* padding-top: 6px; */
+            color: rgb(22, 20, 20);
+            font-size: xx-large;
+            text-decoration: white;
+        }
+
+        #table_div {
+            font-size: 3.8vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-menu navbar-menu" style="display: none;">
+        <div class="navbar-brand-box">
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
+        </div>
+
+        <div id="scrollbar">
+            <div class="container-fluid">
+
+                <div id="two-column-menu">
+                </div>
+                <ul class="navbar-nav" id="navbar-nav">
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-background"></div>
+    </div>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="card-header" style="padding: 0;">
+                            <div class="row">
+                                <div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
+                                    <button type="button"
+                                        class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle mt-4"
+                                        data-toggle="fullscreen">
+                                        <img src="assets/images/SBYS.png" alt="" height="80">
+                                    </button>
+                                </div>
+
+                                <div class="col-xxl-11 col-xxl-11 col-lg-11 col-md-11 col-sm-11 text-center mt-0">
+                                    <h1 class=" mb-0" style="font-size: 3vw;">KAYSERİ SARRAFLAR VE KUYUMCULAR
+                                        DERNEĞİ</h1>
+                                    <h5>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
+                                        Derneği
+                                        denetimindedir.</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-6 col-xxl-6 mb-0">
+
+
+                                    <!-- Striped Rows -->
+                                    <table class="table table-striped" style="margin-bottom: 0; padding: 0;">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col" class="fs-1">Alış</th>
+                                                <th scope="col" class="fs-1">Satış</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=" "><i style="font-size: 25px;"
+                                                            class="ri-arrow-up-line text-success"></i> 24 Ayar Has</div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=" "></div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=" ">230.00</div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="mdi mdi-equal text-primary mr-1"></i> 22 Ayar Bilezik
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">207.00</div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">217.00</div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="mdi mdi-equal text-primary mr-1"></i> Ata Çeyrek
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">377.00</div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=""> 393.00</div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="mdi mdi-equal text-primary mr-1"> </i>Ata Yarım
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">755.00</div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=""> 784.00</div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="ri-arrow-up-line text-success"></i> Ata Cumhuriyet
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=""> 1520.00 </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=""> 1552.00</div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="ri-arrow-up-line text-success"></i> Ziynet Çeyrek
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">364.00 </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">380.00 </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="mdi mdi-arrow-down-thin text-danger"></i> Ziynet
+                                                        Yarım </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">726.00 </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">756.00 </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="table_div" class=""><i style="font-size: 25px;"
+                                                            class="mdi mdi-arrow-down-thin text-danger"></i> Ziynet Tam
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class=""> 1460.00 </div>
+                                                </td>
+                                                <td>
+                                                    <div id="table_div" class="">1490.00</div>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-6 col-xxl-6 mt-0"
+                                    style="z-index: 2; padding: 0;">
+                                    <img src="assets/images/dernekfoto2.PNG"
+                                        style="width: 99%; height: 99%; margin-top: 3px;" alt="image" />
+                                    <!--Bu kalsın auto slider-->
+                                    <!--<div class="col-lg-12 grid-margin stretch-card">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png" height="1000" width="1000"
+                                                alt="image" />
+                                                <div class="owl-carousel" style="height:65vh">
+                                                    <div class="item" style="height:64vh">
+                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
+                                                            alt="image" />
+
+                                                    </div>
+                                                    <div class="item" style="height:64vh">
+                                                        <img src="assets/images/SBYS.png" alt="image" />
+
+                                                    </div>
+                                                    <div class="item" style="height:64vh">
+                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
+                                                            alt="image" />
+
+                                                    </div>
+                                                    <div class="item" style="height:64vh">
+                                                        <img src="assets/images/SBYS.png" alt="image" />
+
+                                                    </div>
+                                                    <div class="item" style="height:64vh">
+                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
+                                                            alt="image" />
+
+                                                    </div>
+
+
+
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>                       
+                        <div class="marquee4 text-white" id="tambah"
+                            style="background: #bcc7cc; font-size: 2.9vh; padding: 0; margin-bottom: 0;">
+                            <span>Duyurular : Sarraf ve Kuyumcular İftar Sonrası Buluştu
+                                Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği Başkanı Cemal
+                                Demircioğlu, iftar davetine icabet eden tüm üyelerine teşekkür ettiğini belirterek,
+                                “Ülkemiz zor günlerden geçiyor. Bizler Kayseri Sarraflar ve Kuyumcular Dayanışma ve
+                                Yardımlaşma Derneği olarak siz değerli üyelerimizin katkıları ile Deprem Bölgesi’ne
+                                yardım eli uzattık ve uzatmaya devam ediyoruz. Bugün soframızı açtık, katılan tüm
+                                kardeşlerime teşekkür ediyorum. Afiyet olsun” dedi.
+                                Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği’nin düzenlediği iftar
+                                programına Başkan Cemal Demircioğlu ve yönetimi eksiksiz katılırken, Vali Vekili, İl
+                                Emniyet Müdürü , Büyükşehir Belediye Başkanvekili, Başsavcı, Talas Emniyet Amiri,
+                                Kocasinan Emniyet Amiri, MHP İl Başkanımız, İl Vergi Dairesi Başkanları da yer aldı.
+                                Sarraflar ve kuyumculardan da çok yoğun bir katılım vardı.</span>
+                        </div>
+                        <div class="marquee3 text-white" id="tambah"
+                            style=" background: #bcc7cc; padding: 0; margin-top: 0;">
+                            <span class="line " id="line" class="text-white" style="font-size: 4vh;"></span>
+                        </div>
+
+                        <!-- <button id="btn">Add Text</button> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+
+        var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">Eur Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
+            '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
+            '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
+            '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
+            '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
+
+
+
+
+
+        $(document).ready(function () {
+            //auto slider
+            // $(".owl-carousel").owlCarousel({
+
+            //     autoPlay: 5000,
+            //     items: 1,
+            //     itemsDesktop: [1199, 3],
+            //     itemsDesktopSmall: [979, 3],
+            //     center: true,
+            //     nav: true,
+            //     loop: true,
+            //     responsive: {
+            //         600: {
+            //             items: 1
+            //         }
+            //     }
+            // });
+
+
+            const options = {
+                //speed in milliseconds of the marquee
+                duration: 10000,
+                //gap in pixels between the tickers
+                gap: 50,
+                //time in milliseconds before the marquee will start animating
+                delayBeforeStart: 0,
+                //'left' or 'right'
+                direction: 'left',
+                //true or false - should the marquee be duplicated to show an effect of continues flow
+                //duplicated: true
+            };
+            const options1 = {
+                duration: 10000,
+                gap: 50,
+                delayBeforeStart: 1,
+                direction: 'left',
+            };
+            var addLine = false;
+            const line = $("#line");
+
+            $('.marquee3').bind('beforeStarting', function () {
+                // if (addLine == true) {
+                var html = " ";
+                for (var i = 0; i < arr.length; i++) {
+                    var abc = arr[i];
+                    console.log(abc)
+                    html += abc;
+                }
+                var newLine = $("#line").append(html)
+                $(this).marquee('destroy').append(newLine);
+                $('.marquee3').marquee(options);
+
+
+            }).marquee(options);
+            //$('.marquee3').marquee(options);
+            $('.marquee4').marquee(options1);
+
+        });
+        
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <!-- apexcharts -->
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- Vector map-->
+    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+    <!--Swiper slider js-->
+    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
