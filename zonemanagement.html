@@ -93,35 +93,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- <tr>
-                                                    <td style="text-align: center;">
-                                                        <div class="dropdown d-inline-block">
-                                                            <button class="btn btn-soft-secondary btn-sm dropdown"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i class="ri-more-fill align-middle"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li><a class="dropdown-item edit-item-btn"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editmember"><i
-                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                        Düzenle</a></li>
-                                                                <li>
-                                                                    <a class="dropdown-item remove-item-btn">
-                                                                        <i
-                                                                            class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                        Sil
-                                                                    </a>
-
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                    <td>VLZ-452</td>
-                                                    <td><a href="#!">Post launch reminder/ post list</a></td>
-                                                </tr> -->
+                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -290,7 +262,26 @@
         </div>
     </div>
 </div>
+<!--Sil Modal-->
+<div class="modal fade" id="deletemember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title" id="exampleModalgridLabel">Bölge Kalıcı olarak silinecek emin misiniz?</h5>
 
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="delete_button" class="btn btn-danger">Sil</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     //datatable initialize
@@ -353,7 +344,6 @@
 
     //add zone
     $("#submit_button").on('click', function () {
-        alert('sa')
         var zonecode = $("#zonecode").val();
         var zonetitle = $("#zonetitle").val();
         // var zonerate = $("#zonerate").val();
@@ -366,11 +356,36 @@
             var response = JSON.parse(res);
             if (response == "ok") {
                 toastr.success("İşlem başarılı");
+                $("#addmember").modal('toggle');
             } else {
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
     });
+    var zonepk;
+    $("#datatable tbody").on("click", "tr", function () {
+        var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
+        zonepk = $(a_button).attr('data-id');
+    });
+
+    //delete
+    $("#delete_button").on("click", function (e) {
+        e.preventDefault()
+      
+        $.post("/zonemanagement", {
+            msg: "deletezone",
+            zonepk: zonepk
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#deletemember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    })
 </script>
 
 <!-- JAVASCRIPT -->
