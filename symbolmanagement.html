@@ -1,388 +1,478 @@
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
 
-            <div class="page-content">
-                <div class="container-fluid">
+            <div class="row">
+                <div class="col">
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="h-100">
+                        <div class="row mb-3 pb-1">
+                            <div class="col-12">
+                                <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+                                    <div class="flex-grow-1">
+                                        <!-- <h4 class="fs-16 mb-1">Ana Sayfa</h4> -->
 
-                            <div class="h-100">
-                                <div class="row mb-3 pb-1">
-                                    <div class="col-12">
-                                        <div class="d-flex align-items-lg-center flex-lg-row flex-column">
-                                            <div class="flex-grow-1">
-                                                <!-- <h4 class="fs-16 mb-1">Ana Sayfa</h4> -->
-
-                                            </div>
-                                            <div class="mt-3 mt-lg-0">
-                                                <form action="javascript:void(0);">
-                                                    <div class="row g-3 mb-0 align-items-center">
-                                                        <div class="col-sm-auto">
-                                                            <div class="input-group">
-                                                                <!-- <input type="text"
+                                    </div>
+                                    <div class="mt-3 mt-lg-0">
+                                        <form action="javascript:void(0);">
+                                            <div class="row g-3 mb-0 align-items-center">
+                                                <div class="col-sm-auto">
+                                                    <div class="input-group">
+                                                        <!-- <input type="text"
                                                                     class="form-control border-0 fs-13 dash-filter-picker shadow"
                                                                     data-provider="flatpickr"
                                                                     data-date-format="d-M, Y"
                                                                     > -->
-                                                                <div class="form-control border-0 fs-13 dash-filter-picker shadow"
-                                                                    id="fake_takvim" style="text-align: center;">
-                                                                    06/04/2023
-                                                                </div>
-                                                                <script>
-                                                                    var date = new Date();
-                                                                    var day = date.getDate();
-                                                                    var maunth = date.getMonth();
-                                                                    var ay = maunth + 1;
-                                                                    var year = date.getFullYear();
-                                                                    console.log(day)
-                                                                    document.getElementById('fake_takvim').innerHTML = day + "-" + ay + "-" + year
-                                                                </script>
-                                                                <div
-                                                                    class="input-group-text bg-secondary border-secondary text-white">
-                                                                    <i class="ri-calendar-2-line"></i>
-                                                                </div>
-                                                            </div>
+                                                        <div class="form-control border-0 fs-13 dash-filter-picker shadow"
+                                                            id="fake_takvim" style="text-align: center;">
+                                                            06/04/2023
                                                         </div>
-                                                        <!--end col-->
-                                                        <!-- <div class="col-auto">
+                                                        <script>
+                                                            var date = new Date();
+                                                            var day = date.getDate();
+                                                            var maunth = date.getMonth();
+                                                            var ay = maunth + 1;
+                                                            var year = date.getFullYear();
+                                                            console.log(day)
+                                                            document.getElementById('fake_takvim').innerHTML = day + "-" + ay + "-" + year
+                                                        </script>
+                                                        <div
+                                                            class="input-group-text bg-secondary border-secondary text-white">
+                                                            <i class="ri-calendar-2-line"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end col-->
+                                                <!-- <div class="col-auto">
                                                             <button type="button" class="btn btn-soft-success"><i
                                                                     class="ri-add-circle-line align-middle me-1"></i>
                                                                 Add Product</button>
                                                         </div> -->
-                                                        <!--end col-->
-                                                        <!-- <div class="col-auto">
+                                                <!--end col-->
+                                                <!-- <div class="col-auto">
                                                             <button type="button"
                                                                 class="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn"><i
                                                                     class="ri-pulse-line"></i></button>
                                                         </div> -->
-                                                        <!--end col-->
-                                                    </div>
-                                                    <!--end row-->
-                                                </form>
+                                                <!--end col-->
                                             </div>
-                                        </div><!-- end card header -->
+                                            <!--end row-->
+                                        </form>
                                     </div>
-                                    <!--end col-->
-                                </div>
-                                <!--end row-->
+                                </div><!-- end card header -->
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
 
 
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <div class="row">
-                                                    <div class="col-1">
-                                                        <h5 class="card-title mb-0">Sembol Listesi</h5>
-                                                    </div>
-                                                    <div class="col-11" >
-                                                        <a href="/symbolrules.html" style="float: right;" type="button" class="btn btn-primary" >Sembol Ayarlarına Git</a>
-                                                    </div>
-                                                </div>
-                                               
-                                               
-                                               
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <h5 class="card-title mb-0">Sembol Listesi</h5>
                                             </div>
-                                            
-                                            <div class="card-body">
-                                                <table id="example"
-                                                    class="table table-bordered dt-responsive nowrap table-striped align-middle"
-                                                    style="width:100%">
-                                                    <thead>
-                                                        <tr>
-                                                            <!-- <th scope="col" style="width: 10px;">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
-                                                                </div>
-                                                            </th> -->
-                                                            <th>İşlemler</th>
-                                                            <!-- <th data-ordering="false">SR No.</th> -->
-                                                            <th data-ordering="false">ID</th>
-                                                            <th data-ordering="false">Purchase ID</th>
-                                                            <th data-ordering="false">Title</th>
-                                                            <th data-ordering="false">User</th>
-                                                            <th>Assigned To</th>
-                                                            <th>Created By</th>
-                                                            <th>Create Date</th>
-                                                            <th>Status</th>
-                                                            <th>Priority</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <div class="dropdown d-inline-block">
-                                                                    <button
-                                                                        class="btn btn-soft-secondary btn-sm dropdown"
-                                                                        type="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false">
-                                                                        <i class="ri-more-fill align-middle"></i>
-                                                                    </button>
-                                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                                        <li><a href="#!" class="dropdown-item"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#addmember"><i
-                                                                                    class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                Ekle</a></li>
-                                                                        <li><a class="dropdown-item edit-item-btn"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#editmember"><i
-                                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                                Düzenle</a></li>
-                                                                        <li>
-                                                                            <a class="dropdown-item remove-item-btn">
-                                                                                <i
-                                                                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                Sil
-                                                                            </a>
-
-                                                                        </li>
-
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-                                                            <!-- <td>01</td> -->
-                                                            <td>VLZ-452</td>
-                                                            <td>VLZ1400087402</td>
-                                                            <td><a href="#!">Post launch reminder/ post list</a></td>
-                                                            <td>Joseph Parker</td>
-                                                            <td>Alexis Clarke</td>
-                                                            <td>Joseph Parker</td>
-                                                            <td>03 Oct, 2021</td>
-                                                            <td><span class="badge badge-soft-info">Re-open</span></td>
-                                                            <td><span class="badge bg-danger">High</span></td>
-
-                                                        </tr>
-
-
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-11">
+                                                <a href="/symbolrules.html" style="float: right;" type="button"
+                                                    class="btn btn-primary">Sembol Ayarlarına Git</a>
                                             </div>
                                         </div>
+
+
+
                                     </div>
 
+                                    <div class="card-body">
+                                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
+                                            data-bs-target="#addmember">Sembol Ekle</button>
+                                        <table id="datatable"
+                                            class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
 
+                                                    <th>İşlemler</th>
+                                                    <th>Sembol Kodu</th>
+                                                    <th>Sembol Adı</th>
+                                                    <th>Sembol Icon</th>
+                                                    <th>Değer</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr>
+                                                    <td style="text-align: center;">
+                                                        <div class="dropdown d-inline-block">
+                                                            <button class="btn btn-soft-secondary btn-sm dropdown"
+                                                                type="button" data-bs-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <i class="ri-more-fill align-middle"></i>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                <li><a class="dropdown-item edit-item-btn"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#editmember"><i
+                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                                                        Düzenle</a></li>
+                                                                <li>
+                                                                    <a class="dropdown-item remove-item-btn">
+                                                                        <i
+                                                                            class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                                                        Sil
+                                                                    </a>
+
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                     <td>01</td> 
+                                                    <td>VLZ-452</td>
+                                                    <td>VLZ1400087402</td>
+                                                    <td><a href="#!">Post launch reminder/ post list</a></td>
+                                                    <td><a href="#!">Post launch reminder/ post list</a></td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                            </div>
 
 
-
-                            </div> <!-- end .h-100-->
-
-                        </div> <!-- end col -->
-
-
-                    </div>
-
-                </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12" style="text-align: center;">
-                            <script>document.write(new Date().getFullYear())</script> © SBYS
                         </div>
-                        <!-- <div class="col-sm-6">
+
+
+
+                    </div> <!-- end .h-100-->
+
+                </div> <!-- end col -->
+
+
+            </div>
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12" style="text-align: center;">
+                    <script>document.write(new Date().getFullYear())</script> © SBYS
+                </div>
+                <!-- <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
                                 Design & Develop by Themesbrand
                             </div>
                         </div> -->
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+
+
+<!--start back-to-top-->
+<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+</button>
+<!--end back-to-top-->
+
+<!--preloader-->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-border text-primary avatar-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+<!--Ekle Modal-->
+<div class="modal fade" id="addmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Yeni Sembol Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0);">
+
+                    <div class="row g-3">
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="symbolcode" class="form-label">Sembol Kodu</label>
+                                <input type="text" class="form-control" id="symbolcode"
+                                    placeholder="Lütfen sembol kodu giriniz.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="symboltitle" class="form-label">Sembol Adı</label>
+                                <input type="text" class="form-control" id="symboltitle"
+                                    placeholder="Lütfen sembol adı giriniz.">
+                            </div>
+                        </div><!--end col-->
+
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="symbolIcon" class="form-label">Sembol Icon</label>
+                                <input type="file" class="form-control" id="symbolIcon"
+                                    placeholder="Lütfen Icon seçiniz.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="symbolvalue" class="form-label">Değer</label>
+                                <input type="number" class="form-control" id="symbolvalue"
+                                    placeholder="Lütfen sembol değeri giriniz.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="submit_button">Submit</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Düzenle Modal-->
+<div class="modal fade" id="editmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Sembol Bilgilerini Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0);">
+                    <div class="row g-3">
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter firstname">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <label for="genderInput" class="form-label">Gender</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio1" value="option1">
+                                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio2" value="option2">
+                                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                        id="inlineRadio3" value="option3">
+                                    <label class="form-check-label" for="inlineRadio3">Others</label>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="emailInput" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="passwordInput" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="passwordInput" value="451326546">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Sil Modal-->
+<div class="modal fade" id="deletemember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title" id="exampleModalgridLabel">Sembol Kalıcı olarak silinecek emin misiniz?</h5>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="delete_button" class="btn btn-danger">Sil</button>
                     </div>
-                </div>
-            </footer>
-        </div>
-        <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
-
-
-
-    <!--start back-to-top-->
-    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-        <i class="ri-arrow-up-line"></i>
-    </button>
-    <!--end back-to-top-->
-
-    <!--preloader-->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner-border text-primary avatar-sm" role="status">
-                <span class="visually-hidden">Loading...</span>
+                </div><!--end col-->
             </div>
         </div>
     </div>
-    <!--Ekle Modal-->
-    <div class="modal fade" id="addmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalgridLabel">Yeni Sembol Ekle</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<script>
+    //datatable initialize
+    var table = $("#datatable").DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+
+        //   dom: '<"toolbar">frtip',
+    });
+    //get symbol
+    $.get("/symbolmanagement?msg=getallsymboll").done(function (res) {
+        var response = JSON.parse(res);
+        for (var i = 0; i < response.length; i++) {
+            var zone = response[i];
+            var currencypk = zone.map.currencypk;
+            var currencyCode = zone.map.currencyCode;
+            var currencyIcon = zone.map.currencyIcon;
+            var currencytitle = zone.map.currencytitle;
+            var currencyvalue = zone.map.currencyvalue;
+            var createdDate = zone.map.createdDate;
+            createdDate = moment(createdDate).format('DD-MM-YYYY');
+            var rawnode = table.row
+                .add([`
+            <td style="text-align: center;">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-soft-secondary btn-sm dropdown"
+                        type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="ri-more-fill align-middle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu">                                                               
+                        <li><a class="dropdown-item edit-item-btn" data-id="${currencypk}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editmember"><i
+                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                Düzenle</a></li>
+                        <li>
+                            <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${currencypk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
+                                <i
+                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                Sil
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="modal-body">
-                    <form action="javascript:void(0);">
-                        <div class="row g-3">
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName"
-                                        placeholder="Enter firstname">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-lg-12">
-                                <label for="genderInput" class="form-label">Gender</label>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Female</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio3" value="option3">
-                                        <label class="form-check-label" for="inlineRadio3">Others</label>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="emailInput" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="emailInput"
-                                        placeholder="Enter your email">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="passwordInput" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="passwordInput" value="451326546">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-lg-12">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div><!--end col-->
-                        </div><!--end row-->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Düzenle Modal-->
-    <div class="modal fade" id="editmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalgridLabel">Sembol Bilgilerini Düzenle</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="javascript:void(0);">
-                        <div class="row g-3">
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName"
-                                        placeholder="Enter firstname">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-lg-12">
-                                <label for="genderInput" class="form-label">Gender</label>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio1" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Female</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="inlineRadio3" value="option3">
-                                        <label class="form-check-label" for="inlineRadio3">Others</label>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="emailInput" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="emailInput"
-                                        placeholder="Enter your email">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-xxl-6">
-                                <div>
-                                    <label for="passwordInput" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="passwordInput" value="451326546">
-                                </div>
-                            </div><!--end col-->
-                            <div class="col-lg-12">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div><!--end col-->
-                        </div><!--end row-->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+            </td>
+            `,
+                    currencyCode,
+                    currencytitle,
+                    currencyIcon,
+                    currencyvalue,
+                    createdDate
 
+                ])
+                .draw()
+                .node();
+            $(rawnode).attr("id", currencypk);
 
-    <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+        }
+    })
+    //add symbol
+    $("#submit_button").on('click', function () {
+        var symbolcode = $("#symbolcode").val();
+        var symboltitle = $("#symboltitle").val();
+        var symbolIcon = $("#symbolIcon").val();
+        var symbolvalue = $("#symbolvalue").val();
+        console.log(symbolIcon)
 
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        $.post("/symbolmanagement", {
+            msg: "addsymbol",
+            symbolcode: symbolcode,
+            symboltitle: symboltitle,
+            symbolIcon: symbolIcon,
+            symbolvalue: symbolvalue
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#addmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+    var symbolpk;
+    $("#datatable tbody").on("click", "tr", function () {
+        var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
+        symbolpk = $(a_button).attr('data-id');
+    });
+    //delete
+    $("#delete_button").on("click", function (e) {
+        e.preventDefault()
 
-    <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+        $.post("/symbolmanagement", {
+            msg: "deletesymbol",
+            symbolpk: symbolpk
 
-    <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#deletemember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    })
+</script>
 
-    <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+<!-- JAVASCRIPT -->
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="assets/js/plugins.js"></script>
 
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<!-- Vector map-->
+<script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+<script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+<!--Swiper slider js-->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+<!-- Dashboard init -->
+<script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
 </body>
 
 </html>

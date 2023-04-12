@@ -87,13 +87,13 @@
                                             <thead>
                                                 <tr>
                                                     <th>İşlemler</th>
-                                                    <th >Bölge Kodu</th>
-                                                    <th >Bölge Adı</th>
-                                                    <th >Oluşturulma Tarihi</th>
+                                                    <th>Bölge Kodu</th>
+                                                    <th>Bölge Adı</th>
+                                                    <th>Oluşturulma Tarihi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -169,20 +169,6 @@
                                     placeholder="Lütfen bölge adı girin.">
                             </div>
                         </div><!--end col-->
-
-                        <!-- <div class="col-xxl-12">
-                                <div>
-                                    <label for="zonerate" class="form-label">Oran</label>
-                                    <input type="text" class="form-control" id="zonerate" 
-                                        placeholder="Lütfen oran girin.">
-                                </div>
-                            </div>end col-->
-                        <!-- <div class="col-xxl-12">
-                                <div>
-                                    <label for="zonediff" class="form-label">Fark</label>
-                                    <input type="text" class="form-control" id="zonediff" placeholder="Lütfen fark girin." >
-                                </div>
-                            </div>end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -206,54 +192,24 @@
             <div class="modal-body">
                 <form action="javascript:void(0);">
                     <div class="row g-3">
-                        <div class="col-xxl-6">
+                        <div class="col-xxl-12">
                             <div>
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter firstname">
+                                <label for="zonecode" class="form-label">Bölge Kodu</label>
+                                <input type="text" class="form-control" id="editzonecode"
+                                    placeholder="Lütfen bölge kodu girin.">
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
+                        <div class="col-xxl-12">
                             <div>
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-lg-12">
-                            <label for="genderInput" class="form-label">Gender</label>
-                            <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio3" value="option3">
-                                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                                </div>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="emailInput" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="passwordInput" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwordInput" value="451326546">
+                                <label for="zonetitle" class="form-label">Bölge Adı</label>
+                                <input type="text" class="form-control" id="editzonetitle"
+                                    placeholder="Lütfen bölge adı girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="edit_button" class="btn btn-soft-success">Düzenle</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -305,42 +261,39 @@
             createdDate = moment(createdDate).format('DD-MM-YYYY');
             var rawnode = table.row
                 .add([`
-            <td style="text-align: center;">
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-soft-secondary btn-sm dropdown"
-                        type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="ri-more-fill align-middle"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${zonepk}"
-                                data-bs-toggle="modal"
-                                data-bs-target="#editmember"><i
-                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                Düzenle</a></li>
-                        <li>
-                            <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${zonepk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
-                                <i
-                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                Sil
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </td>
-            `,
+                        <td style="text-align: center;">
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-soft-secondary btn-sm dropdown"
+                                    type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="ri-more-fill align-middle"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu">                                                               
+                                    <li><a class="dropdown-item edit-item-btn" data-id="${zonepk}"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#editmember"><i
+                                                class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                            Düzenle</a></li>
+                                    <li>
+                                        <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${zonepk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
+                                            <i
+                                                class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                            Sil
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                     `,
                     zonecode,
                     zonetitle,
                     createdDate,
-
-
                 ])
                 .draw()
                 .node();
             $(rawnode).attr("id", zonepk);
-
         }
-    })
+    });
 
     //add zone
     $("#submit_button").on('click', function () {
@@ -362,16 +315,19 @@
             }
         })
     });
+
+    //select table row
     var zonepk;
     $("#datatable tbody").on("click", "tr", function () {
         var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
         zonepk = $(a_button).attr('data-id');
     });
 
-    //delete
+    //delete zone
     $("#delete_button").on("click", function (e) {
         e.preventDefault()
-      
+        var zonecode = $("#zonecode").val();
+        var zonetitle = $("#zonetitle").val();
         $.post("/zonemanagement", {
             msg: "deletezone",
             zonepk: zonepk
@@ -385,7 +341,30 @@
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
+    });
+
+    //edit zone
+    $("#edit_button").on('click', function(e){
+        e.preventDefault()
+        var zonecode = $("#editzonecode").val();
+        var zonetitle = $("#editzonetitle").val();
+        $.post("/zonemanagement", {
+            msg: "editzone",
+            zonepk: zonepk,
+            zonecode : zonecode,
+            zonetitle : zonetitle
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#editmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        });
     })
+
 </script>
 
 <!-- JAVASCRIPT -->
