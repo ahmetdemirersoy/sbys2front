@@ -63,8 +63,7 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Sembol Kurulları</h5>
-
+                                        <h5 class="card-title mb-0">Sembol Kuralları</h5>
 
                                     </div>
 
@@ -93,68 +92,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <!-- <tr>
-                                                    <td style="text-align: center;">
-                                                        <div class="dropdown d-inline-block">
-                                                            <button class="btn btn-soft-secondary btn-sm dropdown"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                                <i class="ri-more-fill align-middle"></i>
-                                                            </button>
-                                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li><a class="dropdown-item edit-item-btn"
-                                                                        data-bs-toggle="modal"
-                                                                        data-bs-target="#editmember"><i
-                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                        Düzenle</a></li>
-                                                                <li>
-                                                                    <a class="dropdown-item remove-item-btn">
-                                                                        <i
-                                                                            class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                        Sil
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>VLZ-452</td>
-                                                    <td>VLZ1400087402</td>
-                                                    <td><a href="#!">Post launch reminder/ post list</a></td>
-                                                    <td>Joseph Parker</td>
-                                                    <td>Alexis Clarke</td>
-                                                    <td>Joseph Parker</td>
-                                                    <td>03 Oct, 2021</td>
-                                                    <td><span class="badge badge-soft-info">Re-open</span></td>
-                                                    <td><span class="badge bg-danger">High</span></td>
-                                                    <td><span class="badge bg-danger">High</span></td>
-
-                                                </tr> -->
-
 
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
-
-
                     </div> <!-- end .h-100-->
-
                 </div> <!-- end col -->
-
-
             </div>
-
         </div>
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
@@ -311,56 +262,100 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="javascript:void(0);">
+                <form>
                     <div class="row g-3">
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter firstname">
+                        <div class="col-xxl-12">
+                            <label for="editcurrencyfk" class="form-label">Birim</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editcurrencyfk">
+                                    <!-- <option value="1">Aktif</option>
+                                    <option value="2">Pasif</option> -->
+                                </select>
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
+                        <div class="col-xxl-4">
+                            <label for="editrulestype" class="form-label">Kural Tipi</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editrulestype">
+                                    <option value="1">Otomatik</option>
+                                    <option value="2" selected="true">Sabit</option>
+                                    <option value="3">Katsayılı</option>
+                                </select>
                             </div>
                         </div><!--end col-->
-                        <div class="col-lg-12">
-                            <label for="genderInput" class="form-label">Gender</label>
+
+                        <div class="col-xxl-4" id="editrulevaluediv">
                             <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio3" value="option3">
-                                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                                </div>
+                                <label for="editrulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
+                                <input type="number" class="form-control" id="editrulevalue"
+                                    placeholder="Lütfen kural değeri girin." required>
+
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
+
+                        <div class="col-xxl-4" id="editruleratediv">
                             <div>
-                                <label for="emailInput" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
+                                <label for="editrulerate" id="forrulerate" class="form-label">Kural Oran</label>
+                                <input type="number" class="form-control" id="editrulerate"
+                                    placeholder="Lütfen kural oranı seçiniz.">
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
+
+                        <div class="col-xxl-8" id="editrulefkdiv" style="display: none;">
                             <div>
-                                <label for="passwordInput" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwordInput" value="451326546">
+                                <label for="editforrulefk" id="editforrulefk" class="form-label">Katsayılı Kural</label>
+
+                                <select class="form-select" id="editforrulefk">
+                                    <!-- <option value="1">Aktif</option>
+                                        <option value="2">Pasif</option> -->
+                                </select>
+                            </div>
+                        </div><!--end col-->
+
+                        <div class="col-xxl-12">
+                            <label for="editrulestatus" class="form-label">Kural Statü</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editrulestatus">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Pasif</option>
+                                </select>
+                            </div>
+                        </div><!--end col-->
+
+                        <div class="col-xxl-12">
+                            <label for="editzonefk" class="form-label">Bölge</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editzonefk">
+                                    <!-- <option value="1">Aktif</option>
+                                    <option value="2">Pasif</option> -->
+                                </select>
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-4">
+                            <div>
+                                <label for="editrulestep" class="form-label">Kural Adım</label>
+                                <input type="number" class="form-control" id="editrulestep"
+                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-4">
+                            <div>
+                                <label for="editrulemax" class="form-label">Kural Max</label>
+                                <input type="number" class="form-control" id="editrulemax"
+                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-4">
+                            <div>
+                                <label for="editrulesmin" class="form-label">Kural Min</label>
+                                <input type="number" class="form-control" id="editrulesmin"
+                                    placeholder="Lütfen sorumlu bilgisi girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="edit_button" class="btn btn-soft-success">Düzenle</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -409,6 +404,7 @@
             html += htmlSegment;
         }
         document.getElementById("currencyfk").innerHTML = html;
+        document.getElementById("editcurrencyfk").innerHTML = html;
     });
 
     // get all zone
@@ -421,6 +417,7 @@
             html += htmlSegment;
         }
         document.getElementById("zonefk").innerHTML = html;
+        document.getElementById("editzonefk").innerHTML = html;
     });
 
     //add current rules
@@ -460,6 +457,9 @@
         });
     });
 
+
+
+    // add
     $("#submit_button").on('click', function () {
         var currencyfk = $("#currencyfk").val();
         var rulestype = $("#rulestype").val();
@@ -590,6 +590,80 @@
         })
     });
 
+    // edit 
+    var kuraltip1;
+    $("#editrulestype").on('change', function () {
+        $("#editrulestype option:selected").each(function () {
+            kuraltip1 = $(this).val();
+
+            switch (kuraltip1) {
+                case "1":
+                    $("#editrulevaluediv").css("display", "none");
+                    $("#editruleratediv").css("display", "none");
+                    $("#editrulefkdiv").css("display", "none");
+                    break;
+                case "2":
+                    $("#editrulevaluediv").css("display", "");
+                    $("#editruleratediv").css("display", "");
+                    $("#editrulefkdiv").css("display", "none");
+                    break;
+                case "3":
+                    $("#editrulevaluediv").css("display", "none");
+                    $("#editruleratediv").css("display", "none");
+                    $("#editrulefkdiv").css("display", "");
+                    $.get("/symbolrules?msg=getallcurrency").done(function (res) {
+                        var response = JSON.parse(res);
+                        console.log(response)
+                        let html;
+                        for (var i = 0; i < response.length; i++) {
+                            var rules = response[i];
+                            var rulespk = rules.map.currencypk;
+                            let htmlSegment = `<option value="${rulespk}">${rules.map.currencytitle}</option>`;
+                            html += htmlSegment;
+                        }
+                        document.getElementById("rulefk").innerHTML = html;
+                    })
+                    break;
+            }
+        });
+    });
+
+    $("#edit_button").on('click', function () {
+        var currencyfk = $("#editcurrencyfk").val();
+        var rulestype = $("#editrulestype").val();
+        var rulevalue = $("#editrulevalue").val();
+        var rulerate = $("#editrulerate").val();
+        var rulefk = $("#editrulefk").val();
+        var rulestatus = $("#editrulestatus").val();
+        var zonefk = $("#editzonefk").val();
+        var rulestep = $("#editrulestep").val();
+
+        var rulemax = $("#editrulemax").val();
+        var rulemin = $("#editrulesmin").val();
+
+        $.post("/symbolrules", {
+            msg: "editsymbolrules",
+            rulespk: rulespk,
+            currencyfk: currencyfk,
+            rulestype: rulestype,
+            rulevalue: rulevalue,
+            rulerate: rulerate,
+            rulestatus: rulestatus,
+            zonefk: zonefk,
+            rulestep: rulestep,
+            rulemax: rulemax,
+            rulemin: rulemin,
+            rulefk: rulefk
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#editmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
 
 
 </script>

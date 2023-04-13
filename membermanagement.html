@@ -294,56 +294,111 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="javascript:void(0);">
+                <form class="needs-validation" novalidate>
                     <div class="row g-3">
-                        <div class="col-xxl-6">
+                        <div class="col-xxl-12">
                             <div>
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter firstname">
+                                <label for="editaffiliatetitle" class="form-label">Üye Başlık</label>
+                                <input type="text" class="form-control" id="editaffiliatetitle"
+                                    placeholder="Lütfen başlık girin." required>
+                                
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
+                                <label for="editaffiliatemail" class="form-label">Üye Mail</label>
+                                <input type="email" class="form-control" id="editaffiliatemail"
+                                    placeholder="Lütfen mail adresi girin.">
                             </div>
                         </div><!--end col-->
-                        <div class="col-lg-12">
-                            <label for="genderInput" class="form-label">Gender</label>
+
+                        <div class="col-xxl-6">
                             <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                                <label for="editaffiliatephone" class="form-label">Telefon</label>
+                                <input type="text" class="form-control" id="editaffiliatephone"
+                                    placeholder="Lütfen telefon numarası girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editaffiliateresponsible" class="form-label">Sorumlu</label>
+                                <input type="text" class="form-control" id="editaffiliateresponsible"
+                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editaffiliatezonecode" class="form-label">Bölge Kodu</label>
+                                <input type="text" class="form-control" id="editaffiliatezonecode"
+                                    placeholder="Lütfen bölge kodu girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editaffiliatemembercode" class="form-label">Üye Kodu</label>
+                                <input type="text" class="form-control" id="editaffiliatemembercode"
+                                    placeholder="Lütfen üyelik kodu girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <label for="editaffiliatestatus" class="form-label">Üye Statü</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editaffiliatestatus">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Pasif</option>
+                                </select>
+                            </div>
+                        </div><!--end col-->
+
+
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editaffiliatetaxno" class="form-label">Verigi Numarası</label>
+                                <input type="text" class="form-control" id="editaffiliatetaxno"
+                                    placeholder="Lütfen vergi numarası girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editaffiliataxoffice" class="form-label">Vergi Dairesi</label>
+                                <input type="text" class="form-control" id="editaffiliataxoffice"
+                                    placeholder="Lütfen vergi dairesi girin.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="editaffiliatescreenfk" class="form-label">Ekran Anahtarı</label>
+                                <!-- <input type="text" class="form-control" id="affiliatescreenfk"
+                                    placeholder="Lütfen ekran anahtarı bilgilerini girin."> -->
+                                <div class="input-group">
+                                    <select class="form-select" id="editaffiliatescreenfk">
+                                        <option value="1">Aktif</option>
+                                        <option value="2">Pasif</option>
+                                    </select>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio3" value="option3">
-                                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                                </div>
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
+                        <div class="col-xxl-12">
                             <div>
-                                <label for="emailInput" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
+                                <label for="editaffiliateaddress" class="form-label">Adres Bilgileri</label>
+                                <!-- <input type="text" class="form-control" id="affiliateaddress" placeholder="Lütfen adres bilgisi girin." > -->
+                                <textarea class="form-control" id="editaffiliateaddress" rows="2"></textarea>
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
+
+
+                        <div class="col-xxl-12">
                             <div>
-                                <label for="passwordInput" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwordInput" value="451326546">
+                                <label for="editaffiliatenotes" class="form-label">Notlar</label>
+                                <textarea class="form-control" id="editaffiliatenotes" rows="3"></textarea>
                             </div>
                         </div><!--end col-->
+
+
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" id="edit_button" class="btn btn-primary">Submit</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -447,7 +502,7 @@
                 .node();
             $(rawnode).attr("id", affialitepk);
         }
-    })
+    });
 
 
     // add new affiliate 
@@ -465,7 +520,7 @@
         var affiliatestatus = $("#affiliatestatus").val();
         var affiliatemembercode = $("#affiliatemembercode").val();
 
-        alert(affiliatescreenfk)
+        
         $.post("/membermanagement", {
             msg: "addaffiliate",
             affiliatetitle: affiliatetitle,
@@ -481,6 +536,7 @@
             var response = JSON.parse(res);
             if (response == "ok") {
                 toastr.success("İşlem başarılı");
+                $("#addmember").modal('toggle');
             } else {
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
@@ -506,12 +562,54 @@
             var response = JSON.parse(res);
             if (response == "ok") {
                 toastr.success("İşlem başarılı");
+                $("#deletemember").modal('toggle');
             } else {
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
     })
 
+
+    //edit affiliate
+    $("#edit_button").on('click', function () {
+       
+        var affiliatetitle = $("#editaffiliatetitle").val();
+        var affiliatemail = $("#editaffiliatemail").val();
+        var affiliatephone = $("#editaffiliatephone").val();
+        var affiliateresponsible = $("#editaffiliateresponsible").val();
+        var affiliatezonecode = $("#editaffiliatezonecode").val();
+        var affiliatetaxno = $("#editaffiliatetaxno").val();
+        var affiliataxoffice = $("#editaffiliataxoffice").val();
+        var affiliatescreenfk = $("#editaffiliatescreenfk").val();
+        var affiliateaddress = $("#editaffiliateaddress").val();
+        var affiliatestatus = $("#editaffiliatestatus").val();
+        var affiliatemembercode = $("#editaffiliatemembercode").val();
+
+       
+        $.post("/membermanagement", {
+            msg: "editaffiliate",
+            affiliatepk : affiliatepk,
+            affiliatetitle: affiliatetitle,
+            affiliatemail: affiliatemail,
+            affiliatephone: affiliatephone,
+            affiliateresponsible: affiliateresponsible,
+            affiliatezonecode: affiliatezonecode,
+            affiliatetaxno: affiliatetaxno,
+            affiliataxoffice: affiliataxoffice,
+            affiliatescreenfk: affiliatescreenfk,
+            affiliateaddress: affiliateaddress,
+            affiliatemembercode : affiliatemembercode,
+            affiliatestatus : affiliatestatus
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#editmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
 
 
 </script>

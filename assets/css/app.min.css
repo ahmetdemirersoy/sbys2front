@@ -11249,7 +11249,7 @@ span.flatpickr-weekday{
     left:0;
     right:0;
     width:100%;
-    height:380px
+    height:400px
 }
 @media (max-width:575.98px){
     .auth-one-bg-position{
@@ -11257,14 +11257,14 @@ span.flatpickr-weekday{
     }
 }
 .auth-one-bg{
-    background-image:url(../images/auth-one-bg.jpg);
+     background-image:url(../images/erciyes-dagi-1kop.jpg); 
     background-position:center;
     background-size:cover
 }
 .auth-one-bg .bg-overlay{
     background:-webkit-gradient(linear,left top,right top,from(#4796c4),to(#5ea3cb));
-    background:linear-gradient(to right,#4796c4,#5ea3cb);
-    opacity:.9
+    background:linear-gradient(to right,#bfddee,#a6cce3);
+    opacity:.8
 }
 .shape{
     position:absolute;

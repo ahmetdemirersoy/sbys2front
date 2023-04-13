@@ -197,8 +197,8 @@
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="submit_button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="submit_button" class="btn btn-soft-info">Kaydet</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -220,52 +220,42 @@
                     <div class="row g-3">
                         <div class="col-xxl-6">
                             <div>
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter firstname">
+                                <label for="editscreentitle" class="form-label">Ekran Adı</label>
+                                <input type="text" class="form-control" id="editscreentitle"
+                                    placeholder="Lütfen Ekran adı giriniz.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter lastname">
+                                <label for="editscreencode" class="form-label">Ekran Kodu</label>
+                                <input type="text" class="form-control" id="editscreencode"
+                                    placeholder="Lütfen Ekran kodu giriniz.">
                             </div>
                         </div><!--end col-->
-                        <div class="col-lg-12">
-                            <label for="genderInput" class="form-label">Gender</label>
-                            <div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                        id="inlineRadio3" value="option3">
-                                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                                </div>
+
+                        <div class="col-xxl-12">
+                            <label for="editscreenoparatingsystem" class="form-label">Ekran İşetim Sistemi</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editscreenoparatingsystem">
+                                    <option value="1">Web</option>
+                                    <option value="2">Windows</option>
+                                    <option value="3">Ln</option>
+                                </select>
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="emailInput" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-xxl-6">
-                            <div>
-                                <label for="passwordInput" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwordInput" value="451326546">
+                        <div class="col-xxl-12">
+                            <label for="editscreenstatus" class="form-label">Ekran Statüsü</label>
+                            <div class="input-group">
+                                <select class="form-select" id="editscreenstatus">
+                                    <option value="1">Aktif</option>
+                                    <option value="2">Taslak</option>
+                                </select>
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="edit_button" class="btn btn-soft-success">Düzenle</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -388,12 +378,12 @@
         screenpk = $(a_button).attr('data-id');
     });
 
-    //delete zone
+    //delete screen
     $("#delete_button").on("click", function (e) {
         e.preventDefault()
 
         $.post("/information", {
-            msg: "deletezone",
+            msg: "deletescreen",
             screenpk: screenpk
 
         }).done(function (res) {
@@ -406,6 +396,31 @@
             }
         })
     });
+
+
+    //edit
+    $("#edit_button").on('click', function(){
+        var screentitle = $("#editscreentitle").val();
+        var screencode = $("#editscreencode").val();
+        var screenoparatingsystem = $("#editscreenoparatingsystem").val();
+        var screenstatus = $("#editscreenstatus").val();
+        $.post("/information", {
+            msg: "editscreen",
+            screenpk : screenpk,
+            screentitle: screentitle,
+            screencode: screencode,
+            screenoparatingsystem: screenoparatingsystem,
+            screenstatus: screenstatus,
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#editmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    })
 </script>
 
 <!-- JAVASCRIPT -->

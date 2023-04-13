@@ -34,6 +34,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
         crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -301,7 +302,7 @@
                     </span>
                 </a> -->
                 <!-- Light Logo-->
-                <a href="/" class="logo logo-light">
+                <a href="/home" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="assets/images/SBYS.png" alt="" height="22">
                     </span>
@@ -323,7 +324,7 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="/">
+                            <a class="nav-link menu-link" href="/home">
                                 <i class="las la-tachometer-alt"></i> <span data-key="t-widgets">Ana Sayfa</span>
                             </a>
                         </li>
@@ -343,7 +344,7 @@
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/zonemanagement" role="button" aria-expanded="false"
                                 aria-controls="sidebarPages">
-                                <i class="las la-pager"></i> <span data-key="t-pages">Bölge Yönetimi</span>
+                                <i class="las la-map"></i> <span data-key="t-pages">Bölge Yönetimi</span>
                             </a>
 
                         </li>
@@ -367,30 +368,30 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/information">
-                                <i class="las la-flask"></i> <span data-key="t-widgets">Bilgilendirme Ekranı</span>
+                                <i class="lab la-windows"></i> <span data-key="t-widgets">Bilgilendirme Ekranı</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/announcements" role="button" aria-expanded="false"
                                 aria-controls="sidebarAdvanceUI">
-                                <i class="las la-briefcase"></i> <span data-key="t-advance-ui">Duyurular</span>
+                                <i class=" las la-bullhorn"></i> <span data-key="t-advance-ui">Duyurular</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/visualannouncements">
-                                <i class="las la-flask"></i> <span data-key="t-widgets">Görsel Duyurular</span>
+                                <i class=" las la-window-minimize"></i> <span data-key="t-widgets">Görsel Duyurular</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/settings">
-                                <i class="las la-flask"></i> <span data-key="t-widgets">Ayarlar</span>
+                                <i class="lab la-whmcs"></i> <span data-key="t-widgets">Ayarlar</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/logs">
-                                <i class="las la-flask"></i> <span data-key="t-widgets">Loglar</span>
+                                <i class="las la-list-ul"></i> <span data-key="t-widgets">Loglar</span>
                             </a>
                         </li>
 
@@ -405,3 +406,28 @@
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
+
+        <!-- removeNotificationModal -->
+<div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2 text-center">
+                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                        <h4>Are you sure ?</h4>
+                        <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
+                </div>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

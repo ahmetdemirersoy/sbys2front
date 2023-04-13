@@ -490,7 +490,7 @@
                 e.classList.contains("active") && e.remove()
             }), H(), document.getElementById("NotificationModalbtn-close").click()
         })
-    }))*/, [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function(e) {
+    })), [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function(e) {
         return new bootstrap.Tooltip(e)
     }), [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map(function(e) {
         return new bootstrap.Popover(e)
