@@ -195,14 +195,14 @@
                         <div class="col-xxl-12">
                             <div>
                                 <label for="zonecode" class="form-label">Bölge Kodu</label>
-                                <input type="text" class="form-control" id="editzonecode"
+                                <input type="text" class="form-control" id="editzonecode" value=""
                                     placeholder="Lütfen bölge kodu girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-12">
                             <div>
                                 <label for="zonetitle" class="form-label">Bölge Adı</label>
-                                <input type="text" class="form-control" id="editzonetitle"
+                                <input type="text" class="form-control" id="editzonetitle" value=""
                                     placeholder="Lütfen bölge adı girin.">
                             </div>
                         </div><!--end col-->
@@ -269,7 +269,7 @@
                                     <i class="ri-more-fill align-middle"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu">                                                               
-                                    <li><a class="dropdown-item edit-item-btn" data-id="${zonepk}"
+                                    <li><a class="dropdown-item edit-item-btn" data-id="${zonepk}" onclick="editcurrent()" 
                                             data-bs-toggle="modal"
                                             data-bs-target="#editmember"><i
                                                 class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -344,6 +344,23 @@
     });
 
     //edit zone
+
+    function editcurrent() {
+        $.get("/zonemanagement", {
+            msg: "beforeedit",
+            zonepk: zonepk,
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            console.log(response)
+            var currencypk = response[0].map.zonepk;
+            var zonetitle = response[0].map.zonetitle;
+            var zoencode = response[0].map.zoencode;
+            document.getElementById("editzonecode").setAttribute('value', zoencode);
+            document.getElementById("editzonetitle").setAttribute('value', zonetitle);
+            
+        });
+    }
+
     $("#edit_button").on('click', function(e){
         e.preventDefault()
         var zonecode = $("#editzonecode").val();

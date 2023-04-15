@@ -81,7 +81,7 @@
                                                     <th>Birim</th>
                                                     <th>Kural Tipi</th>
                                                     <th>Kural Değeri</th>
-                                                    <th>Kural Oran</th>
+                                                    <!-- <th>Kural Oran</th> -->
                                                     <th>Kural Statüsü</th>
                                                     <th>Bölge</th>
                                                     <th>Kural Adım</th>
@@ -173,7 +173,7 @@
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-4" id="rulevaluediv">
+                        <div class="col-xxl-8" id="rulevaluediv">
                             <div>
                                 <label for="rulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
                                 <input type="number" class="form-control" id="rulevalue"
@@ -182,13 +182,13 @@
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-4" id="ruleratediv">
+                      <!--  <div class="col-xxl-4" id="ruleratediv">
                             <div>
                                 <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
                                 <input type="number" class="form-control" id="rulerate"
                                     placeholder="Lütfen kural oranı seçiniz.">
                             </div>
-                        </div><!--end col-->
+                        </div>end col-->
 
                         <div class="col-xxl-8" id="rulefkdiv" style="display: none;">
                             <div>
@@ -284,7 +284,7 @@
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-4" id="editrulevaluediv">
+                        <div class="col-xxl-8" id="editrulevaluediv">
                             <div>
                                 <label for="editrulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
                                 <input type="number" class="form-control" id="editrulevalue"
@@ -293,17 +293,17 @@
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-4" id="editruleratediv">
+                      <!--  <div class="col-xxl-4" id="editruleratediv">
                             <div>
                                 <label for="editrulerate" id="forrulerate" class="form-label">Kural Oran</label>
                                 <input type="number" class="form-control" id="editrulerate"
                                     placeholder="Lütfen kural oranı seçiniz.">
                             </div>
-                        </div><!--end col-->
+                        </div>end col-->
 
                         <div class="col-xxl-8" id="editrulefkdiv" style="display: none;">
                             <div>
-                                <label for="editforrulefk" id="editforrulefk" class="form-label">Katsayılı Kural</label>
+                                <label for="editforrulefk"  class="form-label">Katsayılı Kural</label>
 
                                 <select class="form-select" id="editforrulefk">
                                     <!-- <option value="1">Aktif</option>
@@ -404,7 +404,8 @@
             html += htmlSegment;
         }
         document.getElementById("currencyfk").innerHTML = html;
-        document.getElementById("editcurrencyfk").innerHTML = html;
+        document.getElementById("editforrulefk").innerHTML = html;
+        document.getElementById("editcurrencyfk").innerHTML = html; 
     });
 
     // get all zone
@@ -428,17 +429,17 @@
             switch (kuraltip) {
                 case "1":
                     $("#rulevaluediv").css("display", "none");
-                    $("#ruleratediv").css("display", "none");
+                   // $("#ruleratediv").css("display", "none");
                     $("#rulefkdiv").css("display", "none");
                     break;
                 case "2":
                     $("#rulevaluediv").css("display", "");
-                    $("#ruleratediv").css("display", "");
+                  //  $("#ruleratediv").css("display", "");
                     $("#rulefkdiv").css("display", "none");
                     break;
                 case "3":
                     $("#rulevaluediv").css("display", "none");
-                    $("#ruleratediv").css("display", "none");
+                   // $("#ruleratediv").css("display", "none");
                     $("#rulefkdiv").css("display", "");
                     $.get("/symbolrules?msg=getallcurrency").done(function (res) {
                         var response = JSON.parse(res);
@@ -510,7 +511,7 @@
             var rulemin = rules.map.rulemin;
 
 
-            var rulerate = rules.map.rulerate;
+            //var rulerate = rules.map.rulerate;
             var rulestatus = rules.map.rulestatus;
             var rulestep = rules.map.rulestep;
             var rulestype = rules.map.rulestype;
@@ -548,7 +549,7 @@
                     currencyfk,
                     rulestype,
                     rulevalue,
-                    rulerate,
+                   
                     rulestatus,
                     rulezone,
                     rulestep,

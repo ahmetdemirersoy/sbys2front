@@ -1,6 +1,11 @@
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
+<style>
+    tr {
+        text-align: center;
+    }
+</style>
 <div class="main-content">
 
     <div class="page-content">
@@ -92,6 +97,7 @@
                                     <div class="card-body">
                                         <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
                                             data-bs-target="#addmember">Sembol Ekle</button>
+                                        <br>
                                         <table id="datatable"
                                             class="table table-bordered dt-responsive nowrap table-striped align-middle"
                                             style="width:100%">
@@ -102,9 +108,9 @@
                                                     <th>Sembol Kodu</th>
                                                     <th>Sembol Adı</th>
                                                     <th>Sembol Icon</th>
-                                                    <th>Değer</th>
-
-
+                                                    <th>Alış-Değer</th>
+                                                    <th>Satış-Değer</th>
+                                                    <th>Oluşturma Tarihi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -204,11 +210,18 @@
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-12">
+                        <div class="col-xxl-6">
                             <div>
-                                <label for="symbolvalue" class="form-label">Değer</label>
+                                <label for="symbolvalue" class="form-label">Alış-Değer</label>
                                 <input type="number" class="form-control" name="symbolvalue" id="symbolvalue"
-                                    placeholder="Lütfen sembol değeri giriniz.">
+                                    placeholder="Lütfen sembol satış  değeri giriniz.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="symbolvalue" class="form-label">Satış-Değer</label>
+                                <input type="number" class="form-control" name="symbolsvalue" id="symbolsvalue"
+                                    placeholder="Lütfen sembol satış  değeri giriniz.">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
@@ -238,14 +251,14 @@
                         <div class="col-xxl-12">
                             <div>
                                 <label for="editsymbolcode" class="form-label">Sembol Kodu</label>
-                                <input type="text" class="form-control" id="editsymbolcode"
+                                <input type="text" class="form-control" id="editsymbolcode" value=""
                                     placeholder="Lütfen sembol kodu giriniz.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-12">
                             <div>
                                 <label for="editsymboltitle" class="form-label">Sembol Adı</label>
-                                <input type="text" class="form-control" id="editsymboltitle"
+                                <input type="text" class="form-control" id="editsymboltitle" value=""
                                     placeholder="Lütfen sembol adı giriniz.">
                             </div>
                         </div><!--end col-->
@@ -257,11 +270,20 @@
                                     placeholder="Lütfen Icon seçiniz.">
                             </div>
                         </div><!--end col-->
-                        <div class="col-xxl-12">
+
+
+                        <div class="col-xxl-6">
                             <div>
-                                <label for="editsymbolvalue" class="form-label">Değer</label>
-                                <input type="number" class="form-control" id="editsymbolvalue"
-                                    placeholder="Lütfen sembol değeri giriniz.">
+                                <label for="symbolvalue" class="form-label">Alış-Değer</label>
+                                <input type="number" class="form-control" name="symbolvalue" id="editsymbolvalue"
+                                    value="" placeholder="Lütfen sembol alış  değeri giriniz.">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <div>
+                                <label for="editsymbolsvalue" class="form-label">Satış-Değer</label>
+                                <input type="number" class="form-control" name="symbolsvalue" id="editsymbolsvalue"
+                                    value="" placeholder="Lütfen sembol satış  değeri giriniz.">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
@@ -312,12 +334,16 @@
         var response = JSON.parse(res);
         for (var i = 0; i < response.length; i++) {
             var zone = response[i];
+            //console.log(zone)
             var currencypk = zone.map.currencypk;
             var currencyCode = zone.map.currencyCode;
             var currencyIcon = zone.map.currencyIcon;
             var currencytitle = zone.map.currencytitle;
             var currencyvalue = zone.map.currencyvalue;
+            var currencysvalue = zone.map.currencysvalue;
             var createdDate = zone.map.createdDate;
+            currencyvalue = new Intl.NumberFormat("en-US").format(currencyvalue);
+            currencysvalue = new Intl.NumberFormat("en-US").format(currencysvalue);
             createdDate = moment(createdDate).format('DD-MM-YYYY');
             var rawnode = table.row
                 .add([`
@@ -329,7 +355,7 @@
                         <i class="ri-more-fill align-middle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${currencypk}"
+                        <li><a class="dropdown-item edit-item-btn" data-id="${currencypk}" onclick="editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -347,8 +373,9 @@
             `,
                     currencyCode,
                     currencytitle,
-                `<img src="${currencyIcon}" height="20">`,
+                `<img src="${currencyIcon}" height="30">`,
                     currencyvalue,
+                    currencysvalue,
                     createdDate
 
                 ])
@@ -359,39 +386,65 @@
         }
     });
     //add symbol
-    $("#submit_button").on('click', function (e) {
-        e.preventDefault()
 
-        var symbolcode = $("#symbolcode").val();
-        var symboltitle = $("#symboltitle").val();
-        var symbolvalue = $("#symbolvalue").val();
-
+    var symbolIcon;
+    $('#symbolIcon').change(function () {
+        console.log($(this))
         var test = $('#symbolIcon').prop('files')[0];
         var picReader = new FileReader();
         picReader.addEventListener("load", function (event) {
             var picFile = event.target;
-            var symbolIcon = picFile.result;
-            $.post("/symbolmanagement", {
-                msg: "addsymbol",
-                symbolcode: symbolcode,
-                symboltitle: symboltitle,
-                symbolIcon: symbolIcon,
-                symbolvalue: symbolvalue
-            }).done(function (res) {
-                var response = JSON.parse(res);
-                if (response == "ok") {
-                    toastr.success("İşlem başarılı");
-                    $("#addmember").modal('toggle');
-                } else {
-                    toastr.error("Hatalı işlem lütfen tekrar deneyin.");
-                }
-            })
+            symbolIcon = picFile.result;
+
         })
         picReader.readAsDataURL(test);
     });
+
+    var editsymbolIcon;
+    $('#editsymbolIcon').change(function () {
+        console.log($(this))
+        var test = $('#editsymbolIcon').prop('files')[0];
+        var picReader = new FileReader();
+        picReader.addEventListener("load", function (event) {
+            var picFile = event.target;
+            editsymbolIcon = picFile.result;
+
+        })
+        picReader.readAsDataURL(test);
+    });
+
+    $("#submit_button").on('click', function (e) {
+        e.preventDefault()
+        console.log(symbolIcon)
+        var symbolcode = $("#symbolcode").val();
+        var symboltitle = $("#symboltitle").val();
+        var symbolvalue = $("#symbolvalue").val();
+        var symbolsvalue = $("#symbolsvalue").val();
+        console.log(symbolvalue)
+
+        $.post("/symbolmanagement", {
+            msg: "addsymbol",
+            symbolcode: symbolcode,
+            symboltitle: symboltitle,
+            symbolIcon: symbolIcon,
+            symbolvalue: symbolvalue,
+            symbolsvalue: symbolsvalue
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#addmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+
+    });
+    //select symbol pk
     var symbolpk;
     $("#datatable tbody").on("click", "tr", function () {
         var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
+
         symbolpk = $(a_button).attr('data-id');
     });
     //delete
@@ -414,11 +467,35 @@
     });
 
     //edit symbol
+    function editcurrent() {
+        $.get("/symbolmanagement", {
+            msg: "beforeedit",
+            symbolpk: symbolpk,
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            console.log(response[0].map.currencyCode)
+            var currencypk = response[0].map.currencypk;
+            var currencyCode = response[0].map.currencyCode;
+            var currencyIcon = response[0].map.currencyIcon;
+            var currencytitle = response[0].map.currencytitle;
+            var currencyvalue = response[0].map.currencyvalue;
+            var currencysvalue = response[0].map.currencysvalue;
+            var createdDate = response[0].map.createdDate;
+
+
+            document.getElementById("editsymbolcode").setAttribute('value', currencyCode);
+            document.getElementById("editsymboltitle").setAttribute('value', currencytitle);
+            document.getElementById("editsymbolvalue").setAttribute('value', currencyvalue);
+            document.getElementById("editsymbolsvalue").setAttribute('value', currencysvalue);
+
+        })
+    }
     $("#edit_button").on('click', function () {
         var symbolcode = $("#editsymbolcode").val();
         var symboltitle = $("#editsymboltitle").val();
-        var symbolIcon = $("#editsymbolIcon").val();
+        //var symbolIcon = $("#editsymbolIcon").val();
         var symbolvalue = $("#editsymbolvalue").val();
+        var symbolsvalue = $("#editsymbolsvalue").val();
         // console.log(symbolIcon)
 
         $.post("/symbolmanagement", {
@@ -426,8 +503,9 @@
             symbolpk: symbolpk,
             symbolcode: symbolcode,
             symboltitle: symboltitle,
-            symbolIcon: symbolIcon,
-            symbolvalue: symbolvalue
+            editsymbolIcon: editsymbolIcon,
+            symbolvalue: symbolvalue,
+            symbolsvalue: symbolsvalue
         }).done(function (res) {
             var response = JSON.parse(res);
             if (response == "ok") {

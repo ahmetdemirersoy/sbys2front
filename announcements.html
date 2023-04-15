@@ -264,13 +264,13 @@
                         <div class="col-xxl-12">
                             <div>
                                 <label for="editannouncementtitle" class="form-label">Duyuru Başlığı</label>
-                                <input type="text" class="form-control" id="editannouncementtitle"
+                                <input type="text" class="form-control" id="editannouncementtitle" value=""
                                     placeholder="Lütfen Başlık Giriniz">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-12">
                             <div>
-                                <label for="editannouncementcontent" class="form-label">Duuyuru İçeriği</label>
+                                <label for="editannouncementcontent" class="form-label">Duyuru İçeriği</label>
                                 <!-- <input type="text" class="form-control" id="affiliateaddress" placeholder="Lütfen adres bilgisi girin." > -->
                                 <textarea class="form-control" id="editannouncementcontent" rows="2"></textarea>
                             </div>
@@ -382,7 +382,7 @@
                         <i class="ri-more-fill align-middle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${announcementpk}"
+                        <li><a class="dropdown-item edit-item-btn" data-id="${announcementpk}" onclick="editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -467,6 +467,21 @@
 
 
     //edit
+
+    function editcurrent() {
+        $.get("/announcements", {
+            msg: "beforeedit",
+            announcementPK: announcementPK,
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            console.log(response)
+            var currencypk = response[0].map.currencypk;
+            var flyertitle = response[0].map.title;
+            document.getElementById("editannouncementtitle").setAttribute('value', flyertitle);
+            
+        });
+    }
+
     $("#edit_button").on('click', function () {
         var announcementtitle = $("#editannouncementtitle").val();
         var announcementcontent = $("#editannouncementcontent").val();

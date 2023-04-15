@@ -83,77 +83,21 @@
                                             </div>
 
                                             <div class="card-body">
-                                                <table id="example"
+                                                <table id="datatable"
                                                     class="table table-bordered dt-responsive nowrap table-striped align-middle"
                                                     style="width:100%">
                                                     <thead>
                                                         <tr>
-                                                            <!-- <th scope="col" style="width: 10px;">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input fs-15" type="checkbox" id="checkAll" value="option">
-                                                                </div>
-                                                            </th> -->
-                                                            <th>İşlemler</th>
-                                                            <!-- <th data-ordering="false">SR No.</th> -->
-                                                            <th data-ordering="false">ID</th>
-                                                            <th data-ordering="false">Purchase ID</th>
-                                                            <th data-ordering="false">Title</th>
-                                                            <th data-ordering="false">User</th>
-                                                            <th>Assigned To</th>
-                                                            <th>Created By</th>
-                                                            <th>Create Date</th>
-                                                            <th>Status</th>
-                                                            <th>Priority</th>
+                                                          
+                                                            <th>Log ID</th>
+                                                            <th>Currency ID</th>
+                                                            <th>Log Type</th>
+                                                            <th>Değer</th>
+                                                            <th>Oluşturlma Tarihi</th>
 
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="text-align: center;">
-                                                                <div class="dropdown d-inline-block">
-                                                                    <button
-                                                                        class="btn btn-soft-secondary btn-sm dropdown"
-                                                                        type="button" data-bs-toggle="dropdown"
-                                                                        aria-expanded="false">
-                                                                        <i class="ri-more-fill align-middle"></i>
-                                                                    </button>
-                                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                                        <li><a href="#!" class="dropdown-item"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#addmember"><i
-                                                                                    class="ri-eye-fill align-bottom me-2 text-muted"></i>
-                                                                                Ekle</a></li>
-                                                                        <li><a class="dropdown-item edit-item-btn"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#editmember"><i
-                                                                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                                                Düzenle</a></li>
-                                                                        <li>
-                                                                            <a class="dropdown-item remove-item-btn">
-                                                                                <i
-                                                                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                                                Sil
-                                                                            </a>
-
-                                                                        </li>
-
-                                                                    </ul>
-                                                                </div>
-                                                            </td>
-                                                            <!-- <td>01</td> -->
-                                                            <td>VLZ-452</td>
-                                                            <td>VLZ1400087402</td>
-                                                            <td><a href="#!">Post launch reminder/ post list</a></td>
-                                                            <td>Joseph Parker</td>
-                                                            <td>Alexis Clarke</td>
-                                                            <td>Joseph Parker</td>
-                                                            <td>03 Oct, 2021</td>
-                                                            <td><span class="badge badge-soft-info">Re-open</span></td>
-                                                            <td><span class="badge bg-danger">High</span></td>
-
-                                                        </tr>
-
-
+                                                    <tbody>                                                    
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -352,6 +296,66 @@
         </div>
     </div>
 
+    <script>
+         var $table = $("#datatable").dataTable({});
+
+
+         $table.dataTable({
+        destroy: true,
+        processing: true,
+        serverSide: true,
+        ordering: true,
+        paging: true,
+        searching: true,
+        info: true,
+        lengthMenu: [10, 25, 50, 100],
+        // columnDefs: [{
+        //     targets: [5],
+        //     render: DataTable.render.date(),
+        // }],
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+        ajax: {
+            type: "POST",
+            url: '/logs',
+            data: {
+                msg: "getlogs",
+            },
+            dataFilter: function (data) {
+                var json = jQuery.parseJSON(data);
+                json.recordsTotal = json.iTotalRecords;
+                json.recordsFiltered = json.iTotalRecords;
+
+                json.data = json.aaData;
+                console.log(json);
+                return JSON.stringify(json); // return JSON string
+            },
+        },
+
+        columns: [
+            {
+                data: "map.logPK",
+                name: "map.logPK",
+                title: "Log ID",
+            },
+            { data: "map.currencyFK", name: "map.currencyFK", title: "Currency ID" },
+            {
+                data: "map.logTypeFK",
+                name: "map.logTypeFK",
+                title: "Log Type",
+            },
+            { data: "map.value", name: "map.value", title: "Değer" },
+            { data: "map.createdDate", name: "map.createdDate", title: "Oluşturlma Tarihi" },
+
+            
+        ],
+        rowCallback: function (row, data) {
+            $(row).attr("id", data.map.logPK);
+        },
+
+    });
+    </script>
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

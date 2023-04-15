@@ -299,7 +299,7 @@
                         <div class="col-xxl-12">
                             <div>
                                 <label for="editaffiliatetitle" class="form-label">Üye Başlık</label>
-                                <input type="text" class="form-control" id="editaffiliatetitle"
+                                <input type="text" class="form-control" id="editaffiliatetitle" value=""
                                     placeholder="Lütfen başlık girin." required>
                                 
                             </div>
@@ -307,36 +307,36 @@
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatemail" class="form-label">Üye Mail</label>
-                                <input type="email" class="form-control" id="editaffiliatemail"
-                                    placeholder="Lütfen mail adresi girin.">
+                                <input type="email" class="form-control" id="editaffiliatemail" value=""
+                                    placeholder="Lütfen mail adresi girin."> 
                             </div>
                         </div><!--end col-->
 
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatephone" class="form-label">Telefon</label>
-                                <input type="text" class="form-control" id="editaffiliatephone"
+                                <input type="text" class="form-control" id="editaffiliatephone" value=""
                                     placeholder="Lütfen telefon numarası girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliateresponsible" class="form-label">Sorumlu</label>
-                                <input type="text" class="form-control" id="editaffiliateresponsible"
+                                <input type="text" class="form-control" id="editaffiliateresponsible" value=""
                                     placeholder="Lütfen sorumlu bilgisi girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatezonecode" class="form-label">Bölge Kodu</label>
-                                <input type="text" class="form-control" id="editaffiliatezonecode"
+                                <input type="text" class="form-control" id="editaffiliatezonecode" value=""
                                     placeholder="Lütfen bölge kodu girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatemembercode" class="form-label">Üye Kodu</label>
-                                <input type="text" class="form-control" id="editaffiliatemembercode"
+                                <input type="text" class="form-control" id="editaffiliatemembercode" value=""
                                     placeholder="Lütfen üyelik kodu girin.">
                             </div>
                         </div><!--end col-->
@@ -354,14 +354,14 @@
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatetaxno" class="form-label">Verigi Numarası</label>
-                                <input type="text" class="form-control" id="editaffiliatetaxno"
+                                <input type="text" class="form-control" id="editaffiliatetaxno" value=""
                                     placeholder="Lütfen vergi numarası girin.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliataxoffice" class="form-label">Vergi Dairesi</label>
-                                <input type="text" class="form-control" id="editaffiliataxoffice"
+                                <input type="text" class="form-control" id="editaffiliataxoffice" value=""
                                     placeholder="Lütfen vergi dairesi girin.">
                             </div>
                         </div><!--end col-->
@@ -469,7 +469,7 @@
                         <i class="ri-more-fill align-middle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${affialitepk}"
+                        <li><a class="dropdown-item edit-item-btn" data-id="${affialitepk}" onclick=" editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -571,6 +571,43 @@
 
 
     //edit affiliate
+    function editcurrent() {
+        $.get("/membermanagement", {
+            msg: "beforeedit",
+            affiliatepk: affiliatepk,
+        }).done(function (res) {
+            var affiliate = JSON.parse(res);
+           
+
+            var affiliate = affiliate[0];
+            console.log(affiliate)
+            var affialitepk = affiliate.map.affialitepk;
+            var affialiteTitle = affiliate.map.affialiteTitle;
+            var affiliateAddress = affiliate.map.affiliateAddress;
+            var affiliateCode = affiliate.map.affiliateCode;
+            var affiliateMail = affiliate.map.affiliateMail;
+            var affiliatePhone = affiliate.map.affiliatePhone;
+            var affiliateResponsible = affiliate.map.affiliateResponsible;
+            var affiliateScreenFk = affiliate.map.affiliateScreenFk;
+            var affiliateStatus = affiliate.map.affiliateStatus;
+            var affiliateTaxNo = affiliate.map.affiliateTaxNo;
+            var affiliateTaxOffice = affiliate.map.affiliateTaxOffice;
+            var affiliateZone = affiliate.map.affiliateZone;
+
+            
+            document.getElementById("editaffiliatetitle").setAttribute('value', affialiteTitle);
+            document.getElementById("editaffiliatemail").setAttribute('value', affiliateMail);
+            document.getElementById("editaffiliatephone").setAttribute('value', affiliatePhone);
+            document.getElementById("editaffiliateresponsible").setAttribute('value', affiliateResponsible);
+            document.getElementById("editaffiliatezonecode").setAttribute('value', affiliateZone);
+           // document.getElementById("editaffiliatemembercode").setAttribute('value', zonetitle);
+            document.getElementById("editaffiliatetaxno").setAttribute('value', affiliateTaxNo);
+            document.getElementById("editaffiliataxoffice").setAttribute('value', affiliateTaxOffice);
+            
+        });
+    }
+   
+
     $("#edit_button").on('click', function () {
        
         var affiliatetitle = $("#editaffiliatetitle").val();

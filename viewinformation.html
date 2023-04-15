@@ -98,7 +98,7 @@
         }
 
         #table_div {
-            font-size: 5vh;
+            font-size: 4vh;
             margin-left: 10px;
 
         }
@@ -107,9 +107,10 @@
             margin: 0;
             padding: 0;
         }
-        #images{
+
+        #images {
             height: 100%;
-            
+
         }
     </style>
 </head>
@@ -178,11 +179,11 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                        <tbody id="tbodydeger">
+                                            <!-- <tr>
                                                 <td>
-                                                    <div id="table_div" class=" "><i
-                                                            class="mdi mdi-arrow-up-thin" style="color: green;"></i> 24 Ayar Has
+                                                    <div id="table_div" class=" "><i class="mdi mdi-arrow-up-thin"
+                                                            style="color: green;"></i> 24 Ayar Has
                                                     </div>
 
                                                 </td>
@@ -196,8 +197,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-equal  mr-1" style="color:blue;"></i> 22 Ayar Bilezik
+                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
+                                                            style="color:blue;"></i> 22 Ayar Bilezik
                                                     </div>
                                                 </td>
                                                 <td>
@@ -210,8 +211,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-equal  mr-1" style="color:blue;"></i> Ata Çeyrek
+                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
+                                                            style="color:blue;"></i> Ata Çeyrek
                                                     </div>
                                                 </td>
                                                 <td>
@@ -224,8 +225,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-equal  mr-1" style="color:blue;"> </i>Ata Yarım
+                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
+                                                            style="color:blue;"> </i>Ata Yarım
                                                     </div>
                                                 </td>
                                                 <td>
@@ -238,8 +239,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-arrow-up-thin" style="color: green;"></i> Ata
+                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-up-thin"
+                                                            style="color: green;"></i> Ata
                                                         Cumhuriyet
                                                     </div>
                                                 </td>
@@ -253,8 +254,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-arrow-up-thin " style="color: green;"></i> Ziynet
+                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-up-thin "
+                                                            style="color: green;"></i> Ziynet
                                                         Çeyrek
                                                     </div>
                                                 </td>
@@ -282,8 +283,8 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <div id="table_div" class=""><i
-                                                            class="mdi mdi-arrow-down-thin" style="color: red;"></i> Ziynet Tam
+                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-down-thin"
+                                                            style="color: red;"></i> Ziynet Tam
                                                     </div>
                                                 </td>
                                                 <td>
@@ -293,17 +294,15 @@
                                                     <div id="table_div" class="">1490.00</div>
                                                 </td>
 
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
 
 
 
                                 </div>
-                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-12 col-xxl-6 mt-0"
-                                    >
-                                    <img src="assets/images/dernekfoto2-001.png"  width="98%" id="images"
-                                         alt="image" />
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-12 col-xxl-6 mt-0">
+                                    <img src="assets/images/dernekfoto2-001.png" width="98%" id="images" alt="image" />
                                     <!--Bu kalsın auto slider-->
                                     <!--<div class="col-lg-12 grid-margin stretch-card">
                                         <div class="card">
@@ -381,19 +380,140 @@
 
     <script>
 
+        //get Logs
+        // $.get("/viewinformation?msg=getlogs").done(function(res){
+        //     console.log(res)
+        // })
+
+        var currencies = [
+            "USD",
+            "EUR",
+            "GBP",
+            "CHF",
+            "DKK",
+            "SAR",
+            "AUD",
+            "CAD",
+            "JPY",
+            "SEK",
+            "NOK",]
 
 
-        var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">EURO Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
-            '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
-            '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
-            '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
-            '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
+        var arr = [];
+        var altınarr = [];
+        $.get("/symbolmanagement?msg=getallsymboll").done(function (res) {
+            var response = JSON.parse(res);
+            var html1 = "";
+            for (var i = 0; i < response.length; i++) {
+                var zone = response[i];
+                //console.log(currencyCode)
+                var currencypk = zone.map.currencypk;
+                var currencyCode = zone.map.currencyCode;
+                var currencyIcon = zone.map.currencyIcon;
+                var currencytitle = zone.map.currencytitle;
+                var currencyvalue = zone.map.currencyvalue;
+                var currencysvalue = zone.map.currencysvalue;
+                currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+                currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
+
+                const found = currencies.find(element => element == currencyCode);
+                if (found != currencyCode) {
+                    altınarr.push(currencypk);
 
 
+                    let htmlsegment1 = `
+                        <tr id="${currencypk}" data-id="${currencypk}">
+                            <td>
+                                <div id="table_div" class="">${currencytitle}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="table_div" class=""> ${currencyvalue} </div>
+                                </td>
+                                <td>
+                                    <div id="table_div" class="">${currencysvalue}</div>
+                                </td>
+                        </tr>
+                    `;
+                    html1 += htmlsegment1;
+
+
+
+                    $.post("/viewinformation", {
+                        msg: "getlogs",
+                        currencypk: currencypk
+                    }).done(function (res) {
+                        var response = JSON.parse(res);
+
+                        var beforelist = response[0].map.beforelist;
+                        var afterlist = response[0].map.afterlist;
+
+                        var beforevalue;
+                        var beforecurency;
+                        for (var i = 0; i < beforelist.myArrayList.length; i++) {
+                            var before = beforelist.myArrayList[i];
+                            beforecurency = before.map.currencyFK;
+                            beforevalue = before.map.value;
+                            var aftervalue = before.map.aftervalue;
+                            var logPK = before.map.logPK;
+                        }
+                        var aftervalue;
+                        var aftercurrency;
+                        for (var i = 0; i < afterlist.myArrayList.length; i++) {
+                            var after = afterlist.myArrayList[i];
+                            aftercurrency = after.map.currencyFK;
+                            //beforevalue = after.map.value;
+                            aftervalue = after.map.aftervalue;
+                            var logPK = after.map.logPK;
+                        }
+                        var trpk = $(`#${aftercurrency}`);
+
+                        if (aftercurrency == beforecurency) {
+                            for (var b = 0; b < trpk.length; b++) {
+                                var pk = trpk[b].getAttribute('id')
+                                var td = trpk[b].children.item(0).children.item(0);
+                                console.log(td)
+                                console.log(pk)
+                                if (pk == aftercurrency) {
+                                    var parsbefore = Number.parseInt(beforevalue);
+                                    var parsafter = Number.parseInt(aftervalue);
+                                    if (parsafter < parsbefore) {
+                                        $(td).append(`<i class="mdi mdi-arrow-down-thin"
+                                             style="color: red;"></i>`)
+                                    } else if (parsafter > parsbefore) {
+                                        $(td).append(`<i class="mdi mdi-arrow-up-thin"
+                                                             style="color: green;"></i>`);
+                                    } else {
+                                        $(td).append(`<i class="mdi mdi-equal  mr-1"
+                                                             style="color:blue;"></i>`)
+                                    }
+                                }
+                            }
+
+                        }
+                    })
+                }
+                if (found == currencyCode) {
+                    let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                    arr.push(htmlsegment);
+                }
+            }
+            document.getElementById("tbodydeger").innerHTML = html1;
+        });
+
+
+
+
+        // var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">EURO Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
+        //     '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
+        //     '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
+        //     '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
+        //     '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
 
 
 
         $(document).ready(function () {
+
             //auto slider
             // $(".owl-carousel").owlCarousel({
 
@@ -427,7 +547,7 @@
             const options1 = {
                 duration: 10000,
                 gap: 50,
-                delayBeforeStart: 1,
+                delayBeforeStart: 0,
                 direction: 'left',
             };
             var addLine = false;
@@ -441,6 +561,7 @@
                     console.log(abc)
                     html += abc;
                 }
+
                 var newLine = $("#line").append(html)
                 $(this).marquee('destroy').append(newLine);
                 $('.marquee3').marquee(options);

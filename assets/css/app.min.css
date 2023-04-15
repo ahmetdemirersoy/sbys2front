@@ -12122,7 +12122,7 @@ span.flatpickr-weekday{
     right:0;
     top:0;
     bottom:0;
-    opacity:.9;
+    /* opacity:.9; */
     background:#5ea3cb;
     background:-webkit-gradient(linear,left bottom,left top,from(#296080),to(#5ea3cb));
     background:linear-gradient(to top,#296080,#5ea3cb)

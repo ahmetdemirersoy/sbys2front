@@ -34,7 +34,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
         crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -48,6 +48,10 @@
 
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <!-- <script>
+    var socketUrl = "ws://78.187.173.201:11280/echo";
+</script>
+<script src="/assets/js/prices.js"></script> -->
 
 </head>
 
@@ -70,6 +74,8 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
+
+
     </script>
     <!-- Begin page -->
     <div id="layout-wrapper">
@@ -110,7 +116,7 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-md-block">
+                        <!-- <form class="app-search d-none d-md-block">
                             <div class="position-relative">
                                 <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
                                     id="search-options" value="">
@@ -120,7 +126,7 @@
                             </div>
                             <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
                                 <div data-simplebar style="max-height: 320px;">
-                                    <!-- item-->
+                                   
                                     <div class="dropdown-header">
                                         <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
                                     </div>
@@ -131,36 +137,36 @@
                                         <a href="/" class="btn btn-soft-secondary btn-sm btn-rounded">buttons
                                             <i class="mdi mdi-magnify ms-1"></i></a>
                                     </div>
-                                    <!-- item-->
+                                   
                                     <div class="dropdown-header mt-2">
                                         <h6 class="text-overflow text-muted mb-1 text-uppercase">Pages</h6>
                                     </div>
 
-                                    <!-- item-->
+                                   
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="ri-bubble-chart-line align-middle fs-18 text-muted me-2"></i>
                                         <span>Analytics Dashboard</span>
                                     </a>
 
-                                    <!-- item-->
+                                   
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="ri-lifebuoy-line align-middle fs-18 text-muted me-2"></i>
                                         <span>Help Center</span>
                                     </a>
 
-                                    <!-- item-->
+                                   
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="ri-user-settings-line align-middle fs-18 text-muted me-2"></i>
                                         <span>My account settings</span>
                                     </a>
 
-                                    <!-- item-->
+                                   
                                     <div class="dropdown-header mt-2">
                                         <h6 class="text-overflow text-muted mb-2 text-uppercase">Members</h6>
                                     </div>
 
                                     <div class="notification-list">
-                                        <!-- item -->
+                                        
                                         <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                             <div class="d-flex">
                                                 <img src="assets/images/users/avatar-2.jpg"
@@ -171,7 +177,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <!-- item -->
+                                        
                                         <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                             <div class="d-flex">
                                                 <img src="assets/images/users/avatar-3.jpg"
@@ -182,7 +188,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <!-- item -->
+                                        
                                         <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                             <div class="d-flex">
                                                 <img src="assets/images/users/avatar-5.jpg"
@@ -201,7 +207,7 @@
                                         <i class="ri-arrow-right-line ms-1"></i></a>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -254,33 +260,17 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <h6 class="dropdown-header">Welcome Anna!</h6>
-                                <a class="dropdown-item" href="pages-profile.html"><i
-                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Profile</span></a>
-                                <a class="dropdown-item" href="apps-chat.html"><i
-                                        class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i>
-                                    <span class="align-middle">Messages</span></a>
-                                <a class="dropdown-item" href="apps-tasks-kanban.html"><i
-                                        class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i>
-                                    <span class="align-middle">Taskboard</span></a>
-                                <a class="dropdown-item" href="pages-faqs.html"><i
-                                        class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Help</span></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="pages-profile.html"><i
-                                        class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Balance : <b>$5971.67</b></span></a>
-                                <a class="dropdown-item" href="pages-profile-settings.html"><span
-                                        class="badge bg-soft-success text-success mt-1 float-end">New</span><i
+                                <h6 class="dropdown-header">Welcome</h6>
+
+
+                                <a class="dropdown-item" href="/settings"><i
                                         class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Settings</span></a>
-                                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
-                                        class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="auth-logout-basic.html"><i
+                                        class="align-middle">Ayarlar</span></a>
+
+
+                                <a class="dropdown-item" id="logout_button"><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a>
+                                        class="align-middle" data-key="t-logout">Çıkış</span></a>
                             </div>
                         </div>
                     </div>
@@ -380,7 +370,8 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="/visualannouncements">
-                                <i class=" las la-window-minimize"></i> <span data-key="t-widgets">Görsel Duyurular</span>
+                                <i class=" las la-window-minimize"></i> <span data-key="t-widgets">Görsel
+                                    Duyurular</span>
                             </a>
                         </li>
 
@@ -408,26 +399,40 @@
         <div class="vertical-overlay"></div>
 
         <!-- removeNotificationModal -->
-<div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mt-2 text-center">
-                    <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                    <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                        <h4>Are you sure ?</h4>
-                        <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+        <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="NotificationModalbtn-close"></button>
                     </div>
-                </div>
-                <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                    <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete It!</button>
-                </div>
-            </div>
+                    <div class="modal-body">
+                        <div class="mt-2 text-center">
+                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                                <h4>Are you sure ?</h4>
+                                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete
+                                It!</button>
+                        </div>
+                    </div>
 
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <script>
+            $('#logout_button').on('click', function () {
+
+                $.post('/AjaxMemberAction', {
+                    msg: 'logout',
+
+                }).done(function (respose) {
+                    window.location.href = "/"
+                });
+            })
+        </script>
