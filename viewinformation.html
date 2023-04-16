@@ -21,9 +21,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css"
-        integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" />
     <style>
         .avatar-sm {
             height: 3rem;
@@ -112,10 +110,45 @@
             height: 100%;
 
         }
+        body{
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+        display: none;
+        visibility: hidden;
+        opacity: 0
+}
+
     </style>
 </head>
 
 <body>
+    <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="NotificationModalbtn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Are you sure ?</h4>
+                            <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete
+                            It!</button>
+                    </div>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="app-menu navbar-menu" style="display: none;">
         <div class="navbar-brand-box">
             <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -143,7 +176,7 @@
                 <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                     <div class="card" style="margin-bottom: 0; ">
-                        <div class="card-header" style="padding: 0; margin-top: 0;">
+                        <div class="card-header" style="padding: 2px; margin-top: 0;">
                             <div class="row">
                                 <div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
                                     <button type="button" class="btn btn-icon btn-topbar  rounded-circle mt-2"
@@ -153,13 +186,13 @@
                                 </div>
 
                                 <div class="col-xxl-11 col-xxl-11 col-lg-11 col-md-11 col-sm-11 text-center "
-                                    style="padding: 0; margin-top: 0px; margin-bottom: 0px">
-                                    <h1 style="font-size: 4.3vh; margin-bottom: 0px; padding-top: 5px ;">KAYSERİ
+                                    style="padding: 0; margin-top: 0.1vh; margin-bottom: 0px">
+                                    <h1 style="font-size: 4vh; margin-bottom: 0px; padding-top: 2px ;">KAYSERİ
                                         SARRAFLAR VE KUYUMCULAR
                                         DERNEĞİ</h1>
-                                    <h5>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
+                                    <h4>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
                                         Derneği
-                                        denetimindedir.</h5>
+                                        denetimindedir.</h4>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +382,7 @@
 
                         </div>
                         <div class="marquee4 text-white" id="tambah"
-                            style="background: #bcc7cc; font-size: 4vh; padding: 0; margin-bottom: 0; margin-top: 10px;  overflow: hidden; color: white;">
+                            style="background: #bcc7cc; font-size: 4vh; padding: 0; margin-bottom: 0; margin-top: 0.5vh;  overflow: hidden; color: white;">
                             <span>Duyurular : Sarraf ve Kuyumcular İftar Sonrası Buluştu
                                 Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği Başkanı Cemal
                                 Demircioğlu, iftar davetine icabet eden tüm üyelerine teşekkür ettiğini belirterek,
@@ -365,7 +398,7 @@
                         </div>
                         <div class="marquee3 text-white" id="tambah"
                             style=" background: #bcc7cc; padding: 0; margin-top: 0;">
-                            <span class="line " id="line" class="text-white" style="font-size: 5vh;"></span>
+                            <span class="line " id="line" class="text-white" style="font-size: 4.8vh;"></span>
                         </div>
 
                         <!-- <button id="btn">Add Text</button> -->
@@ -379,11 +412,14 @@
 
 
     <script>
+        
+        async function logJSONData() {
+            const response = await fetch("/viewinformation?msg=getallsymboll");
+            const jsonData = await response.json();
+            console.log(jsonData);
+        }
+        logJSONData()
 
-        //get Logs
-        // $.get("/viewinformation?msg=getlogs").done(function(res){
-        //     console.log(res)
-        // })
 
         var currencies = [
             "USD",
@@ -401,7 +437,7 @@
 
         var arr = [];
         var altınarr = [];
-        $.get("/symbolmanagement?msg=getallsymboll").done(function (res) {
+        $.get("/viewinformation?msg=getallsymboll").done(function (res) {
             var response = JSON.parse(res);
             var html1 = "";
             for (var i = 0; i < response.length; i++) {
@@ -417,14 +453,22 @@
                 currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
 
                 const found = currencies.find(element => element == currencyCode);
+
+                if (found == currencyCode) {
+                    let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                    arr.push(htmlsegment);
+                }
                 if (found != currencyCode) {
                     altınarr.push(currencypk);
 
 
+                    
                     let htmlsegment1 = `
                         <tr id="${currencypk}" data-id="${currencypk}">
                             <td>
-                                <div id="table_div" class="">${currencytitle}
+                                
+                                <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
+                                             style="color: red;"></i> ${currencytitle}
                                     </div>
                                 </td>
                                 <td>
@@ -436,7 +480,6 @@
                         </tr>
                     `;
                     html1 += htmlsegment1;
-
 
 
                     $.post("/viewinformation", {
@@ -472,88 +515,71 @@
                             for (var b = 0; b < trpk.length; b++) {
                                 var pk = trpk[b].getAttribute('id')
                                 var td = trpk[b].children.item(0).children.item(0);
-                                console.log(td)
-                                console.log(pk)
+                                var iattr = td.children.item(0);
+                               // console.log(td)
+                                //console.log(pk)
                                 if (pk == aftercurrency) {
                                     var parsbefore = Number.parseInt(beforevalue);
                                     var parsafter = Number.parseInt(aftervalue);
                                     if (parsafter < parsbefore) {
-                                        $(td).append(`<i class="mdi mdi-arrow-down-thin"
-                                             style="color: red;"></i>`)
+                                        var iattr = td.children.item(0);
+                                        //iattr.classList.add("mdi mdi-arrow-down-thin")
+                                        //$(iattr).attr("class", "mdi mdi-arrow-down-thin")
+                                        iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
+                                        $(iattr).css("color", "red")
+                                        // td.innerHTML += `<i class="mdi mdi-arrow-down-thin"
+                                        //      style="color: red;"></i>`
+                                        // $(td).append(`<i class="mdi mdi-arrow-down-thin"
+                                        //      style="color: red;"></i>`)
                                     } else if (parsafter > parsbefore) {
-                                        $(td).append(`<i class="mdi mdi-arrow-up-thin"
-                                                             style="color: green;"></i>`);
+                                        // $(td).append(`<i class="mdi mdi-arrow-up-thin"
+                                        //                      style="color: green;"></i>`);
+                                        iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
+                                        $(iattr).css("color", "green")
                                     } else {
-                                        $(td).append(`<i class="mdi mdi-equal  mr-1"
-                                                             style="color:blue;"></i>`)
+                                        // $(td).append(`<i class="mdi mdi-equal  mr-1"
+                                        //                      style="color:blue;"></i>`)
+                                         iattr.setAttribute("class", "mdi mdi-equal  mr-1")
+                                        $(iattr).css("color", "blue")
                                     }
                                 }
                             }
 
                         }
                     })
+
+                    
                 }
-                if (found == currencyCode) {
-                    let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
-                    arr.push(htmlsegment);
-                }
+
             }
             document.getElementById("tbodydeger").innerHTML = html1;
         });
 
-
-
-
-        // var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">EURO Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
-        //     '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
-        //     '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
-        //     '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
-        //     '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
-
-
-
         $(document).ready(function () {
-
-            //auto slider
-            // $(".owl-carousel").owlCarousel({
-
-            //     autoPlay: 5000,
-            //     items: 1,
-            //     itemsDesktop: [1199, 3],
-            //     itemsDesktopSmall: [979, 3],
-            //     center: true,
-            //     nav: true,
-            //     loop: true,
-            //     responsive: {
-            //         600: {
-            //             items: 1
-            //         }
-            //     }
-            // });
-
 
             const options = {
                 //speed in milliseconds of the marquee
                 duration: 10000,
                 //gap in pixels between the tickers
-                gap: 50,
+                gap: 550,
                 //time in milliseconds before the marquee will start animating
                 delayBeforeStart: 0,
                 //'left' or 'right'
                 direction: 'left',
                 //true or false - should the marquee be duplicated to show an effect of continues flow
-                //duplicated: true
+                duplicated: true
             };
             const options1 = {
                 duration: 10000,
-                gap: 50,
+                gap: 550,
                 delayBeforeStart: 0,
                 direction: 'left',
             };
             var addLine = false;
             const line = $("#line");
+//beforeStarting
 
-            $('.marquee3').bind('beforeStarting', function () {
+            $('.marquee3').bind( 'finished',function () {
                 // if (addLine == true) {
                 var html = " ";
                 for (var i = 0; i < arr.length; i++) {
@@ -575,28 +601,42 @@
     </script>
 
     <!-- JAVASCRIPT -->
+
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
     <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
-
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-    <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-    <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
-
-    <!-- App js -->
     <script src="assets/js/app.js"></script>
 </body>
 
 </html>
+<!--
+
+            // var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">EURO Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
+        //     '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
+        //     '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
+        //     '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
+        //     '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
+
+        
+
+            
+
+
+            //auto slider
+            // $(".owl-carousel").owlCarousel({
+
+            //     autoPlay: 5000,
+            //     items: 1,
+            //     itemsDesktop: [1199, 3],
+            //     itemsDesktopSmall: [979, 3],
+            //     center: true,
+            //     nav: true,
+            //     loop: true,
+            //     responsive: {
+            //         600: {
+            //             items: 1
+            //         }
+            //     }
+            // });
+
+
+-->
