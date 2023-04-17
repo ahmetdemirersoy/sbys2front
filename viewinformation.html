@@ -76,7 +76,7 @@
             border: 1px solid #e9e3e3;
             text-align: left;
             overflow: hidden;
-            padding: 28px;
+            padding: 5px;
         }
 
         tr:nth-child(even) {
@@ -101,24 +101,26 @@
 
         }
 
+        /* 
         td {
             margin: 0;
             padding: 0;
-        }
+        } */
 
         #images {
             height: 100%;
 
         }
-        body{
-    overflow: hidden;
-}
-::-webkit-scrollbar {
-        display: none;
-        visibility: hidden;
-        opacity: 0
-}
 
+        body {
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+            visibility: hidden;
+            opacity: 0
+        }
     </style>
 </head>
 
@@ -175,7 +177,7 @@
             <div class="row">
                 <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                    <div class="card" style="margin-bottom: 0; ">
+                    <div class="card" style="margin-bottom: 0; margin-top: 2vh; ">
                         <div class="card-header" style="padding: 2px; margin-top: 0;">
                             <div class="row">
                                 <div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
@@ -186,7 +188,7 @@
                                 </div>
 
                                 <div class="col-xxl-11 col-xxl-11 col-lg-11 col-md-11 col-sm-11 text-center "
-                                    style="padding: 0; margin-top: 0.1vh; margin-bottom: 0px">
+                                    style="padding: 0; margin-top: 1.5vh; margin-bottom: 0px">
                                     <h1 style="font-size: 4vh; margin-bottom: 0px; padding-top: 2px ;">KAYSERİ
                                         SARRAFLAR VE KUYUMCULAR
                                         DERNEĞİ</h1>
@@ -196,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body" style="padding: 0;">
+                        <div class="card-body" style="padding: 0; margin-top: 2.5vh;">
 
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-6 col-cl-6 col-xxl-6 mb-0">
@@ -381,8 +383,9 @@
 
 
                         </div>
+                        
                         <div class="marquee4 text-white" id="tambah"
-                            style="background: #bcc7cc; font-size: 4vh; padding: 0; margin-bottom: 0; margin-top: 0.5vh;  overflow: hidden; color: white;">
+                            style="background: #bcc7cc; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 2vh;  overflow: hidden; color: white;">
                             <span>Duyurular : Sarraf ve Kuyumcular İftar Sonrası Buluştu
                                 Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği Başkanı Cemal
                                 Demircioğlu, iftar davetine icabet eden tüm üyelerine teşekkür ettiğini belirterek,
@@ -396,10 +399,14 @@
                                 Kocasinan Emniyet Amiri, MHP İl Başkanımız, İl Vergi Dairesi Başkanları da yer aldı.
                                 Sarraflar ve kuyumculardan da çok yoğun bir katılım vardı.</span>
                         </div>
-                        <div class="marquee3 text-white" id="tambah"
+                        <div class="announcementsmarquee text-white" id="announcements"
+                            style="background: #bcc7cc; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 0;  overflow: hidden; color: white;">
+                            
+                        </div>
+                        <!-- <marquee class="test text-white" id="" 
                             style=" background: #bcc7cc; padding: 0; margin-top: 0;">
                             <span class="line " id="line" class="text-white" style="font-size: 4.8vh;"></span>
-                        </div>
+                        </marquee>-->
 
                         <!-- <button id="btn">Add Text</button> -->
 
@@ -407,20 +414,302 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-
-
     <script>
-        
-        async function logJSONData() {
-            const response = await fetch("/viewinformation?msg=getallsymboll");
-            const jsonData = await response.json();
-            console.log(jsonData);
-        }
-        logJSONData()
+        var code = "111";
+        var currencies = [
+            "USD",
+            "EUR",
+            "GBP",
+            "CHF",
+            "DKK",
+            "SAR",
+            "AUD",
+            "CAD",
+            "JPY",
+            "SEK",
+            "NOK",]
+        var arr = [];
+        var altınarr = [];
+        var htmlm = "";
+        $.get(`viewinformation?msg=getmember&code=${code}`).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                console.log(response);
+
+                //var newLine;
+                $.get(`/viewinformation?msg=getallsymboll&code=${code}`).done(function (res) {
+                    var response = JSON.parse(res);
+                    var html1 = "";
+                    for (var i = 0; i < response.length; i++) {
+                        var zone = response[i];
+                        //console.log(currencyCode)
+                        var currencypk = zone.map.currencypk;
+                        var currencyCode = zone.map.currencyCode;
+                        var currencyIcon = zone.map.currencyIcon;
+                        var currencytitle = zone.map.currencytitle;
+                        var currencyvalue = zone.map.currencyvalue;
+                        var currencysvalue = zone.map.currencysvalue;
+                        currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+                        currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
+
+                        const found = currencies.find(element => element == currencyCode);
+
+                        if (found == currencyCode) {
+
+                            let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                            arr.push(htmlsegment);
+                            //htmlm += htmlsegment;
+                        }
+                        if (found != currencyCode) {
+                            altınarr.push(currencypk);
+                            let htmlsegment1 = `
+                            <tr id="${currencypk}" data-id="${currencypk}">
+                                <td>
+                                    
+                                    <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
+                                                style="color: red;"></i> ${currencytitle}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="table_div" class=""> ${currencyvalue} </div>
+                                    </td>
+                                    <td>
+                                        <div id="table_div" class="">${currencysvalue}</div>
+                                    </td>
+                            </tr>
+                          `;
+                            html1 += htmlsegment1;
 
 
+                            $.post(`/viewinformation?code=${code}`, {
+                                msg: "getlogs",
+                                currencypk: currencypk
+                            }).done(function (res) {
+                                var response = JSON.parse(res);
+
+                                var beforelist = response[0].map.beforelist;
+                                var afterlist = response[0].map.afterlist;
+
+                                var beforevalue;
+                                var beforecurency;
+                                for (var i = 0; i < beforelist.myArrayList.length; i++) {
+                                    var before = beforelist.myArrayList[i];
+                                    beforecurency = before.map.currencyFK;
+                                    beforevalue = before.map.value;
+                                    var aftervalue = before.map.aftervalue;
+                                    var logPK = before.map.logPK;
+                                }
+                                var aftervalue;
+                                var aftercurrency;
+                                for (var i = 0; i < afterlist.myArrayList.length; i++) {
+                                    var after = afterlist.myArrayList[i];
+                                    aftercurrency = after.map.currencyFK;
+                                    //beforevalue = after.map.value;
+                                    aftervalue = after.map.aftervalue;
+                                    var logPK = after.map.logPK;
+                                }
+                                var trpk = $(`#${aftercurrency}`);
+
+                                if (aftercurrency == beforecurency) {
+                                    for (var b = 0; b < trpk.length; b++) {
+                                        var pk = trpk[b].getAttribute('id')
+                                        var td = trpk[b].children.item(0).children.item(0);
+                                        var iattr = td.children.item(0);
+                                        // console.log(td)
+                                        //console.log(pk)
+                                        if (pk == aftercurrency) {
+                                            var parsbefore = Number.parseInt(beforevalue);
+                                            var parsafter = Number.parseInt(aftervalue);
+                                            if (parsafter < parsbefore) {
+                                                var iattr = td.children.item(0);
+                                                iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
+                                                $(iattr).css("color", "red")
+                                            } else if (parsafter > parsbefore) {
+                                                iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
+                                                $(iattr).css("color", "green")
+                                            } else {
+                                                iattr.setAttribute("class", "mdi mdi-equal  mr-1")
+                                                $(iattr).css("color", "blue")
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    var html = "";
+                    for (var i = 0; i < arr.length; i++) {
+                        var abc = arr[i];
+                        console.log(abc)
+                        html += abc;
+                    }
+                    var announcementsDom = $("#announcements")
+                    if(announcementsDom.innerHTML != html){
+                        announcementsDom.append(html);
+                        announcementsDom.marquee();
+                    }                  
+                     document.getElementById("tbodydeger").innerHTML = html1;
+                    //document.getElementById("line").innerHTML = htmlm;
+                });
+                setInterval(() => {
+                    $.get(`/viewinformation?msg=getalldata&code=${code}`).done(function (res) {
+                        var response = JSON.parse(res);
+                        var html1 = "";
+                        for (var i = 0; i < response.length; i++) {
+                            var zone = response[i];
+
+
+
+                            // element bilgileri
+                            var currencypk = zone.map.currencypk;
+                            var currencyCode = zone.map.currencyCode;
+                            var currencyIcon = zone.map.currencyIcon;
+                            var currencytitle = zone.map.currencytitle;
+                            var currencyvalue = zone.map.currencyvalue;
+                            var currencysvalue = zone.map.currencysvalue;
+                            currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+                            currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
+                            const found = currencies.find(element => element == currencyCode);
+                            // if (found == currencyCode) {
+                            //     let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                            //     arr.push(htmlsegment);
+                            //     htmlm += htmlsegment;
+                            // }
+                            if (found != currencyCode) {
+                                // önceki log
+                                var beforevalues;
+                                var beforecurencys;
+                                var beforelist = zone.map.totallist.myArrayList[0].map.beforelist;
+                                if (beforelist.myArrayList.length > 0) {
+                                    beforecurencys = beforelist.myArrayList[0].map.currencyFK;
+                                    beforevalues = beforelist.myArrayList[0].map.value;
+                                    //console.log(beforevalues)
+                                }
+
+                                //sonraki log
+                                var aftervalues;
+                                var aftercurrencys;
+                                var afterlist = zone.map.totallist.myArrayList[0].map.afterlist;
+                                // console.log(afterlist)
+                                if (afterlist.myArrayList.length > 0) {
+                                    aftervalues = afterlist.myArrayList[0].map.aftervalue;
+                                    aftercurrencys = afterlist.myArrayList[0].map.currencyFK
+                                    //console.log(aftercurrencys)
+                                }
+
+                                var trpk = $(`#${currencypk}`);
+
+                                if (aftercurrencys == beforecurencys) {
+                                    for (var b = 0; b < trpk.length; b++) {
+                                        var pk = trpk[b].getAttribute('id')
+                                        var td = trpk[b].children.item(0).children.item(0);
+                                        var iattr = td.children.item(0);
+                                        // console.log(td)
+                                        //console.log(pk)
+                                        if (pk == aftercurrencys) {
+                                            var parsbefore = Number.parseInt(beforevalues);
+                                            var parsafter = Number.parseInt(aftervalues);
+                                            if (parsafter < parsbefore) {
+                                                var iattr = td.children.item(0);
+                                                iattr
+                                                iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
+                                                $(iattr).css("color", "red")
+                                                console.log("red ==>", iattr);
+                                            } else if (parsafter > parsbefore) {
+                                                iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
+                                                $(iattr).css("color", "green")
+                                                console.log("green ==> burada");
+                                            } else {
+                                                iattr.setAttribute("class", "mdi mdi-equal  mr-1")
+                                                $(iattr).css("color", "blue")
+                                                console.log("blue ==> burada")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                       // document.getElementById("line").innerHTML = htmlm;
+                    });
+                    console.log("Delayed for 1 second.");
+                }, "5000");
+
+
+                $(document).ready(function () {
+
+                    const options = {
+                        duration: 1000,
+                        gap: 50,
+                        delayBeforeStart: 0,
+                        direction: 'left',
+                        duplicated: true
+                    };
+                    const options1 = {
+                        duration: 10000,
+                        gap: 550,
+                        delayBeforeStart: 0,
+                        direction: 'left',
+                    };
+                    var addLine = false;
+                    const line = $("#line");
+                    var html = "";
+                        for (var i = 0; i < arr.length; i++) {
+                            var abc = arr[i];
+                            console.log(abc)
+                            html += abc;
+                        }
+                        var newLine = $("#line").append(html);
+                      
+                    // $('.marquee3').bind('beforeStarting', function () {
+                    //     var html = "";
+                    //     for (var i = 0; i < arr.length; i++) {
+                    //         var abc = arr[i];
+                    //         console.log(abc)
+                    //         html += abc;
+                    //     }
+                         // $(this).marquee('destroy').append(newLine);
+                    //     //$('.marquee3').marquee(options);
+                    // }).marquee(options);
+                    //
+                    //$('.marquee3').marquee(options);
+                    $('.marquee4').marquee(options1);
+
+                });
+            } else {
+                const img = document.createElement("img");
+                $(img).css("margin-left", "550px");
+                img.setAttribute("class", "justify-content-center");
+                img.setAttribute("height", "700px");
+                img.setAttribute("src", "./assets/images/multiply-cross.svg");
+
+                document.body.appendChild(img);
+                // document.getElementById("layout-wrapper").innerHTML = img
+
+
+                $("#layout-wrapper").text("Bu Ekrana Erişim İzniniz Bulunmamaktadır")
+                // console.log(response);
+            }
+
+        })
+
+
+    </script>
+
+    <!-- <script>
+
+        // async function logJSONData() {
+        //     const response = await fetch("/viewinformation?msg=getallsymboll");
+        //     const jsonData = await response.json();
+        //     console.log(jsonData);
+        // }
+        // logJSONData()
+
+
+        var arr = [];
         var currencies = [
             "USD",
             "EUR",
@@ -434,9 +723,6 @@
             "SEK",
             "NOK",]
 
-
-        var arr = [];
-        var altınarr = [];
         $.get("/viewinformation?msg=getallsymboll").done(function (res) {
             var response = JSON.parse(res);
             var html1 = "";
@@ -453,20 +739,14 @@
                 currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
 
                 const found = currencies.find(element => element == currencyCode);
-
-                if (found == currencyCode) {
+                console.log(found)
+                if (found === currencyCode) {
                     let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
                     arr.push(htmlsegment);
-                }
-                if (found != currencyCode) {
-                    altınarr.push(currencypk);
-
-
-                    
+                }else{              
                     let htmlsegment1 = `
                         <tr id="${currencypk}" data-id="${currencypk}">
-                            <td>
-                                
+                            <td>                           
                                 <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
                                              style="color: red;"></i> ${currencytitle}
                                     </div>
@@ -480,17 +760,13 @@
                         </tr>
                     `;
                     html1 += htmlsegment1;
-
-
                     $.post("/viewinformation", {
                         msg: "getlogs",
                         currencypk: currencypk
                     }).done(function (res) {
                         var response = JSON.parse(res);
-
                         var beforelist = response[0].map.beforelist;
                         var afterlist = response[0].map.afterlist;
-
                         var beforevalue;
                         var beforecurency;
                         for (var i = 0; i < beforelist.myArrayList.length; i++) {
@@ -510,100 +786,80 @@
                             var logPK = after.map.logPK;
                         }
                         var trpk = $(`#${aftercurrency}`);
-
                         if (aftercurrency == beforecurency) {
                             for (var b = 0; b < trpk.length; b++) {
                                 var pk = trpk[b].getAttribute('id')
                                 var td = trpk[b].children.item(0).children.item(0);
                                 var iattr = td.children.item(0);
-                               // console.log(td)
+                                // console.log(td)
                                 //console.log(pk)
                                 if (pk == aftercurrency) {
                                     var parsbefore = Number.parseInt(beforevalue);
                                     var parsafter = Number.parseInt(aftervalue);
                                     if (parsafter < parsbefore) {
                                         var iattr = td.children.item(0);
-                                        //iattr.classList.add("mdi mdi-arrow-down-thin")
-                                        //$(iattr).attr("class", "mdi mdi-arrow-down-thin")
+
                                         iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
                                         $(iattr).css("color", "red")
-                                        // td.innerHTML += `<i class="mdi mdi-arrow-down-thin"
-                                        //      style="color: red;"></i>`
-                                        // $(td).append(`<i class="mdi mdi-arrow-down-thin"
-                                        //      style="color: red;"></i>`)
+
                                     } else if (parsafter > parsbefore) {
-                                        // $(td).append(`<i class="mdi mdi-arrow-up-thin"
-                                        //                      style="color: green;"></i>`);
+
                                         iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
                                         $(iattr).css("color", "green")
                                     } else {
-                                        // $(td).append(`<i class="mdi mdi-equal  mr-1"
-                                        //                      style="color:blue;"></i>`)
-                                         iattr.setAttribute("class", "mdi mdi-equal  mr-1")
+
+                                        iattr.setAttribute("class", "mdi mdi-equal  mr-1")
                                         $(iattr).css("color", "blue")
                                     }
                                 }
                             }
 
                         }
-                    })
-
-                    
+                    });
                 }
-
             }
             document.getElementById("tbodydeger").innerHTML = html1;
         });
 
-        $(document).ready(function () {
 
+        $(document).ready(function () {
             const options = {
-                //speed in milliseconds of the marquee
                 duration: 10000,
-                //gap in pixels between the tickers
-                gap: 550,
-                //time in milliseconds before the marquee will start animating
+                gap: 100,
                 delayBeforeStart: 0,
-                //'left' or 'right'
                 direction: 'left',
-                //true or false - should the marquee be duplicated to show an effect of continues flow
-                duplicated: true
             };
             const options1 = {
                 duration: 10000,
-                gap: 550,
+                gap: 50,
                 delayBeforeStart: 0,
                 direction: 'left',
+                 duplicated: true
             };
             var addLine = false;
             const line = $("#line");
-//beforeStarting
-
-            $('.marquee3').bind( 'finished',function () {
-                // if (addLine == true) {
-                var html = " ";
+            $('.marquee3').bind('beforeStarting', function () {
+                var html = "";
                 for (var i = 0; i < arr.length; i++) {
                     var abc = arr[i];
                     console.log(abc)
                     html += abc;
                 }
-
                 var newLine = $("#line").append(html)
                 $(this).marquee('destroy').append(newLine);
                 $('.marquee3').marquee(options);
-
-
             }).marquee(options);
-            //$('.marquee3').marquee(options);
+            $('.marquee3').marquee(options);
             $('.marquee4').marquee(options1);
-
         });
-    </script>
+
+    </script> -->
 
     <!-- JAVASCRIPT -->
 
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 
@@ -638,5 +894,118 @@
             //     }
             // });
 
+ // async function logJSONData() {
+        //     const jsonData = await fetch("/viewinformation?msg=getallsymboll");
+        //     const response = await jsonData.json();
+        //     console.log(response);
+        //     var html1 = "";
+        //     for (var i = 0; i < response.length; i++) {
+        //         var zone = response[i];
+        //         //console.log(currencyCode)
+        //         var currencypk = zone.map.currencypk;
+        //         var currencyCode = zone.map.currencyCode;
+        //         var currencyIcon = zone.map.currencyIcon;
+        //         var currencytitle = zone.map.currencytitle;
+        //         var currencyvalue = zone.map.currencyvalue;
+        //         var currencysvalue = zone.map.currencysvalue;
+        //         currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+        //         currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
 
+        //         const found = currencies.find(element => element == currencyCode);
+        //         console.log(found)
+        //         if (found === currencyCode) {
+        //             let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+        //             arr.push(htmlsegment);                                   
+        //         }
+        //         if (found != currencyCode ) {
+        //             altınarr.push(currencypk);
+
+
+
+        //             let htmlsegment1 = `
+        //                 <tr id="${currencypk}" data-id="${currencypk}">
+        //                     <td>
+                                
+        //                         <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
+        //                                      style="color: red;"></i> ${currencytitle}
+        //                             </div>
+        //                         </td>
+        //                         <td>
+        //                             <div id="table_div" class=""> ${currencyvalue} </div>
+        //                         </td>
+        //                         <td>
+        //                             <div id="table_div" class="">${currencysvalue}</div>
+        //                         </td>
+        //                 </tr>
+        //             `;
+        //             html1 += htmlsegment1;
+
+
+        //             $.post("/viewinformation", {
+        //                 msg: "getlogs",
+        //                 currencypk: currencypk
+        //             }).done(function (res) {
+        //                 var response = JSON.parse(res);
+
+        //                 var beforelist = response[0].map.beforelist;
+        //                 var afterlist = response[0].map.afterlist;
+
+        //                 var beforevalue;
+        //                 var beforecurency;
+        //                 for (var i = 0; i < beforelist.myArrayList.length; i++) {
+        //                     var before = beforelist.myArrayList[i];
+        //                     beforecurency = before.map.currencyFK;
+        //                     beforevalue = before.map.value;
+        //                     var aftervalue = before.map.aftervalue;
+        //                     var logPK = before.map.logPK;
+        //                 }
+        //                 var aftervalue;
+        //                 var aftercurrency;
+        //                 for (var i = 0; i < afterlist.myArrayList.length; i++) {
+        //                     var after = afterlist.myArrayList[i];
+        //                     aftercurrency = after.map.currencyFK;
+        //                     //beforevalue = after.map.value;
+        //                     aftervalue = after.map.aftervalue;
+        //                     var logPK = after.map.logPK;
+        //                 }
+        //                 var trpk = $(`#${aftercurrency}`);
+
+        //                 if (aftercurrency == beforecurency) {
+        //                     for (var b = 0; b < trpk.length; b++) {
+        //                         var pk = trpk[b].getAttribute('id')
+        //                         var td = trpk[b].children.item(0).children.item(0);
+        //                         var iattr = td.children.item(0);
+        //                         // console.log(td)
+        //                         //console.log(pk)
+        //                         if (pk == aftercurrency) {
+        //                             var parsbefore = Number.parseInt(beforevalue);
+        //                             var parsafter = Number.parseInt(aftervalue);
+        //                             if (parsafter < parsbefore) {
+        //                                 var iattr = td.children.item(0);
+
+        //                                 iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
+        //                                 $(iattr).css("color", "red")
+
+        //                             } else if (parsafter > parsbefore) {
+
+        //                                 iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
+        //                                 $(iattr).css("color", "green")
+        //                             } else {
+
+        //                                 iattr.setAttribute("class", "mdi mdi-equal  mr-1")
+        //                                 $(iattr).css("color", "blue")
+        //                             }
+        //                         }
+        //                     }
+
+        //                 }
+        //             })
+
+
+        //         }
+
+        //     }
+        //     document.getElementById("tbodydeger").innerHTML = html1;
+        // }
+        // logJSONData()
 -->
