@@ -47,9 +47,9 @@
 
 
 
-         .owl-carousel .item {
+         /* .owl-carousel .item {
             margin: 3px
-        }
+        } */
 
         .owl-carousel .item img {
             /* display: block; */
@@ -57,14 +57,14 @@
             height: 100%
         }
 
-        .owl-carousel .item {
+        /* .owl-carousel .item {
             margin: 3px
-        }
+        } */
 
-        .owl-carousel {
-            margin-bottom: 15px;
+        /* .owl-carousel {
+            margin-bottom: 5px;
 
-        } 
+        }  */
 
         table {
             font-family: arial, sans-serif;
@@ -234,9 +234,9 @@
                                     <!-- <img src="assets/images/dernekfoto2-001.png" width="98%" id="images" alt="image" /> -->
                                     <!--Bu kalsın auto slider-->
                                     <div class="col-lg-12 grid-margin stretch-card">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="owl-carousel" id="carousediv" style="display: flex; opacity: 1;">
+                                        <div class="card" style="margin: 0px; padding: 0px;">
+                                            <div class="card-body" style="margin: 1%; padding: 0px; align-items: center;">
+                                                <div class="owl-carousel" id="carousediv" style="width: 98%;" >
                                                     
                                                 </div>
                                             </div>
@@ -554,7 +554,7 @@
                     let couresel = "";
                     for (var i = 0; i < gorselarr.length; i++) {
                         var test = gorselarr[i];
-                        let htmlSegment = `<div class="item" > <img src="${test}" width="98%" id="images" alt="image" /></div>`;                                                                             
+                        let htmlSegment = `<div class="item" style="height : 99%" > <img src="${test}" width="99%" height="99%" id="images" alt="image" /></div>`;                                                                             
                         couresel += htmlSegment;
                         console.log(couresel)
                         //$("#carousediv").append(couresel)
@@ -564,11 +564,11 @@
                     //document.getElementById('carousediv').innerHTML = couresel;
                     // //auto slider
                  $(".owl-carousel").owlCarousel({
-                    autoPlay: 5000,
+                    autoPlay: 10000,
                     items: 1,
-                    itemsDesktop: [1199, 3],
-                    itemsDesktopSmall: [979, 3],
-                    center: true,
+                    // itemsDesktop: [1199, 3],
+                    // itemsDesktopSmall: [979, 3],
+                    // center: true,
                     nav: true,
                     loop: true,
                     responsive: {

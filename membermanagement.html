@@ -555,7 +555,7 @@
         var affiliateaddress = $("#affiliateaddress").val();
         var affiliatestatus = $("#affiliatestatus").val();
         var affiliatemembercode = $("#affiliatemembercode").val();
-        console.log(affiliatezonecode)
+        console.log(affiliatestatus)
         
         $.post("/membermanagement", {
             msg: "addaffiliate",
@@ -567,7 +567,8 @@
             affiliatetaxno: affiliatetaxno,
             affiliataxoffice: affiliataxoffice,
             affiliatescreenfk: affiliatescreenfk,
-            affiliateaddress: affiliateaddress
+            affiliateaddress: affiliateaddress,
+            affiliatestatus : affiliatestatus
         }).done(function (res) {
             var response = JSON.parse(res);
             if (response == "ok") {
