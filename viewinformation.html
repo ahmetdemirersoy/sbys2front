@@ -22,6 +22,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" />
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <style>
         .avatar-sm {
             height: 3rem;
@@ -37,19 +40,19 @@
             content: "\eacb"
         }
 
-        /* .stretch-card>.card {
+        .stretch-card>.card {
             width: 100%;
             min-width: 100%
-        } */
+        } 
 
 
 
-        /* .owl-carousel .item {
+         .owl-carousel .item {
             margin: 3px
         }
 
         .owl-carousel .item img {
-            display: block;
+            /* display: block; */
             width: 100%;
             height: 100%
         }
@@ -61,7 +64,7 @@
         .owl-carousel {
             margin-bottom: 15px;
 
-        } */
+        } 
 
         table {
             font-family: arial, sans-serif;
@@ -175,7 +178,12 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div id="notfounddiv" style="text-align: center; display: none;">
+                    <img src="./assets/images/multiply-cross.svg" alt="" height="700px" class="mt-5">
+                    <h2 class="mt-5" style="color: #e21b1b;">Bu Sayfaya Erişim İzniniz Bulunmamaktadır</h2>
+                </div>
+                <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="maindiv">
+
 
                     <div class="card" style="margin-bottom: 0; margin-top: 2vh; ">
                         <div class="card-header" style="padding: 2px; margin-top: 0;">
@@ -215,121 +223,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tbodydeger">
-                                            <!-- <tr>
-                                                <td>
-                                                    <div id="table_div" class=" "><i class="mdi mdi-arrow-up-thin"
-                                                            style="color: green;"></i> 24 Ayar Has
-                                                    </div>
 
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=" "></div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=" ">230.00</div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
-                                                            style="color:blue;"></i> 22 Ayar Bilezik
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">207.00</div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">217.00</div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
-                                                            style="color:blue;"></i> Ata Çeyrek
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">377.00</div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=""> 393.00</div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-equal  mr-1"
-                                                            style="color:blue;"> </i>Ata Yarım
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">755.00</div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=""> 784.00</div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-up-thin"
-                                                            style="color: green;"></i> Ata
-                                                        Cumhuriyet
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=""> 1520.00 </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=""> 1552.00</div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-up-thin "
-                                                            style="color: green;"></i> Ziynet
-                                                        Çeyrek
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">364.00 </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">380.00 </div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i style="color: red;"
-                                                            class="mdi mdi-arrow-down-thin"></i> Ziynet
-                                                        Yarım </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">726.00 </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">756.00 </div>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="table_div" class=""><i class="mdi mdi-arrow-down-thin"
-                                                            style="color: red;"></i> Ziynet Tam
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class=""> 1460.00 </div>
-                                                </td>
-                                                <td>
-                                                    <div id="table_div" class="">1490.00</div>
-                                                </td>
-
-                                            </tr> -->
                                         </tbody>
                                     </table>
 
@@ -337,44 +231,17 @@
 
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-6 col-cl-12 col-xxl-6 mt-0">
-                                    <img src="assets/images/dernekfoto2-001.png" width="98%" id="images" alt="image" />
+                                    <!-- <img src="assets/images/dernekfoto2-001.png" width="98%" id="images" alt="image" /> -->
                                     <!--Bu kalsın auto slider-->
-                                    <!--<div class="col-lg-12 grid-margin stretch-card">
+                                    <div class="col-lg-12 grid-margin stretch-card">
                                         <div class="card">
                                             <div class="card-body">
-                                                <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png" height="1000" width="1000"
-                                                alt="image" />
-                                                <div class="owl-carousel" style="height:65vh">
-                                                    <div class="item" style="height:64vh">
-                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
-                                                            alt="image" />
-
-                                                    </div>
-                                                    <div class="item" style="height:64vh">
-                                                        <img src="assets/images/SBYS.png" alt="image" />
-
-                                                    </div>
-                                                    <div class="item" style="height:64vh">
-                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
-                                                            alt="image" />
-
-                                                    </div>
-                                                    <div class="item" style="height:64vh">
-                                                        <img src="assets/images/SBYS.png" alt="image" />
-
-                                                    </div>
-                                                    <div class="item" style="height:64vh">
-                                                        <img src="assets/images/Ekran görüntüsü 2023-04-08 181151.png"
-                                                            alt="image" />
-
-                                                    </div>
-
-
-
-                                                </div> 
+                                                <div class="owl-carousel" id="carousediv" style="display: flex; opacity: 1;">
+                                                    
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>-->
+                                    </div>
 
 
                                 </div>
@@ -383,33 +250,19 @@
 
 
                         </div>
-                        
-                        <div class="marquee4 text-white" id="tambah"
+
+                        <div class="marquee4 text-white" id="duyurlardiv"
                             style="background: #bcc7cc; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 2vh;  overflow: hidden; color: white;">
-                            <span>Duyurular : Sarraf ve Kuyumcular İftar Sonrası Buluştu
-                                Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği Başkanı Cemal
-                                Demircioğlu, iftar davetine icabet eden tüm üyelerine teşekkür ettiğini belirterek,
-                                “Ülkemiz zor günlerden geçiyor. Bizler Kayseri Sarraflar ve Kuyumcular Dayanışma ve
-                                Yardımlaşma Derneği olarak siz değerli üyelerimizin katkıları ile Deprem Bölgesi’ne
-                                yardım eli uzattık ve uzatmaya devam ediyoruz. Bugün soframızı açtık, katılan tüm
-                                kardeşlerime teşekkür ediyorum. Afiyet olsun” dedi.
-                                Kayseri Sarraflar ve Kuyumcular Dayanışma ve Yardımlaşma Derneği’nin düzenlediği iftar
-                                programına Başkan Cemal Demircioğlu ve yönetimi eksiksiz katılırken, Vali Vekili, İl
-                                Emniyet Müdürü , Büyükşehir Belediye Başkanvekili, Başsavcı, Talas Emniyet Amiri,
-                                Kocasinan Emniyet Amiri, MHP İl Başkanımız, İl Vergi Dairesi Başkanları da yer aldı.
-                                Sarraflar ve kuyumculardan da çok yoğun bir katılım vardı.</span>
+                            <span></span>
                         </div>
                         <div class="announcementsmarquee text-white" id="announcements"
                             style="background: #bcc7cc; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 0;  overflow: hidden; color: white;">
-                            
                         </div>
                         <!-- <marquee class="test text-white" id="" 
                             style=" background: #bcc7cc; padding: 0; margin-top: 0;">
                             <span class="line " id="line" class="text-white" style="font-size: 4.8vh;"></span>
                         </marquee>-->
-
                         <!-- <button id="btn">Add Text</button> -->
-
                     </div>
                 </div>
             </div>
@@ -418,6 +271,8 @@
     </div>
 
     <script>
+
+
         var code = "111";
         var currencies = [
             "USD",
@@ -540,20 +395,31 @@
                             });
                         }
                     }
+                    // alt currency
+                    const options = {
+                        duration: 11000,
+                        gap: 50,
+                        delayBeforeStart: 0,
+                        direction: 'left',
+                        duplicated: true
+                    };
 
                     var html = "";
                     for (var i = 0; i < arr.length; i++) {
                         var abc = arr[i];
-                        console.log(abc)
                         html += abc;
                     }
                     var announcementsDom = $("#announcements")
-                    if(announcementsDom.innerHTML != html){
+                    if (announcementsDom.innerHTML != html) {
                         announcementsDom.append(html);
-                        announcementsDom.marquee();
-                    }                  
-                     document.getElementById("tbodydeger").innerHTML = html1;
-                    //document.getElementById("line").innerHTML = htmlm;
+                        announcementsDom.marquee(options);
+                    }
+                    document.getElementById("tbodydeger").innerHTML = html1;
+
+
+
+
+
                 });
                 setInterval(() => {
                     $.get(`/viewinformation?msg=getalldata&code=${code}`).done(function (res) {
@@ -561,9 +427,6 @@
                         var html1 = "";
                         for (var i = 0; i < response.length; i++) {
                             var zone = response[i];
-
-
-
                             // element bilgileri
                             var currencypk = zone.map.currencypk;
                             var currencyCode = zone.map.currencyCode;
@@ -589,7 +452,6 @@
                                     beforevalues = beforelist.myArrayList[0].map.value;
                                     //console.log(beforevalues)
                                 }
-
                                 //sonraki log
                                 var aftervalues;
                                 var aftercurrencys;
@@ -600,9 +462,7 @@
                                     aftercurrencys = afterlist.myArrayList[0].map.currencyFK
                                     //console.log(aftercurrencys)
                                 }
-
                                 var trpk = $(`#${currencypk}`);
-
                                 if (aftercurrencys == beforecurencys) {
                                     for (var b = 0; b < trpk.length; b++) {
                                         var pk = trpk[b].getAttribute('id')
@@ -618,80 +478,111 @@
                                                 iattr
                                                 iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
                                                 $(iattr).css("color", "red")
-                                                console.log("red ==>", iattr);
                                             } else if (parsafter > parsbefore) {
                                                 iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
                                                 $(iattr).css("color", "green")
-                                                console.log("green ==> burada");
                                             } else {
                                                 iattr.setAttribute("class", "mdi mdi-equal  mr-1")
                                                 $(iattr).css("color", "blue")
-                                                console.log("blue ==> burada")
                                             }
                                         }
                                     }
                                 }
                             }
                         }
-                       // document.getElementById("line").innerHTML = htmlm;
+                        // document.getElementById("line").innerHTML = htmlm;
                     });
-                    console.log("Delayed for 1 second.");
                 }, "5000");
 
 
-                $(document).ready(function () {
+                //duyurular
+                const options1 = {
+                    duration: 10000,
+                    gap: 550,
+                    delayBeforeStart: 0,
+                    direction: 'left',
+                };
+                var duyuruarr = [];
+                var htmlduyuru = "";
+                var duyurulardom = $("#duyurlardiv");
+                $.get("/viewinformation?msg=getallannouncements").done(function (res) {
+                    var response = JSON.parse(res);
+                    for (var i = 0; i < response.length; i++) {
+                        var announcement = response[i];
+                        var announcementpk = announcement.map.announcementpk;
+                        var content = announcement.map.content;
+                        var title = announcement.map.title;
+                        var startdate = announcement.map.startdate;
+                        var enddate = announcement.map.enddate;
+                        var zonecode = announcement.map.zonecode;
+                        var createdDate = announcement.map.createdDate;
+                        createdDate = moment(createdDate).format('DD-MM-YYYY');
+                        startdate = moment(startdate).format('DD-MM-YYYY');
+                        enddate = moment(enddate).format('DD-MM-YYYY');
 
-                    const options = {
-                        duration: 1000,
-                        gap: 50,
-                        delayBeforeStart: 0,
-                        direction: 'left',
-                        duplicated: true
-                    };
-                    const options1 = {
-                        duration: 10000,
-                        gap: 550,
-                        delayBeforeStart: 0,
-                        direction: 'left',
-                    };
-                    var addLine = false;
-                    const line = $("#line");
-                    var html = "";
-                        for (var i = 0; i < arr.length; i++) {
-                            var abc = arr[i];
-                            console.log(abc)
-                            html += abc;
-                        }
-                        var newLine = $("#line").append(html);
-                      
-                    // $('.marquee3').bind('beforeStarting', function () {
-                    //     var html = "";
-                    //     for (var i = 0; i < arr.length; i++) {
-                    //         var abc = arr[i];
-                    //         console.log(abc)
-                    //         html += abc;
-                    //     }
-                         // $(this).marquee('destroy').append(newLine);
-                    //     //$('.marquee3').marquee(options);
-                    // }).marquee(options);
-                    //
-                    //$('.marquee3').marquee(options);
-                    $('.marquee4').marquee(options1);
-
+                        var duyurum = title + " - " + content.trim() + " Başlangıç Tarihi : " + createdDate + " Bitiş Tarihi : " + enddate;
+                        duyurulardom.append(duyurum);
+                        duyuruarr.push(duyurum);
+                    }
+                    duyurulardom.marquee(options1);
                 });
+
+                //görse duyurular
+               
+                var gorselarr = [];
+                $.get("/viewinformation?msg=getallanno").done(function (res) {
+                    var response = JSON.parse(res);
+                    for (var i = 0; i < response.length; i++) {
+                        var zone = response[i];
+                        console.log(zone)
+                        var flyerpk = zone.map.flyerpk;
+                        var flyercode = zone.map.flyercode;
+                        var currencyIcon = zone.map.currencyIcon;
+                        var flyertitle = zone.map.flyertitle;
+                        var startdate = zone.map.startdate;
+                        var enddate = zone.map.enddate;
+                        var screenfk = zone.map.screenfk;
+                        var createdDate = zone.map.createdDate;
+                        var currencyIcon = zone.map.currencyIcon;
+                        //iconarr.push(currencyIcon);
+                        createdDate = moment(createdDate).format('DD-MM-YYYY');
+                        startdate = moment(startdate).format('DD-MM-YYYY');
+                        enddate = moment(enddate).format('DD-MM-YYYY');
+                        gorselarr.push(currencyIcon);
+
+                    }
+                    let couresel = "";
+                    for (var i = 0; i < gorselarr.length; i++) {
+                        var test = gorselarr[i];
+                        let htmlSegment = `<div class="item" > <img src="${test}" width="98%" id="images" alt="image" /></div>`;                                                                             
+                        couresel += htmlSegment;
+                        console.log(couresel)
+                        //$("#carousediv").append(couresel)
+
+                    }
+                    $("#carousediv").html(couresel)
+                    //document.getElementById('carousediv').innerHTML = couresel;
+                    // //auto slider
+                 $(".owl-carousel").owlCarousel({
+                    autoPlay: 5000,
+                    items: 1,
+                    itemsDesktop: [1199, 3],
+                    itemsDesktopSmall: [979, 3],
+                    center: true,
+                    nav: true,
+                    loop: true,
+                    responsive: {
+                        600: {
+                            items: 1
+                        }
+                    }
+                });
+                });
+                 
+
             } else {
-                const img = document.createElement("img");
-                $(img).css("margin-left", "550px");
-                img.setAttribute("class", "justify-content-center");
-                img.setAttribute("height", "700px");
-                img.setAttribute("src", "./assets/images/multiply-cross.svg");
-
-                document.body.appendChild(img);
-                // document.getElementById("layout-wrapper").innerHTML = img
-
-
-                $("#layout-wrapper").text("Bu Ekrana Erişim İzniniz Bulunmamaktadır")
-                // console.log(response);
+                $("#notfounddiv").css("display", "");
+                $("#maindiv").css("display", "none")
             }
 
         })
@@ -864,148 +755,3 @@
 </body>
 
 </html>
-<!--
-
-            // var arr = ['<img src="assets/images/svg/crypto-icons/eur.svg" alt="" class="avatar-sm">EURO Alış : 20.9269 - Satış: 21.3684   &nbsp; ',
-        //     '  <img  src="assets/images/svg/crypto-icons/usd.svg" alt="" class="avatar-sm ml-5">USD Alış : 19.1955 - Satış : 19.6004   &nbsp;',
-        //     '  <img src="assets/images/svg/crypto-icons/gbp.svg" alt="" class="avatar-sm">GBP Alış : 23.8254 - Satış : 24.328    &nbsp;',
-        //     '   <img src="assets/images/svg/crypto-icons/gold.svg" alt="" class="avatar-sm">Gold Alış : 1234.14 - Satış : 1276.56   &nbsp;',
-        //     '  <img src="assets/images/svg/crypto-icons/btc.svg" alt="" class="avatar-sm">BTC 538.014,78TRY &nbsp;'];
-
-        
-
-            
-
-
-            //auto slider
-            // $(".owl-carousel").owlCarousel({
-
-            //     autoPlay: 5000,
-            //     items: 1,
-            //     itemsDesktop: [1199, 3],
-            //     itemsDesktopSmall: [979, 3],
-            //     center: true,
-            //     nav: true,
-            //     loop: true,
-            //     responsive: {
-            //         600: {
-            //             items: 1
-            //         }
-            //     }
-            // });
-
- // async function logJSONData() {
-        //     const jsonData = await fetch("/viewinformation?msg=getallsymboll");
-        //     const response = await jsonData.json();
-        //     console.log(response);
-        //     var html1 = "";
-        //     for (var i = 0; i < response.length; i++) {
-        //         var zone = response[i];
-        //         //console.log(currencyCode)
-        //         var currencypk = zone.map.currencypk;
-        //         var currencyCode = zone.map.currencyCode;
-        //         var currencyIcon = zone.map.currencyIcon;
-        //         var currencytitle = zone.map.currencytitle;
-        //         var currencyvalue = zone.map.currencyvalue;
-        //         var currencysvalue = zone.map.currencysvalue;
-        //         currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
-        //         currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
-
-        //         const found = currencies.find(element => element == currencyCode);
-        //         console.log(found)
-        //         if (found === currencyCode) {
-        //             let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
-        //             arr.push(htmlsegment);                                   
-        //         }
-        //         if (found != currencyCode ) {
-        //             altınarr.push(currencypk);
-
-
-
-        //             let htmlsegment1 = `
-        //                 <tr id="${currencypk}" data-id="${currencypk}">
-        //                     <td>
-                                
-        //                         <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
-        //                                      style="color: red;"></i> ${currencytitle}
-        //                             </div>
-        //                         </td>
-        //                         <td>
-        //                             <div id="table_div" class=""> ${currencyvalue} </div>
-        //                         </td>
-        //                         <td>
-        //                             <div id="table_div" class="">${currencysvalue}</div>
-        //                         </td>
-        //                 </tr>
-        //             `;
-        //             html1 += htmlsegment1;
-
-
-        //             $.post("/viewinformation", {
-        //                 msg: "getlogs",
-        //                 currencypk: currencypk
-        //             }).done(function (res) {
-        //                 var response = JSON.parse(res);
-
-        //                 var beforelist = response[0].map.beforelist;
-        //                 var afterlist = response[0].map.afterlist;
-
-        //                 var beforevalue;
-        //                 var beforecurency;
-        //                 for (var i = 0; i < beforelist.myArrayList.length; i++) {
-        //                     var before = beforelist.myArrayList[i];
-        //                     beforecurency = before.map.currencyFK;
-        //                     beforevalue = before.map.value;
-        //                     var aftervalue = before.map.aftervalue;
-        //                     var logPK = before.map.logPK;
-        //                 }
-        //                 var aftervalue;
-        //                 var aftercurrency;
-        //                 for (var i = 0; i < afterlist.myArrayList.length; i++) {
-        //                     var after = afterlist.myArrayList[i];
-        //                     aftercurrency = after.map.currencyFK;
-        //                     //beforevalue = after.map.value;
-        //                     aftervalue = after.map.aftervalue;
-        //                     var logPK = after.map.logPK;
-        //                 }
-        //                 var trpk = $(`#${aftercurrency}`);
-
-        //                 if (aftercurrency == beforecurency) {
-        //                     for (var b = 0; b < trpk.length; b++) {
-        //                         var pk = trpk[b].getAttribute('id')
-        //                         var td = trpk[b].children.item(0).children.item(0);
-        //                         var iattr = td.children.item(0);
-        //                         // console.log(td)
-        //                         //console.log(pk)
-        //                         if (pk == aftercurrency) {
-        //                             var parsbefore = Number.parseInt(beforevalue);
-        //                             var parsafter = Number.parseInt(aftervalue);
-        //                             if (parsafter < parsbefore) {
-        //                                 var iattr = td.children.item(0);
-
-        //                                 iattr.setAttribute("class", "mdi mdi-arrow-down-thin")
-        //                                 $(iattr).css("color", "red")
-
-        //                             } else if (parsafter > parsbefore) {
-
-        //                                 iattr.setAttribute("class", "mdi mdi-arrow-up-thin")
-        //                                 $(iattr).css("color", "green")
-        //                             } else {
-
-        //                                 iattr.setAttribute("class", "mdi mdi-equal  mr-1")
-        //                                 $(iattr).css("color", "blue")
-        //                             }
-        //                         }
-        //                     }
-
-        //                 }
-        //             })
-
-
-        //         }
-
-        //     }
-        //     document.getElementById("tbodydeger").innerHTML = html1;
-        // }
-        // logJSONData()
--->

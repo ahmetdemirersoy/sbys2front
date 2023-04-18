@@ -206,11 +206,22 @@
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
+                                <label for="zonecode" class="form-label">Bölge Kodu</label>
+                                <div class="input-group">
+                                    <select class="form-select" id="affiliatezonecode">
+                                        <!-- <option value="1">Aktif</option>
+                                            <option value="2">Pasif</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                      <!--  <div class="col-xxl-6">
+                            <div>
                                 <label for="affiliatezonecode" class="form-label">Bölge Kodu</label>
                                 <input type="text" class="form-control" id="affiliatezonecode"
                                     placeholder="Lütfen bölge kodu girin.">
                             </div>
-                        </div><!--end col-->
+                        </div>end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="affiliatemembercode" class="form-label">Üye Kodu</label>
@@ -275,8 +286,8 @@
 
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="submit_button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="submit_button" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -328,11 +339,22 @@
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
+                                <label for="zonecode" class="form-label">Bölge Kodu</label>
+                                <div class="input-group">
+                                    <select class="form-select" id="editaffiliatezonecode">
+                                        <!-- <option value="1">Aktif</option>
+                                            <option value="2">Pasif</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        <!--<div class="col-xxl-6">
+                            <div>
                                 <label for="editaffiliatezonecode" class="form-label">Bölge Kodu</label>
                                 <input type="text" class="form-control" id="editaffiliatezonecode" value=""
                                     placeholder="Lütfen bölge kodu girin.">
                             </div>
-                        </div><!--end col-->
+                        </div>end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatemembercode" class="form-label">Üye Kodu</label>
@@ -397,8 +419,8 @@
 
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="edit_button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="edit_button" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -437,6 +459,20 @@
         },
 
         //   dom: '<"toolbar">frtip',
+    });
+
+    // get all zone
+    $.get("/membermanagement?msg=getallzone").done(function (res) {
+        var response = JSON.parse(res);
+        let html = "";
+        for (var i = 0; i < response.length; i++) {
+            var zone = response[i];
+            console.log(zone)
+            let htmlSegment = `<option value="${zone.map.zonepk}">${zone.map.zonetitle}</option>`;
+            html += htmlSegment;
+        }
+         document.getElementById("affiliatezonecode").innerHTML = html;
+         document.getElementById("editaffiliatezonecode").innerHTML = html;
     });
 
     //get affiliate
@@ -519,7 +555,7 @@
         var affiliateaddress = $("#affiliateaddress").val();
         var affiliatestatus = $("#affiliatestatus").val();
         var affiliatemembercode = $("#affiliatemembercode").val();
-
+        console.log(affiliatezonecode)
         
         $.post("/membermanagement", {
             msg: "addaffiliate",

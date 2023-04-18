@@ -372,6 +372,10 @@
             createdDate = moment(createdDate).format('DD-MM-YYYY');
             startdate = moment(startdate).format('DD-MM-YYYY');
             enddate = moment(enddate).format('DD-MM-YYYY');
+            if(content.length>50){
+                content = content.substring(0, 50) + "..."
+            }
+           
             var rawnode = table.row
                 .add([`
             <td style="text-align: center;">
