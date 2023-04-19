@@ -80,8 +80,8 @@
                                                     <th>İşlemler</th>
                                                     <th>Birim</th>
                                                     <th>Kural Tipi</th>
+                                                    <th>Kural Oran</th> 
                                                     <th>Kural Değeri</th>
-                                                    <!-- <th>Kural Oran</th> -->
                                                     <th>Kural Statüsü</th>
                                                     <th>Bölge</th>
                                                     <th>Kural Adım</th>
@@ -154,7 +154,7 @@
                 <form>
                     <div class="row g-3">
                         <div class="col-xxl-12">
-                            <label for="currencyfk" class="form-label">Birim</label>
+                            <label for="currencyfk" class="form-label">Sembol</label>
                             <div class="input-group">
                                 <select class="form-select" id="currencyfk">
                                     <!-- <option value="1">Aktif</option>
@@ -180,24 +180,23 @@
                                     placeholder="Lütfen kural değeri girin." required>
 
                             </div>
-                        </div><!--end col-->
+                        </div><!--end col-->                      
 
-                      <!--  <div class="col-xxl-4" id="ruleratediv">
+                        <div class="col-xxl-4" id="rulefkdiv" style="display: none;">
                             <div>
-                                <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
-                                <input type="number" class="form-control" id="rulerate"
-                                    placeholder="Lütfen kural oranı seçiniz.">
-                            </div>
-                        </div>end col-->
-
-                        <div class="col-xxl-8" id="rulefkdiv" style="display: none;">
-                            <div>
-                                <label for="rulefk" id="forrulefk" class="form-label">Katsayılı Kural</label>
+                                <label for="rulefk" id="forrulefk" class="form-label">Hedef Sembol</label>
 
                                 <select class="form-select" id="rulefk">
                                     <!-- <option value="1">Aktif</option>
                                         <option value="2">Pasif</option> -->
                                 </select>
+                            </div>
+                        </div><!--end col-->
+                         <div class="col-xxl-4" id="ruleratediv" style="display: none;">
+                            <div>
+                                <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
+                                <input type="number" class="form-control" id="rulerate"
+                                    placeholder="Lütfen kural oranı seçiniz.">
                             </div>
                         </div><!--end col-->
 
@@ -391,7 +390,7 @@
             url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
         },
         //   dom: '<"toolbar">frtip',
-        scrollY: "true"
+        // scrollY: "true"
     });
     // get all symboll
     $.get("/symbolrules?msg=getallcurrency").done(function (res) {
@@ -439,7 +438,7 @@
                     break;
                 case "3":
                     $("#rulevaluediv").css("display", "none");
-                   // $("#ruleratediv").css("display", "none");
+                    $("#ruleratediv").css("display", "");
                     $("#rulefkdiv").css("display", "");
                     $.get("/symbolrules?msg=getallcurrency").done(function (res) {
                         var response = JSON.parse(res);
@@ -466,6 +465,7 @@
         var rulestype = $("#rulestype").val();
         var rulevalue = $("#rulevalue").val();
         var rulerate = $("#rulerate").val();
+        console.log(rulerate);
         var rulefk = $("#rulefk").val();
         var rulestatus = $("#rulestatus").val();
         var zonefk = $("#zonefk").val();
@@ -502,6 +502,7 @@
     //get all rules
     $.get("/symbolrules?msg=getallrules").done(function (res) {
         var response = JSON.parse(res);
+        console.log(response)
         for (var i = 0; i < response.length; i++) {
             var rules = response[i];
             console.log(rules)
@@ -511,7 +512,7 @@
             var rulemin = rules.map.rulemin;
 
 
-            //var rulerate = rules.map.rulerate;
+            var rulerate = rules.map.rulerate;
             var rulestatus = rules.map.rulestatus;
             var rulestep = rules.map.rulestep;
             var rulestype = rules.map.rulestype;
@@ -548,8 +549,8 @@
             `,
                     currencyfk,
                     rulestype,
+                    rulerate,
                     rulevalue,
-                   
                     rulestatus,
                     rulezone,
                     rulestep,

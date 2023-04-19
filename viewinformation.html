@@ -43,11 +43,11 @@
         .stretch-card>.card {
             width: 100%;
             min-width: 100%
-        } 
+        }
 
 
 
-         /* .owl-carousel .item {
+        /* .owl-carousel .item {
             margin: 3px
         } */
 
@@ -73,6 +73,8 @@
             height: 100%;
 
         }
+
+
 
         td,
         th {
@@ -104,6 +106,8 @@
 
         }
 
+        
+
         /* 
         td {
             margin: 0;
@@ -128,6 +132,7 @@
 </head>
 
 <body>
+
     <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -185,7 +190,7 @@
                 <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="maindiv">
 
 
-                    <div class="card" style="margin-bottom: 0; margin-top: 2vh; ">
+                    <div class="card" style="margin-bottom: 0; margin-top: 1.5vh; ">
                         <div class="card-header" style="padding: 2px; margin-top: 0;">
                             <div class="row">
                                 <div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
@@ -209,11 +214,11 @@
                         <div class="card-body" style="padding: 0; margin-top: 2.5vh;">
 
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-6 col-xxl-6 mb-0">
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-cl-6 col-xxl-6 mb-0" style="max-height: 750px; overflow: hidden;" >
 
 
                                     <!-- Striped Rows -->
-                                    <table>
+                                    <table id="currencytab" class="table-responsive" style="overflow: hidden;">
                                         <thead>
                                             <tr>
                                                 <th scope="col"></th>
@@ -222,7 +227,7 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody id="tbodydeger">
+                                        <tbody id="tbodydeger" style="overflow: hidden;">
 
                                         </tbody>
                                     </table>
@@ -235,9 +240,10 @@
                                     <!--Bu kalsın auto slider-->
                                     <div class="col-lg-12 grid-margin stretch-card">
                                         <div class="card" style="margin: 0px; padding: 0px;">
-                                            <div class="card-body" style="margin: 1%; padding: 0px; align-items: center;">
-                                                <div class="owl-carousel" id="carousediv" style="width: 98%;" >
-                                                    
+                                            <div class="card-body"
+                                                style="margin: 1%; padding: 0px; align-items: center;">
+                                                <div class="owl-carousel" id="carousediv" style="width: 98%;">
+
                                                 </div>
                                             </div>
                                         </div>
@@ -267,7 +273,7 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
 
     <script>
@@ -307,32 +313,39 @@
                         var currencytitle = zone.map.currencytitle;
                         var currencyvalue = zone.map.currencyvalue;
                         var currencysvalue = zone.map.currencysvalue;
+
+                        currencyvalue = parseInt(currencyvalue);
                         currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+
+                        currencysvalue = parseInt(currencysvalue);
                         currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
 
                         const found = currencies.find(element => element == currencyCode);
 
                         if (found == currencyCode) {
 
-                            let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                            let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm currency_image" id="currency_image" data-id="${currencyCode}">
+                                                <span class="currency_title" data-id="${currencyCode}">${currencyCode}</span>
+                                                <span class="currency_alis" data-id="${currencyCode}"> Alış : ${currencyvalue}</span> 
+                                                <span class="currency_satis" data-id="${currencyCode}">- Satış: ${currencysvalue}</span>   &nbsp;`;
                             arr.push(htmlsegment);
                             //htmlm += htmlsegment;
                         }
                         if (found != currencyCode) {
                             altınarr.push(currencypk);
                             let htmlsegment1 = `
-                            <tr id="${currencypk}" data-id="${currencypk}">
+                            <tr id="${currencypk}" data-id="${currencypk}" class="tbodydegertr" style="overflow: hidden;">
                                 <td>
                                     
-                                    <div id="table_div" class=""> <i class="mdi mdi-arrow-down-thin"
-                                                style="color: red;"></i> ${currencytitle}
+                                    <div id="table_div" > <i class="mdi mdi-arrow-down-thin"
+                                                style="color: red;"></i><span class="table_currency_title" data-id="${currencyCode}"> ${currencytitle}</span>
                                         </div>
                                     </td>
                                     <td>
-                                        <div id="table_div" class=""> ${currencyvalue} </div>
+                                        <div id="table_div" class=""><span class="table_currency_alis" data-id="${currencyCode}">${currencyvalue} <img src="./assets/images/svg/crypto-icons/Turkish_lira_symbol_black.svg" alt="" height="30"></span></div>
                                     </td>
                                     <td>
-                                        <div id="table_div" class="">${currencysvalue}</div>
+                                        <div id="table_div" class=""><span class="table_currency_satis" data-id="${currencyCode}">${currencysvalue} <img src="./assets/images/svg/crypto-icons/Turkish_lira_symbol_black.svg" alt="" height="30"></span></div>
                                     </td>
                             </tr>
                           `;
@@ -421,7 +434,11 @@
 
 
                 });
+
+
+
                 setInterval(() => {
+                    var yeniarr = [];
                     $.get(`/viewinformation?msg=getalldata&code=${code}`).done(function (res) {
                         var response = JSON.parse(res);
                         var html1 = "";
@@ -437,11 +454,21 @@
                             currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
                             currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
                             const found = currencies.find(element => element == currencyCode);
-                            // if (found == currencyCode) {
-                            //     let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
-                            //     arr.push(htmlsegment);
-                            //     htmlm += htmlsegment;
-                            // }
+
+                            if (found == currencyCode) {
+
+                                var obj = {};
+
+                                obj.currencyIcon = currencyIcon;
+                                obj.currencyCode = currencyCode;
+                                obj.currencyvalue = currencyvalue;
+                                obj.currencysvalue = currencysvalue;
+                                let htmlsegment = `<img src="${currencyIcon}" alt="" class="avatar-sm">${currencyCode} Alış : ${currencyvalue} - Satış: ${currencysvalue}   &nbsp;`;
+                                document.getElementById("announcements")
+                                //console.log( document.getElementById("announcements"))
+                                yeniarr.push(obj);
+                                // htmlm += htmlsegment;
+                            }
                             if (found != currencyCode) {
                                 // önceki log
                                 var beforevalues;
@@ -490,9 +517,142 @@
                                 }
                             }
                         }
-                        // document.getElementById("line").innerHTML = htmlm;
+
+                        //sembol alis güncelle
+                        var alis = document.getElementsByClassName('currency_alis');
+                        for (var a = 0; a < alis.length; a++) {
+                            var alislar = alis[a];
+                            var alislardata = alislar.getAttribute('data-id');
+                            //console.log(alislardata)
+                            for (var i = 0; i < yeniarr.length; i++) {
+                                var objm = yeniarr[i];
+                                if (alislardata == objm.currencyCode) {
+                                    alislar.innerHTML = "Alış :" + objm.currencyvalue;
+                                }
+                            }
+                        }
+
+                        //sembol satis güncelle
+                        var satis = document.getElementsByClassName('currency_satis');
+                        for (var b = 0; b < satis.length; b++) {
+                            var satislar = satis[b];
+                            var satislardata = satislar.getAttribute('data-id');
+                            // console.log(satislardata)
+                            for (var i = 0; i < yeniarr.length; i++) {
+                                var objm = yeniarr[i];
+                                //console.log(objm)
+                                if (satislardata == objm.currencyCode) {
+                                    //console.log(objm.currencysvalue)                             
+                                    satislar.innerHTML = "- Satış: " + objm.currencysvalue;
+                                }
+                            }
+                        }
+
+                        //sembol image güncelle
+                        var images = document.getElementsByClassName('currency_image');
+                        for (var c = 0; c < images.length; c++) {
+                            var image = images[c];
+                            var imagedata = image.getAttribute('data-id');
+                            //console.log(imagedata)
+                            for (var i = 0; i < yeniarr.length; i++) {
+                                var objm = yeniarr[i];
+                                //console.log(objm)
+                                if (imagedata == objm.currencyCode) {
+                                    //console.log(objm.currencysvalue)                             
+                                    // image.innerHTML = "- Satış: " + objm.currencysvalue;
+                                    image.setAttribute("src", objm.currencyIcon)
+                                }
+                            }
+                        }
+
+                        //sembol title güncelle
+                        // var titles = document.getElementById('currency_title');
+                        // for(var d=0; d<titles.length; d++){
+                        //     var title = titles[i];
+                        //     var titledata = title.getAttribute('data-id');
+                        //     for (var i =0; i < yeniarr.length; i++) {
+                        //         var objm = yeniarr[i];
+                        //             //console.log(objm)
+                        //         if(titledata == objm.currencyCode){  
+                        //             //console.log(objm.currencysvalue)                             
+                        //             title.innerHTML = objm.currencyCode
+                        //             //image.setAttribute("src", objm.currencyIcon)
+                        //         }
+                        //     }
+                        // }
+                    });
+
+                    $.get(`/viewinformation?msg=tablevalues&code=${code}`).done(function (res) {
+                        var response = JSON.parse(res);
+                        var tablearr = [];
+                        for (var i = 0; i < response.length; i++) {
+                            var zone = response[i];
+                            // element bilgileri
+                            var currencypk = zone.map.currencypk;
+                            var currencyCode = zone.map.currencyCode;
+                            var currencyIcon = zone.map.currencyIcon;
+                            var currencytitle = zone.map.currencytitle;
+                            var currencyvalue = zone.map.currencyvalue;
+                            var currencysvalue = zone.map.currencysvalue;
+                            currencyvalue = parseInt(currencyvalue);
+                            currencyvalue = new Intl.NumberFormat("de-DE").format(currencyvalue);
+
+                            currencysvalue = parseInt(currencysvalue);
+                            currencysvalue = new Intl.NumberFormat("de-DE").format(currencysvalue);
+                            const found = currencies.find(element => element == currencyCode);
+
+                            if (found != currencyCode) {
+                                //console.log(currencyCode)
+                                var tableobj = {};
+                                tableobj.currencypk = currencypk;
+                                tableobj.currencyCode = currencyCode;
+                                tableobj.currencyIcon = currencyIcon;
+                                tableobj.currencytitle = currencytitle;
+                                tableobj.currencyvalue = currencyvalue;
+                                tableobj.currencysvalue = currencysvalue;
+                                tablearr.push(tableobj);
+                            }
+                        }
+
+
+
+                        //tablo alis günceller
+                        var tabloalis = document.getElementsByClassName('table_currency_alis');
+                        //console.log(tabloalis);
+                        for (var a = 0; a < tabloalis.length; a++) {
+                            var alislar = tabloalis[a];
+                            var alislardata = alislar.getAttribute('data-id');
+                            //console.log(alislardata)
+                            for (var i = 0; i < tablearr.length; i++) {
+                                var objm = tablearr[i];
+                                //console.log(objm)
+                                if (alislardata == objm.currencyCode) {
+                                    alislar.innerHTML = objm.currencyvalue + " <img src='./assets/images/svg/crypto-icons/Turkish_lira_symbol_black.svg' height='30'>";
+                                }
+                            }
+                        }
+
+                        //tablo satis günceller
+                        var tablosatislar = document.getElementsByClassName('table_currency_satis');
+                        console.log(tablosatislar)
+                        for (var b = 0; b < tablosatislar.length; b++) {
+                            var satislar = tablosatislar[b];
+                            var satisdata = satislar.getAttribute('data-id');
+                            //console.log(alislardata)
+                            for (var i = 0; i < tablearr.length; i++) {
+                                var objm = tablearr[i];
+                                console.log(objm)
+                                if (satisdata == objm.currencyCode) {
+                                    satislar.innerHTML = objm.currencysvalue + " <img src='./assets/images/svg/crypto-icons/Turkish_lira_symbol_black.svg'  height='30'>";
+                                }
+                            }
+                        }
+
                     });
                 }, "5000");
+
+
+
 
 
                 //duyurular
@@ -528,7 +688,7 @@
                 });
 
                 //görse duyurular
-               
+
                 var gorselarr = [];
                 $.get("/viewinformation?msg=getallanno").done(function (res) {
                     var response = JSON.parse(res);
@@ -554,7 +714,7 @@
                     let couresel = "";
                     for (var i = 0; i < gorselarr.length; i++) {
                         var test = gorselarr[i];
-                        let htmlSegment = `<div class="item" style="height : 99%" > <img src="${test}" width="99%" height="99%" id="images" alt="image" /></div>`;                                                                             
+                        let htmlSegment = `<div class="item" style="height : 99%" > <img src="${test}" width="99%" height="99%" id="images" alt="image" /></div>`;
                         couresel += htmlSegment;
                         console.log(couresel)
                         //$("#carousediv").append(couresel)
@@ -563,22 +723,22 @@
                     $("#carousediv").html(couresel)
                     //document.getElementById('carousediv').innerHTML = couresel;
                     // //auto slider
-                 $(".owl-carousel").owlCarousel({
-                    autoPlay: 10000,
-                    items: 1,
-                    // itemsDesktop: [1199, 3],
-                    // itemsDesktopSmall: [979, 3],
-                    // center: true,
-                    nav: true,
-                    loop: true,
-                    responsive: {
-                        600: {
-                            items: 1
+                    $(".owl-carousel").owlCarousel({
+                        autoPlay: 10000,
+                        items: 1,
+                        // itemsDesktop: [1199, 3],
+                        // itemsDesktopSmall: [979, 3],
+                        // center: true,
+                        nav: true,
+                        loop: true,
+                        responsive: {
+                            600: {
+                                items: 1
+                            }
                         }
-                    }
+                    });
                 });
-                });
-                 
+
 
             } else {
                 $("#notfounddiv").css("display", "");
@@ -587,7 +747,12 @@
 
         })
 
-
+        ////
+        var testim = document.getElementsByClassName('tbodydegertr')
+        //console.log(testim)
+        for (var t = 0; t < testim.length; t++) {
+            console.log(testim[t])
+        }
     </script>
 
     <!-- <script>
