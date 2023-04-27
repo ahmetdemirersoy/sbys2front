@@ -183,13 +183,17 @@ const currencyLabels = [
 
 function createRows() {
   currencyLists.map(function (x) {
+    console.log(x)
     var dom = $('.currencyList[area="' + x.area + '"]');
+ 
     if (dom.length > 0) {
       dom.each(function (key, elem) {
+        
         x.currencies.map(function (c) {
           var label = currencyLabels.find((x) => x.currency === c);
+         
           var labelText = label ? "<br><span>" + label.label + "</span>" : "";
-          console.log("labelText", labelText);
+          console.log("labelText", c);
           $(elem).append(
             '<div class="currency-area-body-body-row tr liveCurrency" currency="' +
               c +
@@ -247,6 +251,7 @@ function parsePrices(rawData) {
   var rows = [];
   rawData.split("\r\n").map((row) => {
     var fields = row.split(";");
+    //console.log(fields)
     var parsedData = {};
     fieldData.map(function (d) {
       parsedData[d.key] = fields[d.index];

@@ -80,7 +80,7 @@
                                                     <th>İşlemler</th>
                                                     <th>Birim</th>
                                                     <th>Kural Tipi</th>
-                                                    <th>Kural Oran</th> 
+                                                    <th>Kural Oran</th>
                                                     <th>Kural Değeri</th>
                                                     <th>Kural Statüsü</th>
                                                     <th>Bölge</th>
@@ -167,7 +167,7 @@
                             <div class="input-group">
                                 <select class="form-select" id="rulestype">
                                     <option value="1">Otomatik</option>
-                                    <option value="2" selected="true">Sabit</option>
+                                    <option value="2">Sabit</option>
                                     <option value="3">Katsayılı</option>
                                 </select>
                             </div>
@@ -180,7 +180,7 @@
                                     placeholder="Lütfen kural değeri girin." required>
 
                             </div>
-                        </div><!--end col-->                      
+                        </div><!--end col-->
 
                         <div class="col-xxl-4" id="rulefkdiv" style="display: none;">
                             <div>
@@ -192,7 +192,7 @@
                                 </select>
                             </div>
                         </div><!--end col-->
-                         <div class="col-xxl-4" id="ruleratediv" style="display: none;">
+                        <div class="col-xxl-4" id="ruleratediv" style="display: none;">
                             <div>
                                 <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
                                 <input type="number" class="form-control" id="rulerate"
@@ -242,8 +242,8 @@
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="submit_button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="submit_button" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -276,14 +276,14 @@
                             <label for="editrulestype" class="form-label">Kural Tipi</label>
                             <div class="input-group">
                                 <select class="form-select" id="editrulestype">
-                                    <option value="1">Otomatik</option>
-                                    <option value="2" selected="true">Sabit</option>
+                                    <option value="1" >Otomatik</option>
+                                    <option value="2">Sabit</option>
                                     <option value="3">Katsayılı</option>
                                 </select>
                             </div>
                         </div><!--end col-->
 
-                        <div class="col-xxl-8" id="editrulevaluediv">
+                        <div class="col-xxl-8" id="editrulevaluediv" >
                             <div>
                                 <label for="editrulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
                                 <input type="number" class="form-control" id="editrulevalue"
@@ -292,17 +292,10 @@
                             </div>
                         </div><!--end col-->
 
-                      <!--  <div class="col-xxl-4" id="editruleratediv">
+                       
+                        <div class="col-xxl-4" id="editrulefkdiv" style="display: none;">
                             <div>
-                                <label for="editrulerate" id="forrulerate" class="form-label">Kural Oran</label>
-                                <input type="number" class="form-control" id="editrulerate"
-                                    placeholder="Lütfen kural oranı seçiniz.">
-                            </div>
-                        </div>end col-->
-
-                        <div class="col-xxl-8" id="editrulefkdiv" style="display: none;">
-                            <div>
-                                <label for="editforrulefk"  class="form-label">Katsayılı Kural</label>
+                                <label for="editforrulefk" class="form-label">Katsayılı Kural</label>
 
                                 <select class="form-select" id="editforrulefk">
                                     <!-- <option value="1">Aktif</option>
@@ -310,6 +303,16 @@
                                 </select>
                             </div>
                         </div><!--end col-->
+                       
+                        <div class="col-xxl-4" id="editruleratediv" style="display: none;">
+                            <div>
+                                <label for="editrulerate" id="forrulerate" class="form-label">Kural Oran</label>
+                                <input type="number" class="form-control" id="editrulerate"
+                                    placeholder="Lütfen kural oranı seçiniz.">
+                            </div>
+                        </div>
+
+                        
 
                         <div class="col-xxl-12">
                             <label for="editrulestatus" class="form-label">Kural Statü</label>
@@ -404,7 +407,7 @@
         }
         document.getElementById("currencyfk").innerHTML = html;
         document.getElementById("editforrulefk").innerHTML = html;
-        document.getElementById("editcurrencyfk").innerHTML = html; 
+        document.getElementById("editcurrencyfk").innerHTML = html;
     });
 
     // get all zone
@@ -428,12 +431,13 @@
             switch (kuraltip) {
                 case "1":
                     $("#rulevaluediv").css("display", "none");
-                   // $("#ruleratediv").css("display", "none");
+                    // $("#ruleratediv").css("display", "none");
                     $("#rulefkdiv").css("display", "none");
+                    $("#ruleratediv").css("display", "none");
                     break;
                 case "2":
                     $("#rulevaluediv").css("display", "");
-                  //  $("#ruleratediv").css("display", "");
+                    $("#ruleratediv").css("display", "none");
                     $("#rulefkdiv").css("display", "none");
                     break;
                 case "3":
@@ -505,7 +509,9 @@
         console.log(response)
         for (var i = 0; i < response.length; i++) {
             var rules = response[i];
-            console.log(rules)
+            var obj = {};
+            obj = response[i].map;
+            //console.log(response[i].map)
             var rulespk = rules.map.rulespk;
             var currencyfk = rules.map.currencyfk;
             var rulemax = rules.map.rulemax;
@@ -531,7 +537,7 @@
                         <i class="ri-more-fill align-middle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${rulespk}"
+                        <li><a class="dropdown-item edit-item-btn" data-id="${rulespk}" onclick="editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -562,6 +568,7 @@
                 .draw()
                 .node();
             $(rawnode).attr("id", rulespk);
+            $(rawnode).attr('data-id', obj);
 
         }
     });
@@ -606,12 +613,12 @@
                     break;
                 case "2":
                     $("#editrulevaluediv").css("display", "");
-                    $("#editruleratediv").css("display", "");
+                    $("#editruleratediv").css("display", "none");
                     $("#editrulefkdiv").css("display", "none");
                     break;
                 case "3":
                     $("#editrulevaluediv").css("display", "none");
-                    $("#editruleratediv").css("display", "none");
+                    $("#editruleratediv").css("display", "");
                     $("#editrulefkdiv").css("display", "");
                     $.get("/symbolrules?msg=getallcurrency").done(function (res) {
                         var response = JSON.parse(res);
@@ -630,12 +637,94 @@
         });
     });
 
+    //before edit
+    function editcurrent() {
+        $.get("/symbolrules", {
+            msg: "beforeedit",
+            rulespk: rulespk,
+        }).done(function (res) {
+
+            var response = JSON.parse(res);
+            //console.log(response)
+            var getCurrencyFK = response[0].map.getCurrencyFK;
+            var getCurrencyRulePK = response[0].map.getCurrencyRulePK;
+            var getRuleFK = response[0].map.getRuleFK;
+            var getRuleMax = response[0].map.getRuleMax;
+            var getRuleMin = response[0].map.getRuleMin;
+            var getRuleRate = response[0].map.getRuleRate;
+            var getRuleStatusFK = response[0].map.getRuleStatusFK;
+           
+            var getRuleTypeFK = response[0].map.getRuleTypeFK;
+            var getRuleStep = response[0].map.getRuleStep;
+            var getZoneFK = response[0].map.getZoneFK;
+
+
+            $("#editcurrencyfk").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getCurrencyFK){
+                        $(this).attr('selected', 'selected')
+                    }
+
+                });
+            });
+
+            $("#editrulestype").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getRuleTypeFK){
+                        $(this).attr('selected', 'selected')
+                    }
+                    if(getRuleTypeFK == "3"){
+                        $("#editrulevaluediv").css('display', 'none');
+                        $('#editrulefkdiv').css("display", '');
+                        $('#editruleratediv').css("display", '');
+                    }else if(getRuleTypeFK == "1"){
+                        $("#editrulevaluediv").css("display", 'none')
+                    }
+
+                });
+            });
+            $("#editforrulefk").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getRuleFK){
+                        $(this).attr('selected', 'selected')
+                    }
+
+                });
+            });
+
+            $("#editzonefk").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getZoneFK){
+                        $(this).attr('selected', 'selected')
+                    }
+                });
+            });
+            
+             document.getElementById("editrulerate").setAttribute('placeholder',getRuleRate);
+            document.getElementById("editrulerate").setAttribute('value', getRuleRate);
+
+            document.getElementById("editrulemax").setAttribute('placeholder', getRuleMax);
+            document.getElementById("editrulemax").setAttribute('value', getRuleMax);
+
+            document.getElementById("editrulesmin").setAttribute('placeholder', getRuleMin);
+            document.getElementById("editrulesmin").setAttribute('value', getRuleMin);
+
+            document.getElementById("editrulestep").setAttribute('placeholder', getRuleStep);
+            document.getElementById("editrulestep").setAttribute('value', getRuleStep);
+
+        })
+    }
+
     $("#edit_button").on('click', function () {
         var currencyfk = $("#editcurrencyfk").val();
         var rulestype = $("#editrulestype").val();
         var rulevalue = $("#editrulevalue").val();
         var rulerate = $("#editrulerate").val();
-        var rulefk = $("#editrulefk").val();
+        var rulefk = $("#editforrulefk").val();
         var rulestatus = $("#editrulestatus").val();
         var zonefk = $("#editzonefk").val();
         var rulestep = $("#editrulestep").val();

@@ -272,7 +272,7 @@
                             <div>
                                 <label for="editannouncementcontent" class="form-label">Duyuru İçeriği</label>
                                 <!-- <input type="text" class="form-control" id="affiliateaddress" placeholder="Lütfen adres bilgisi girin." > -->
-                                <textarea class="form-control" id="editannouncementcontent" rows="2"></textarea>
+                                <textarea class="form-control" id="editannouncementcontent" rows="8"></textarea>
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-12">
@@ -290,8 +290,8 @@
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editastartdate" class="form-label">Başlangıç Tarihi</label>
-                                <input type="date" class="form-control" id="editastartdate"
-                                    placeholder="Enter your email">
+                                <input type="date" class="form-control" id="editastartdate" value=""
+                                    >
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
@@ -482,7 +482,11 @@
             var currencypk = response[0].map.currencypk;
             var flyertitle = response[0].map.title;
             document.getElementById("editannouncementtitle").setAttribute('value', flyertitle);
-            
+            document.getElementById("editannouncementcontent").innerHTML =  response[0].map.content;
+            document.getElementById("editastartdate").setAttribute('value', response[0].map.startdate); 
+            document.getElementById("editaenddate").setAttribute('value', response[0].map.enddate); 
+            document.getElementById("editaenddate").setAttribute('placeholder', response[0].map.enddate); 
+            //editaenddate
         });
     }
 

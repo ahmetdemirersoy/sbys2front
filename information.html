@@ -95,7 +95,7 @@
                                             class="table table-bordered dt-responsive nowrap table-striped align-middle"
                                             style="width:100%">
                                             <thead>
-                                                <tr>
+                                                <tr >
                                                     <th class="text-center">İşlemler</th>
                                                     <th class="text-center">Ekranlar</th>
                                                     <th class="text-center">Ekran Kodu</th>
@@ -316,7 +316,7 @@
                         <i class="ri-more-fill align-middle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${screenpk}"
+                        <li><a class="dropdown-item edit-item-btn" data-id="${screenpk}" onclick="editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
                                     class="ri-pencil-fill align-bottom me-2 text-muted"></i>
@@ -332,8 +332,8 @@
                 </div>
             </td>
             `,
-                    `<td style="text-align: center;" id="screen_button"> <a href="/viewinformation"
-                  target="_blank" type="button" class="btn btn-primary">Ekran
+                    `<td style="text-align: center;" id="screen_button"> <a
+                   type="button" href="/viewinformation?code=111" target="_blank" id="goscreenbutton" onclick="goviewscreen()" class="btn btn-primary">Ekran
                 Görüntüle</a></td>`,
                     screencode,
                     screenoparatingsystem,
@@ -344,6 +344,8 @@
                 .draw()
                 .node();
             $(rawnode).attr("id", screenpk);
+           
+            
 
         }
     });
@@ -374,8 +376,13 @@
     //select table row
     var secreenpk;
     $("#datatable tbody").on("click", "tr", function () {
+        var rows = table.context[0];
+        console.log(rows)
         var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
-        screenpk = $(a_button).attr('data-id');
+        secreenpk = $(a_button).attr('data-id');
+        console.log(secreenpk)
+
+        
     });
 
     //delete screen
@@ -397,6 +404,23 @@
         })
     });
 
+    function editcurrent() {
+        $.post("/information", {
+            msg: "beforeeditv",
+            secreenpk: secreenpk,
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            console.log(response)
+            var currencypk = response[0].map.currencypk;
+            // var flyertitle = response[0].map.title;
+            // document.getElementById("editannouncementtitle").setAttribute('value', flyertitle);
+            // document.getElementById("editannouncementcontent").innerHTML =  response[0].map.content;
+            // document.getElementById("editastartdate").setAttribute('value', response[0].map.startdate); 
+            // document.getElementById("editaenddate").setAttribute('value', response[0].map.enddate); 
+            // document.getElementById("editaenddate").setAttribute('placeholder', response[0].map.enddate); 
+            //editaenddate
+        });
+    }
 
     //edit
     $("#edit_button").on('click', function(){
@@ -420,7 +444,18 @@
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
-    })
+    });
+
+    // go screen
+    // function goviewscreen(){
+    //     $.get("/information?msg=getmember").done(function(res){
+    //         var response = JSON.parse(res);
+    //         console.log(response)
+    //     })
+        
+    // }
+   
+    
 </script>
 
 <!-- JAVASCRIPT -->

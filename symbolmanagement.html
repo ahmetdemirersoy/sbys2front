@@ -482,10 +482,16 @@
             var currencysvalue = response[0].map.currencysvalue;
             var createdDate = response[0].map.createdDate;
 
-
+            document.getElementById("editsymbolcode").setAttribute('placeholder',currencyCode);
             document.getElementById("editsymbolcode").setAttribute('value', currencyCode);
+           
+            document.getElementById("editsymboltitle").setAttribute('placeholder', currencytitle);
             document.getElementById("editsymboltitle").setAttribute('value', currencytitle);
+           
+            document.getElementById("editsymbolvalue").setAttribute('placeholder', currencyvalue);
             document.getElementById("editsymbolvalue").setAttribute('value', currencyvalue);
+            
+            document.getElementById("editsymbolsvalue").setAttribute('placeholder', currencysvalue);
             document.getElementById("editsymbolsvalue").setAttribute('value', currencysvalue);
 
         })
