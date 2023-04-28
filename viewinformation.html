@@ -191,6 +191,7 @@
                 <div id="notfounddiv" style="text-align: center; display: none;">
                     <img src="./assets/images/multiply-cross.svg" alt="" height="700px" class="mt-5">
                     <h2 class="mt-5" style="color: #e21b1b;">Bu Sayfaya Erişim İzniniz Bulunmamaktadır</h2>
+                    <h2 class="mt-5" id="socket_error" style="color: #e21b1b;">Socket Bağlantısı Sonlandı</h2>
                 </div>
                 <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="maindiv">
 
@@ -205,7 +206,7 @@
                                     </button>
                                 </div>
 
-                                <div class="col-xxl-11 col-xxl-11 col-lg-11 col-md-11 col-sm-11 text-center "
+                                <div class="col-xxl-10 col-xxl-10 col-lg-10 col-md-10 col-sm-10 text-center "
                                     style="padding: 0; margin-top: 1.5vh; margin-bottom: 0px">
                                     <h1 style="font-size: 4vh; margin-bottom: 0px; padding-top: 2px ;">KAYSERİ
                                         SARRAFLAR VE KUYUMCULAR
@@ -213,6 +214,11 @@
                                     <h4>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
                                         Derneği
                                         denetimindedir.</h4>
+                                </div>
+
+
+                                <div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
+                                    <img src="assets/images/logo2.png" class="mt-2" alt="" style="padding-right: 10px;" height="100">
                                 </div>
                             </div>
                         </div>
@@ -238,7 +244,7 @@
 
                                                     <div id="table_div" data-id="HAS" class="liveCurrency"> <i class=""
                                                             id="HAS-icon" data-id="0" style="color: red;"></i><span
-                                                            class="table_currency_title " data-id="HAS"> Has</span>
+                                                            class="table_currency_title " data-id="HAS"> HAS</span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -255,7 +261,7 @@
                                                     <div id="table_div" data-id="22Ayr" class="liveCurrency"> <i
                                                             class="" id="22Ayr-icon" data-id="0"
                                                             style="color: red;"></i><span class="table_currency_title "
-                                                            data-id="22Ayr"> 22 Ayar</span>
+                                                            data-id="22Ayr"> 22 AYAR</span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -272,7 +278,7 @@
                                                     <div id="table_div" data-id="18Ayr" class="liveCurrency"> <i
                                                             class="" id="18Ayr-icon" data-id="0"
                                                             style="color: red;"></i><span class="table_currency_title "
-                                                            data-id="18Ayr"> 18 Ayar</span>
+                                                            data-id="18Ayr"> 18 AYAR</span>
                                                     </div>
                                                 </td>
                                                
@@ -290,7 +296,7 @@
                                                     <div id="table_div" data-id="14Ayr" class="liveCurrency"> <i
                                                             class="" id="14Ayr-icon" data-id="0"
                                                             style="color: red;"></i><span class="table_currency_title "
-                                                            data-id="14Ayr"> 14 Ayar</span>
+                                                            data-id="14Ayr"> 14 AYAR</span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -306,7 +312,7 @@
 
                                                     <div id="table_div" data-id="8Ayr" class="liveCurrency"> <i class=""
                                                             id="8Ayr-icon" data-id="0" style="color: red;"></i><span
-                                                            class="table_currency_title " data-id="8Ayr"> 8 Ayar</span>
+                                                            class="table_currency_title " data-id="8Ayr"> 8 AYAR</span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -520,17 +526,30 @@
         var rules;
         var notAuth = false;
         var slipyCurrencies;
+        var initMarq = false
         async function renderRules(data) {
             if(notAuth){
                 return
             }
             else if(rules == null){
+               
                 rules = await getallrules();
+                
+                
                 if (rules.statusCode != -99) {
-                    prepareMarquee(rules, data);
+                    if(!initMarq){
+                        prepareMarquee(rules, data);
+                        initMarq = true;
+
+                        setInterval(async function () { 
+                            rules = await getallrules();
+                            console.log(rules)
+                        }, 30000);
+                    }                    
                 } else {
                     $("#notfounddiv").css("display", "");
                     $("#maindiv").css("display", "none")
+                    
                     notAuth = true;
                     return
                 }
@@ -585,6 +604,8 @@
                 }
             })
         }
+        
+        
 
         function updateCurrencyMarquee(data){
             for (var counter = 0; counter < data.length; counter++) {
@@ -658,7 +679,13 @@
             currencyIcon.attr("data-id", sellingValue+""); 
         }
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
         $(document).ready(function () {
+           // var data=[]
+            //renderRules(data);
             connectWebSocket();
         });
 
@@ -673,8 +700,6 @@
             }
         }
 
-        setInterval(function () {getallrules()}, 500000);
-        
 
         function getSteppedValue(val, step) {
             val = parseFloat(val);
@@ -721,10 +746,11 @@
             return rows;
         }
 
-        function connectWebSocket() {
+       function connectWebSocket() {
+            //sleep(1000);
             if ("WebSocket" in window) {
                 var ws = new WebSocket(socketUrl);
-
+                
                 ws.onerror = function (error) {
                     console.log("error ws", error);
                 };
@@ -738,11 +764,13 @@
                     var received_msg = evt.data;
                     var data = parsePrices(received_msg);
                     renderRules(data); //proccess the message
-                  
+                   
                 };
 
                 ws.onclose = function () {
                     console.log("closed");
+                    $("#socket_error").css("display", "");
+
                 };
             } else {
                 console.log("WebSocket NOT supported by your Browser!");

@@ -37,7 +37,7 @@
                                                             var maunth = date.getMonth();
                                                             var ay = maunth + 1;
                                                             var year = date.getFullYear();
-                                                            console.log(day)
+                                                            //console.log(day)
                                                             document.getElementById('fake_takvim').innerHTML = day + "-" + ay + "-" + year
                                                         </script>
                                                         <div
@@ -179,9 +179,9 @@
                         </div> <!-- end row-->
                         <script>
                             var date = new Date();
-                            console.log(date);
+                            //console.log(date);
                             date = moment(date).format('hh:mm:ss DD-MM-YYYY');
-                            console.log(date)
+                            //console.log(date)
                             // var day = date.getDate();
                             // var maunth = date.getMonth();
                             // var ay = maunth + 1;
@@ -256,14 +256,14 @@
     // get all member
     $.get("/home?msg=getmembercount").done(function (res) {
         var response = JSON.parse(res);
-        console.log(response);
+        //console.log(response);
         document.getElementById("totalmembercount").innerHTML = response;
     });
 
     //symbol count
     $.get("/home?msg=getsymbolcont").done(function (res) {
         var response = JSON.parse(res);
-        console.log(response);
+        //console.log(response);
         //$("#totalsymbolcount").attr("data-target",response)
         document.getElementById("totalsymbolcount").innerHTML = response
     });

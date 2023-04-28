@@ -410,7 +410,7 @@
             secreenpk: secreenpk,
         }).done(function (res) {
             var response = JSON.parse(res);
-            console.log(response)
+            //console.log(response)
             var getScreenCode = response[0].map.getScreenCode;
             var getScreenDesign = response[0].map.getScreenDesign;
             var getScreenHeigth = response[0].map.getScreenHeigth;
@@ -428,7 +428,7 @@
 
             $("#editscreenstatus").each(function () {              
                 $(this).children("option").each(function () {
-                    console.log($(this).val())
+                   // console.log($(this).val())
                     if($(this).val() == getScreenStatusFK){
                         $(this).attr('selected', 'selected')
                     }
@@ -437,7 +437,7 @@
             });
             $("#editscreenoparatingsystem").each(function () {              
                 $(this).children("option").each(function () {
-                    console.log($(this).val())
+                   // console.log($(this).val())
                     if($(this).val() == getOperatingSystemFK){
                         $(this).attr('selected', 'selected')
                     }
