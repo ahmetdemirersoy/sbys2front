@@ -221,14 +221,14 @@
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editscreentitle" class="form-label">Ekran Adı</label>
-                                <input type="text" class="form-control" id="editscreentitle"
+                                <input type="text" class="form-control" id="editscreentitle" value=""
                                     placeholder="Lütfen Ekran adı giriniz.">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editscreencode" class="form-label">Ekran Kodu</label>
-                                <input type="text" class="form-control" id="editscreencode"
+                                <input type="text" class="form-control" id="editscreencode" value=""
                                     placeholder="Lütfen Ekran kodu giriniz.">
                             </div>
                         </div><!--end col-->
@@ -255,7 +255,7 @@
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
-                                <button type="button" id="edit_button" class="btn btn-soft-success">Düzenle</button>
+                                <button type="button" id="edit_button" onclick="editfuction()" class="btn btn-soft-success">Düzenle</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -411,26 +411,53 @@
         }).done(function (res) {
             var response = JSON.parse(res);
             console.log(response)
-            var currencypk = response[0].map.currencypk;
-            // var flyertitle = response[0].map.title;
-            // document.getElementById("editannouncementtitle").setAttribute('value', flyertitle);
-            // document.getElementById("editannouncementcontent").innerHTML =  response[0].map.content;
-            // document.getElementById("editastartdate").setAttribute('value', response[0].map.startdate); 
-            // document.getElementById("editaenddate").setAttribute('value', response[0].map.enddate); 
-            // document.getElementById("editaenddate").setAttribute('placeholder', response[0].map.enddate); 
+            var getScreenCode = response[0].map.getScreenCode;
+            var getScreenDesign = response[0].map.getScreenDesign;
+            var getScreenHeigth = response[0].map.getScreenHeigth;
+            var getScreenPK = response[0].map.getScreenPK;
+            var getScreenTitle = response[0].map.getScreenTitle;
+            var getScreenWidth = response[0].map.getScreenWidth;
+            var getOperatingSystemFK = response[0].map.getOperatingSystemFK;
+            var getScreenStatusFK = response[0].map.getScreenStatusFK;
+           
+            document.getElementById("editscreentitle").setAttribute('value', getScreenTitle);
+            document.getElementById("editscreencode").setAttribute('value', getScreenCode)
+            document.getElementById("editscreenoparatingsystem").setAttribute('value', getOperatingSystemFK); 
+            //document.getElementById("editscreenstatus").setAttribute('value',getScreenStatusFK); 
+            //document.getElementById("editaenddate").setAttribute('placeholder', response[0].map.enddate); 
+
+            $("#editscreenstatus").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getScreenStatusFK){
+                        $(this).attr('selected', 'selected')
+                    }
+
+                });
+            });
+            $("#editscreenoparatingsystem").each(function () {              
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if($(this).val() == getOperatingSystemFK){
+                        $(this).attr('selected', 'selected')
+                    }
+
+                });
+            });
             //editaenddate
         });
     }
 
     //edit
-    $("#edit_button").on('click', function(){
+    function editfuction(){
+        console.log(secreenpk)
         var screentitle = $("#editscreentitle").val();
         var screencode = $("#editscreencode").val();
         var screenoparatingsystem = $("#editscreenoparatingsystem").val();
         var screenstatus = $("#editscreenstatus").val();
         $.post("/information", {
             msg: "editscreen",
-            screenpk : screenpk,
+            secreenpk : secreenpk,
             screentitle: screentitle,
             screencode: screencode,
             screenoparatingsystem: screenoparatingsystem,
@@ -444,7 +471,10 @@
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
-    });
+    }
+    // $("#edit_button").on('click', function(){
+       
+    // });
 
     // go screen
     // function goviewscreen(){
