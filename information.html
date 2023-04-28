@@ -391,7 +391,7 @@
 
         $.post("/information", {
             msg: "deletescreen",
-            screenpk: screenpk
+            secreenpk: secreenpk
 
         }).done(function (res) {
             var response = JSON.parse(res);
@@ -450,7 +450,7 @@
 
     //edit
     function editfuction(){
-        console.log(secreenpk)
+      
         var screentitle = $("#editscreentitle").val();
         var screencode = $("#editscreencode").val();
         var screenoparatingsystem = $("#editscreenoparatingsystem").val();

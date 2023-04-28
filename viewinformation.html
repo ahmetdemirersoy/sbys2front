@@ -673,6 +673,9 @@
             }
         }
 
+        setInterval(function () {getallrules()}, 500000);
+        
+
         function getSteppedValue(val, step) {
             val = parseFloat(val);
             var mod = val % step;
