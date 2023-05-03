@@ -357,19 +357,19 @@
             var zoencode = response[0].map.zoencode;
             document.getElementById("editzonecode").setAttribute('value', zoencode);
             document.getElementById("editzonetitle").setAttribute('value', zonetitle);
-            
+
         });
     }
 
-    $("#edit_button").on('click', function(e){
+    $("#edit_button").on('click', function (e) {
         e.preventDefault()
         var zonecode = $("#editzonecode").val();
         var zonetitle = $("#editzonetitle").val();
         $.post("/zonemanagement", {
             msg: "editzone",
             zonepk: zonepk,
-            zonecode : zonecode,
-            zonetitle : zonetitle
+            zonecode: zonecode,
+            zonetitle: zonetitle
 
         }).done(function (res) {
             var response = JSON.parse(res);
@@ -381,6 +381,55 @@
             }
         });
     })
+
+
+    /*$(document).ready(function () {
+
+        var ws = new WebSocket('ws://localhost:9001');
+
+        ws.onopen = function () {
+            console.log('WebSocket bağlantısı açıldı');
+
+            // // Subscribe to a topic
+            // var topic = 'test/topic';
+            // var message = {
+            //     type: 'subscribe',
+            //     topic: topic
+            // };
+            // ws.send(JSON.stringify(message));
+        };
+
+        ws.onmessage = function (event) {
+            var message = JSON.parse(event.data);
+            if (message.type === 'message') {
+                var topic = message.topic;
+                var payload = message.payload;
+
+                // Handle the incoming message
+                console.log('MQTT mesajı alındı: ' + topic + ' - ' + payload);
+
+                // Send an AJAX request
+                $.ajax({
+                    url: 'http://localhost:8080/mqtt-message',
+                    type: 'POST',
+                    data: { topic: topic, payload: payload },
+                    success: function (data) {
+                        console.log('AJAX isteği başarılı: ' + data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('AJAX hatası: ' + error);
+                    }
+                });
+            }
+        };
+
+        ws.onclose = function () {
+            console.log('WebSocket bağlantısı kapandı');
+        };
+
+    });*/
+
+
 
 </script>
 

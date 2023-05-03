@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mosquitto Ajax Örneği</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"></script>
+    <script>
+        var socket = "ws://localhost:9001/mqtt";
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Mosquitto Ajax Örneği</h1>
+    <div id="messages"></div>
+
+    <!-- <script>
+        // MQTT istemcisi oluşturma
+        var client = new Paho.MQTT.Client("localhost", 9001, "clientId");
+
+        // Bağlantı kaydı
+        client.onConnectionLost = function (responseObject) {
+            console.log("Bağlantı kaybedildi: " + responseObject.errorMessage);
+        }
+
+        // Bağlantı başarılı olduğunda çalışacak fonksiyon
+        client.onConnect = function () {
+            console.log("Bağlantı başarılı");
+
+            // Mesaj gönderme
+            var topic = "test/topic";
+            var message = new Paho.MQTT.Message("Hello MQTT");
+            message.destinationName = topic;
+            client.send(message);
+        }
+
+        // MQTT istemcisini bağlama
+        client.connect({ onSuccess: client.onConnect });
+
+        // MQTT istemcisi oluşturma
+var client = new Paho.MQTT.Client("localhost", 1883, "clientId");
+
+// Bağlantı kaydı
+client.onConnectionLost = function(responseObject) {
+  console.log("Bağlantı kaybedildi: "+responseObject.errorMessage);
+}
+
+// MQTT mesajı geldiğinde çalışacak fonksiyon
+client.onMessageArrived = function(message) {
+  console.log("MQTT mesajı alındı: "+message.payloadString);
+}
+
+// MQTT istemcisini bağlama
+client.connect({onSuccess: function() {
+  console.log("Bağlantı başarılı");
+
+  // MQTT istemcisine abone olma
+  var topic = "test/topic";
+  client.subscribe(topic);
+
+  // Abonelik başarılı oldu
+  console.log("Abonelik başarılı: "+topic);
+}});
+
+// Bağlantı başarılı olduğunda çalışacak fonksiyon
+client.onConnect = function() {
+  console.log("Bağlantı başarılı");
+
+  // Mesaj gönderme
+  var topic = "test/topic";
+  var message = new Paho.MQTT.Message("Hello MQTT");
+  message.destinationName = topic;
+  client.send(message);
+}
+    </script> -->
+
+</body>
+
+</html>
