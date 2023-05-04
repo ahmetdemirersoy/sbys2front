@@ -614,6 +614,7 @@
                     logPrepareIcon(currencytitle, value, beforevalue);
 
                 } else {
+                    //KATSAYI
                     if (carpanintypefk == "1") {
                         for (var b = 0; b < data.length; b++) {
                             var wsData = data[b];
@@ -624,28 +625,28 @@
                                 sellingRuleValue = getSteppedValue(sellingRuleValue, step);
                                 if (currencytitle == "YARIM") {
                                     var ceyrek = $("#CEYREK").html();
-                                        ceyrek = parseFloat(ceyrek) * 100;
-                                        ceyrek = Math.round((ceyrek * 10));
-                                        $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 2))
-                                        prepareIcon(currencytitle, sellingRuleValue);
-                                }else if(currencytitle == "TAM"){
-                                        var ceyrek = $("#CEYREK").html();
-                                        ceyrek = parseFloat(ceyrek) * 100;
-                                        ceyrek = Math.round((ceyrek * 10));
-                                        $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 4))
-                                        prepareIcon(currencytitle, sellingRuleValue);
-                                }else if(currencytitle == "GREMSE"){
-                                        var ceyrek = $("#CEYREK").html();
-                                        ceyrek = parseFloat(ceyrek) * 100;
-                                        ceyrek = Math.round((ceyrek * 10));
-                                        $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 10))
-                                        prepareIcon(currencytitle, sellingRuleValue);
-                                }else{
+                                    ceyrek = parseFloat(ceyrek) * 100;
+                                    ceyrek = Math.round((ceyrek * 10));
+                                    $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 2))
+                                    prepareIcon(currencytitle, sellingRuleValue);
+                                } else if (currencytitle == "TAM") {
+                                    var ceyrek = $("#CEYREK").html();
+                                    ceyrek = parseFloat(ceyrek) * 100;
+                                    ceyrek = Math.round((ceyrek * 10));
+                                    $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 4))
+                                    prepareIcon(currencytitle, sellingRuleValue);
+                                } else if (currencytitle == "GREMSE") {
+                                    var ceyrek = $("#CEYREK").html();
+                                    ceyrek = parseFloat(ceyrek) * 100;
+                                    ceyrek = Math.round((ceyrek * 10));
+                                    $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(ceyrek * 10))
+                                    prepareIcon(currencytitle, sellingRuleValue);
+                                } else {
                                     $("#" + currencytitle).html(new Intl.NumberFormat("de-DE").format(sellingRuleValue))
                                     prepareIcon(currencytitle, sellingRuleValue);
                                     break;
                                 }
-                                
+
                             }
                         }
                     } else if (carpanintypefk == "2") {
@@ -677,17 +678,6 @@
                         }
 
                     }
-                    //KATSAYI
-                    /*var sembol = rulefk;
-                     var sembolkuralı = rulepk;
-                     if(rulefk == currencyfk){
-                        //kuralı sabit olan sabit olan currency 
-
-                     }*/
-                    /* burada gelen katsayılı kuralın sembolünü alırim sembolün kuralı sabitse doğrudan geln sembolün değeri ile  
-                        burada gelen oranı çarparım yeni sembolkuralına göre sembolümün değeri bu olur  
-                        eğer sembolümün kuralı tabloda otomatikse web socketten otamatik değerini alır ve devam eder*/
-
                 }
             })
         }
