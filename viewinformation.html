@@ -213,9 +213,9 @@
                                     <h1 style="font-size: 4vh; margin-bottom: 0px; padding-top: 2px ;">KAYSERİ
                                         SARRAFLAR VE KUYUMCULAR
                                         DERNEĞİ</h1>
-                                    <h4>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
+                                    <h5>Bu mağazada satılan ürünler Kayseri Sarraflar ve Kuyumcular
                                         Derneği
-                                        denetimindedir.</h4>
+                                        denetiminde tavsiye edilen fiyatlardır.</h5>
                                     <h6 class="mt-5" id="socket_error" style="color: #e21b1b; float: left;">Socket
                                         Bağlantısı Sonlandı!</h6>
                                     <h6 class="mt-5 " id="socket_again" style="color: #4fb70b;; float: right; ">Bağlantı
@@ -501,7 +501,7 @@
                             </div>
                         </div>
                         <span class="marquee4 text-white" id="duyurlardiv"
-                            style="background: #bcc7cc; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 1vh;  overflow: hidden; color: white;">
+                            style="background: #eb0b0b; font-size: 4.5vh; padding: 0; margin-bottom: 0; margin-top: 1vh;  overflow: hidden; color: white;">
                             <span></span>
                         </span>
 
@@ -819,11 +819,7 @@
                 val = parseFloat(val);
                 var mod = val % step;
                 var yuvarla = step - mod;
-                if (yuvarla <= (step / 2)) {
                     val = val + yuvarla;
-                } else {
-                    val = val - mod;
-                }
                 return Math.round((val * 100)) / 100;
             } else {
                 return val;

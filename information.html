@@ -333,9 +333,9 @@
                 </div>
             </td>
             `,
-                `<td style="text-align: center;" id="screen_button"> <button
-                   type="button" href="/viewinformation?code=111" target="_blank" id="goscreenbutton" onclick="goviewscreen(`+ screencode + `)" class="btn btn-primary">Ekran
-                Görüntüle</button></td>`,
+                `<td style="text-align: center;" id="screen_button"> <a
+                   type="button" href="/viewinformation?code=${screencode}" target="_blank" id="goscreenbutton" class="btn btn-primary">Ekran
+                Görüntüle</a></td>`,
                     screencode,
                     screenoparatingsystem,
                     screenstatus,
@@ -473,6 +473,7 @@
     }
     // go screen
     function goviewscreen(screencode) {
+        console.log(screencode)
         window.open(`/viewinformation?code=${screencode}`, '_blank');
     }
 
