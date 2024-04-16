@@ -170,111 +170,6 @@
         opacity: 1;
         transform: rotateX(360deg);
       }
-      @media screen and (max-width: 750px) {
-            #currencytab span {
-                font-size: small;
-            }
-
-            #currencytab thead tr {
-                height: 45px;
-            }
-
-            #currencytab thead tr th {
-                font-size: medium;
-            }
-
-            #currencytab div {
-                margin-left: 0px;
-            }
-
-            #currencytab td {
-                border: none;
-            }
-
-            #currencytab tr {
-                height: 50px;
-            }
-
-            #currencytab1 span {
-                font-size: small;
-            }
-
-
-            #currencytab1 td {
-                border: none;
-            }
-
-            #currencytab1 td {
-                border: none;
-            }
-
-            #currencytab1 .tb2td2 {
-                margin-left: 0px;
-                padding-left: 0px;
-            }
-
-            #currencytab1 .tb2td1 {
-                width: 68%;
-            }
-
-            #currencytab1 tr {
-                height: 50px;
-            }
-
-            #userlogoarea img {
-                height: 40px;
-            }
-
-            #afaclogoarea img {
-                height: 40px;
-            }
-
-            #baslikarea {
-                font-size: medium;
-            }
-
-            #tavsiyearea {
-                font-size: medium;
-            }
-
-            #date_show {
-                font-size: medium;
-            }
-
-            #currencytab1 thead tr {
-                display: none;
-            }
-
-            #testacc span {
-                font-size: medium;
-            }
-
-            #testacc img {
-                height: 25px;
-            }
-
-            #testacc div {
-                padding: 0;
-                margin-bottom: 5px;
-            }
-
-            #announcements img {
-                height: 20px;
-            }
-
-            #announcements span {
-                font-size: medium;
-                padding: 1;
-            }
-
-            #currencytab tr td:first-child {
-                width: 69%;
-            }
-
-            #currencytab1 tr td:first-child {
-                width: 69%;
-            }
-        }
     </style>
   </head>
 
@@ -431,7 +326,7 @@
             <div class="card" style="margin-bottom: 0; margin-top: 1.5vh">
               <div class="card-header" style="padding: 2px; margin-top: 0">
                 <div class="row">
-                  <div id="afaclogoarea"
+                  <div
                     class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center"
                   >
                     <button
@@ -507,14 +402,18 @@
                     </h6>
                   </div>
 
-                  <div id="userlogodivarea"
-                                    class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
-                                    <div id="configurezonephoto">
-                                        <!--Kullanıcı Foroğrafı-->
-                                        <img id="userlogoarea" src="{photo}" class="mt-2" alt=""
-                                            style="padding-right: 10px; max-height: 75px" height="100" />
-                                    </div>
-                                </div>
+                  <div
+                    class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center"
+                  >
+                    <img
+                      id="userlogoarea"
+                      src="{photo}"
+                      class="mt-2"
+                      alt=""
+                      style="padding-right: 10px; max-height: 75px"
+                      height="100"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="card-body" style="padding: 0; margin-top: 2.5vh">
@@ -946,39 +845,49 @@
                     class="col-sm-12 col-md-12 col-lg-12 col-cl-12 col-xxl-12 mb-0"
                     style="max-height: 750px; margin-top: 5px"
                   >
-                  <div class="container-fluid">
-                    <div id="testacc" style="
-                            background: #18719b;
-                            font-size: 4.5vh;
-                            padding: 7px 1px 1px 1px;
-                            margin-bottom: 0;
-                            margin-top: 0;
-                            overflow: hidden;
-                            color: white;
-                            
-                        " class="row">
-                        <div class="col-sm-12 col-lg-6 col-md-6"><img
-                                src="/uploads/1126752e8b3a4930afd7816f397ee294.svg" alt=""
-                                class="avatar-sm currency_image mt-2" id="currency_image"
-                                data-id="USD" />
-                            <span class="currency_title" data-id="USD">USD</span>
-                            <span class="currency_alis" data-id="USD">Alış :</span><span
-                                id="usdbuy">0</span>
-                            <span class="currency_satis" data-id="USD">&nbsp; Satış :</span><span
-                                id="usdsell">0</span>
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6"><img
-                                src="/uploads/4883a104410b4776bb2fd33bf5579509.svg" alt=""
-                                class="avatar-sm currency_image mt-2" id="currency_image"
-                                data-id="EUR" />
-                            <span class="currency_title" data-id="EUR">EUR</span>
-                            <span class="currency_alis" data-id="EUR">Alış :</span><span
-                                id="eurbuy">0</span>
-                            <span class="currency_satis" data-id="EUR">&nbsp; Satış :</span><span
-                                id="eursell">0</span>
-                        </div>
+                    <div
+                      id="testacc"
+                      style="
+                        background: #18719b;
+                        font-size: 4.5vh;
+                        padding: 7px 1px 1px 1px;
+                        margin-bottom: 0;
+                        margin-top: 0;
+                        overflow: hidden;
+                        color: white;
+                        display: flex;
+                        justify-content: space-evenly;
+                      "
+                    >
+                      <img
+                        src="/uploads/1126752e8b3a4930afd7816f397ee294.svg"
+                        alt=""
+                        class="avatar-sm currency_image mt-2"
+                        id="currency_image"
+                        data-id="USD"
+                      />
+                      <span class="currency_title" data-id="USD">USD</span>
+                      <span class="currency_alis" data-id="USD">Alış :</span
+                      ><span id="usdbuy">0</span>
+                      <span class="currency_satis" data-id="USD"
+                        >&nbsp; Satış :</span
+                      ><span id="usdsell">0</span>
+                      &nbsp;
+                      <img
+                        src="/uploads/4883a104410b4776bb2fd33bf5579509.svg"
+                        alt=""
+                        class="avatar-sm currency_image mt-2"
+                        id="currency_image"
+                        data-id="EUR"
+                      />
+                      <span class="currency_title" data-id="EUR">EUR</span>
+                      <span class="currency_alis" data-id="EUR">Alış :</span
+                      ><span id="eurbuy">0</span>
+                      <span class="currency_satis" data-id="EUR"
+                        >&nbsp; Satış :</span
+                      ><span id="eursell">0</span>
+                      &nbsp;
                     </div>
-                </div>
                   </div>
                 </div>
               </div>
@@ -1018,33 +927,6 @@
     </div>
 
     <script>
-
-
-   // Ekran genişliğini kontrol et
-   function controlScreenSize() {
-            if (window.innerWidth < 750) {
-                const spans = document.getElementById('afaclogoarea');
-                spans.innerHTML = "";
-                spans.innerHTML = `<div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
-                  <img id="userlogoarea" src="{photo}" class="mt-2" alt="" style="padding-right: 10px; max-height: 75px"
-                    height="100" />
-                </div>`
-                // spans.innerHTML = `<div class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
-                //           <img id="userlogoarea" src="/uploads/cb64016c3bf447998d656e18bc170923.jpeg" class="mt-2" alt="" style="padding-right: 10px; max-height: 75px" height="100">
-                //         </div>`;
-                const a = document.getElementById("userlogodivarea");
-                a.innerHTML = "";
-                $("#baslikarea").css("font-size", "medium");
-                $("#cardbodyarea").css("margin-top", "0px");
-
-            }
-        }
-        // Ekran boyutu değiştiğinde kontrolü yap
-        window.addEventListener('resize', controlScreenSize);
-
-        // Sayfa yüklendiğinde de kontrolü yap
-        window.addEventListener('DOMContentLoaded', controlScreenSize);
-
       function tarihSaatGuncelle() {
         var suan = new Date();
         var gun = suan.getDate();
@@ -1486,60 +1368,52 @@
       }
 
       function getRulesEur(rule, data) {
-            const {
-        currencytitle,
-        ruleStep: currencyRuleCurrencyStep,
-        ruleCode: currencyRuleCode,
-        rate,
-        rulefk,
-        step,
-        order: ruleOrder,
-        type,
-        value,
-        carpanintypefk,
-        carpaninvalue,
-        carpaninbeforevalue,
-        carpaninoran,
-        carpanincurrencyfk,
-        rulePercentage,
-        rulebuymore,
-        rulesellmore,
-        rulebuyRuleFK,
-        ruleBuyRate,
-        ruleBuyTypeFK,
-        beforevalue,
+        var currencyfk = rule.map.currencyfk;
+        var currencyflag = rule.map.currencyflag;
+        var currencypk = rule.map.currencypk;
+        var currencytitle = rule.map.currencytitle;
 
-        aliscarpanincurrencyfk,
-        aliscarpanintypefk,
-        aliscarpanintype,
-        aliscarpaninvalue,
-        aliscarpaninbeforevalue,
-      } = rule.map;
+        var currencyRuleCurrencyStep = rule.map.ruleStep;
+        var currencyRuleCode = rule.map.ruleCode;
 
-      
+        var max = rule.map.max;
+        var min = rule.map.min;
+        var rate = rule.map.rate;
+        var rulefk = rule.map.rulefk;
+        var rulepk = rule.map.rulepk;
+        var status = rule.map.status;
+        var step = rule.map.step;
+        var ruleOrder = rule.map.order;
+        var type = rule.map.type;
+        var value = rule.map.value;
+        var carpanintypefk = rule.map.carpanintypefk;
+        var carpaninvalue = rule.map.carpaninvalue;
+        var carpaninbeforevalue = rule.map.carpaninbeforevalue;
+        var carpaninoran = rule.map.carpaninoran;
+        var carpanincurrencyfk = rule.map.carpanincurrencyfk;
 
-            for (var counter = 0; counter < data.length; counter++) {
-                var wsData = data[counter];
-                if (wsData.category == "DOVIZ") {
-                    try {
-                        if (wsData.currency == "EUR") {
-                            var satis = wsData.sell;
-                            satis = parseFloat(satis);
-                            var mod = satis % step;
-                            var yuvarla = step - mod;
-                            satis = satis + yuvarla;
-                            satis = Math.round(satis * 100) / 100;
-                            satis = satis.toFixed(2);
+        for (var counter = 0; counter < data.length; counter++) {
+          var wsData = data[counter];
+          if (wsData.category == "DOVIZ") {
+            try {
+              if (wsData.currency == "EUR") {
+                var satis = wsData.sell;
+                satis = parseFloat(satis);
+                var mod = satis % step;
+                var yuvarla = step - mod;
+                satis = satis + yuvarla;
+                satis = Math.round(satis * 100) / 100;
+                satis = satis.toFixed(2);
 
-                            $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
-                            $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
+                $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
+                $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+              }
+            } catch (error) {
+              console.log(error);
             }
+          }
         }
+      }
       function getRulesUSD(rule, data) {
         var currencyfk = rule.map.currencyfk;
         var currencyflag = rule.map.currencyflag;
@@ -1651,36 +1525,6 @@
         currencyIcon.addClass(change);
         currencyIcon.attr("data-id", sellingValue + "");
       }
-
-      function prepareIconAlis(currencyTitle, sellingValue, ruleOrder) {
-            var trElementsWithDataOrder = $("tr[data-order]");
-            var element = $('tr[data-order="' + ruleOrder + '"]');
-
-            //var currencyIcon = $("#" + currencyTitle + "-icon");
-            var currencyIcon = element.find("#newiconalis");
-            var test = element.find('#table_currency_alisid');
-            var oldVal = parseFloat(currencyIcon.attr("data-id"));
-            var change =
-                oldVal > sellingValue
-                    ? "▼"
-                    : "▲";
-                    var changeClass = oldVal > sellingValue
-                ? "#b41414"
-                : "#147814";
-            //console.log(change)
-            $(currencyIcon).html(change)
-            currencyIcon.innerHTML = change;
-            // currencyIcon.removeClass();
-            // currencyIcon.addClass(changeClass);
-            currencyIcon.css('color', changeClass)
-
-            // test.removeClass();
-            // test.addClass(changeClass);
-            test.css('color', changeClass)
-
-
-            currencyIcon.attr("data-id", sellingValue + "");
-        }
 
       function katsayıCarpanlıIcon(
         currencytitle,
@@ -1959,7 +1803,7 @@
           let currentTime = new Date().getTime();
           if (currentTime - lastSpeedUpdate >= pingInterval) {
             const cookieValue = document.cookie
-              .split(";")
+              .split("; ")
               .find((row) => row.startsWith("ark="))
               ?.split("=")[1];
             const data = {
@@ -1988,22 +1832,18 @@
         });
 
         socket2.addEventListener("message", async (event) => {
-                let yeniStr = event.data.slice(2);
-                try {
-                    yeniStr = JSON.parse(yeniStr);
-                    if (yeniStr && yeniStr[1] && yeniStr[1].data) {
-                        let veri = yeniStr[1].data;
-
-                        if (veri) {
-                            renderRules2(veri);
-                        }
-                    } else {
-                        console.log("Beklenmeyen veri yapısı");
-                    }
-                } catch (error) {
-                    console.error("JSON parse hatası:", error);
-                }
-            });
+          let response = JSON.stringify(event.data);
+          response = JSON.parse(response);
+          let yeniStr = response.slice(2);
+          yeniStr = JSON.parse(yeniStr);
+          console.log(yeniStr[1].data);
+          if (yeniStr != undefined) {
+            let veri = yeniStr[1]?.data;
+            if (veri != undefined) {
+              renderRules2(veri);
+            }
+          }
+        });
 
         socket2.addEventListener("close", (event) => {
           console.log(
@@ -2045,3 +1885,331 @@
     <script src="./Harem.js"></script>
   </body>
 </html>
+
+// haremjs kod
+
+var globalSellingRuleValue; // Global değişkeni tanımla
+async function renderRules2(data) {
+  //console.log(result1);
+  console.log("HAREM");
+  if (notAuth) {
+   // return;
+  } else if (rules == null) {
+    rules = await JSON.parse(result1);
+    //rules = await getallrules();
+
+    if (rules.statusCode == 101) {
+      //window.location.reload();
+      // $("#authanticationdiv").css("display", "");
+      // $("#notfounddiv").css("display", "none");
+      // $("#maindiv").css("display", "none");
+      // notAuth = true;
+      // return;
+    } else if (rules.statusCode == -98) {
+      // $("#licanceend").css("display", "");
+      // $("#maindiv").css("display", "none");
+      // notAuth = true;
+      // return;
+    }
+    if (rules.statusCode != -99) {
+      if (!initMarq) {
+        prepareMarqueeHas(rules, data);
+        initMarq = true;
+        if (beforeversion != rules.version) {
+          window.location.reload();
+        }
+        setInterval(async () => {
+          const currentTime = Date.now();
+          if (!lastRequestTime || currentTime - lastRequestTime >= 60000) {
+            rules = JSON.parse(result1);
+            //rules = await getallrules();
+            if (rules.statusCode == 101) {
+              // $("#authanticationdiv").css("display", "");
+              // $("#notfounddiv").css("display", "none");
+              // $("#maindiv").css("display", "none");
+            }
+            //getallrules();
+          } else if (!blockedUntilTime) {
+            blockedUntilTime = currentTime + 60000;
+          }
+        }, 60000);
+      }
+    } else {
+      // $("#notfounddiv").css("display", "");
+      // $("#maindiv").css("display", "none");
+      // notAuth = true;
+      // return;
+    }
+  }
+  updateCurrencyMarqueeHarem(data, rules);
+  if (rules.data != undefined) {
+    rules.data.forEach((rule) => {
+      //rule aldım
+      var currencyfk = rule.map.currencyfk;
+      var currencyflag = rule.map.currencyflag;
+      var currencypk = rule.map.currencypk;
+      var currencytitle = rule.map.currencytitle;
+
+      var currencyRuleCurrencyStep = rule.map.ruleStep;
+      var currencyRuleCode = rule.map.ruleCode;
+
+      var max = rule.map.max;
+      var min = rule.map.min;
+      var rate = rule.map.rate;
+      var rulefk = rule.map.rulefk;
+      var rulepk = rule.map.rulepk;
+      var status = rule.map.status;
+      var step = rule.map.step;
+      var ruleOrder = rule.map.order;
+      var type = rule.map.type;
+      var value = rule.map.value;
+      var carpanintypefk = rule.map.carpanintypefk;
+      var carpaninvalue = rule.map.carpaninvalue;
+      var carpaninbeforevalue = rule.map.carpaninbeforevalue;
+      var carpaninoran = rule.map.carpaninoran;
+      var carpanincurrencyfk = rule.map.carpanincurrencyfk;
+      var rulePercentage = rule.map.rulePercentage;
+
+      //before values
+
+      if (currencytitle === "EUR") {
+        getRulesEur(rule, data);
+      } else if (currencytitle === "USD") {
+        getRulesUSD(rule, data);
+      }
+      var beforevalue = rule.map.beforevalue;
+      if (type == "1") {
+        //OTO
+        //Forex
+        for (const currencyCodea in data) {
+          if (Object.hasOwnProperty.call(data, currencyCodea)) {
+            const currencya = data[currencyCodea];
+
+            if (currencya.code === "HAS") {
+              currencya.code = "HAS";
+              //console.log(currencyRuleCode);
+              if (currencya.code == currencytitle) {
+                var sellingRuleValue = parseFloat(currencya.satis);
+                sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+                //console.log(sellingRuleValue);
+                //globalSellingRuleValue = sellingRuleValue;
+
+                if (
+                  rulePercentage != undefined &&
+                  rulePercentage != null &&
+                  rulePercentage != 0
+                ) {
+                  let yuzde =
+                    sellingRuleValue +
+                    sellingRuleValue * (rulePercentage / 100);
+
+                  var trElementsWithDataOrder = $("tr[data-order]");
+                  var element = $('tr[data-order="' + ruleOrder + '"]');
+                  if (element.length > 0) {
+                    element.find(".table_currency_title").html(currencytitle);
+                    element
+                      .find(".table_currency_satis")
+                      .html(
+                        new Intl.NumberFormat("de-DE").format(yuzde) + " ₺"
+                      );
+                  }
+                  prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                } else {
+                  var trElementsWithDataOrder = $("tr[data-order]");
+                  var element = $('tr[data-order="' + ruleOrder + '"]');
+                  if (element.length > 0) {
+                    element.find(".table_currency_title").html(currencytitle);
+                    element
+                      .find(".table_currency_satis")
+                      .html(
+                        new Intl.NumberFormat("de-DE").format(
+                          sellingRuleValue
+                        ) + " ₺"
+                      );
+                  }
+                  prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                }
+                //change22Back(currencytitle, sellingRuleValue, ruleOrder);
+                break;
+              }
+            }
+          }
+        }
+      } else if (type == "2") {
+        //SABİT
+        var trElementsWithDataOrder = $("tr[data-order]");
+        var element = $('tr[data-order="' + ruleOrder + '"]');
+        if (element.length > 0) {
+          element.find(".table_currency_title").html(currencytitle);
+          element
+            .find(".table_currency_satis")
+            .html(new Intl.NumberFormat("de-DE").format(value) + " ₺");
+        }
+        logPrepareIcon(currencytitle, value, beforevalue, ruleOrder);
+      } else {
+        //KATSAYI
+        if (carpanintypefk == "1") {
+          for (const currencyCodea in data) {
+            if (Object.hasOwnProperty.call(data, currencyCodea)) {
+              const currencya = data[currencyCodea];
+              if (currencya.code === "ALTIN") {
+                currencya.code = "HAS";
+              }
+              if (currencya.code == currencyRuleCode) {
+                //console.log(currencytitle)
+                var sellingRuleValue = parseFloat(currencya.satis);
+                sellingRuleValue = getSteppedValue(
+                  sellingRuleValue,
+                  currencyRuleCurrencyStep
+                );
+                sellingRuleValue = sellingRuleValue * rate;
+                sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+                // console.log(sellingRuleValue)
+                globalSellingRuleValue = sellingRuleValue;
+                if (globalSellingRuleValue != undefined) {
+                  var trElementsWithDataOrder = $("tr[data-order]");
+                  var element = $('tr[data-order="' + ruleOrder + '"]');
+                  if (element.length > 0) {
+                    element.find(".table_currency_title").html(currencytitle);
+                    element
+                      .find(".table_currency_satis")
+                      .html(
+                        new Intl.NumberFormat("de-DE").format(
+                          globalSellingRuleValue
+                        ) + " ₺"
+                      );
+                  }
+                  prepareIcon(currencytitle, globalSellingRuleValue, ruleOrder);
+                }
+              }
+            }
+            break;
+          }
+        } else if (carpanintypefk == "2") {
+          //burada çarpanın eski değeri lazım
+          var sellingRuleValue = carpaninvalue;
+          sellingRuleValue = getSteppedValue(
+            sellingRuleValue,
+            currencyRuleCurrencyStep
+          );
+          sellingRuleValue = sellingRuleValue * rate;
+          sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+          $("#" + currencytitle).html(
+            new Intl.NumberFormat("de-DE").format(sellingRuleValue)
+          );
+          //prepareIcon(currencytitle, sellingRuleValue);
+          if (carpaninbeforevalue != undefined) {
+            sabitcarpanlıIcon(
+              currencytitle,
+              carpaninvalue,
+              carpaninbeforevalue,
+              sellingRuleValue
+            );
+          }
+        } else {
+          if (rulefk != carpanincurrencyfk) {
+            //console.log("burada")
+            var carpansimdikivalue = carpaninvalue * carpaninoran;
+            var sellingRuleValue = carpaninvalue;
+            sellingRuleValue = getSteppedValue(
+              sellingRuleValue,
+              currencyRuleCurrencyStep
+            );
+            sellingRuleValue = sellingRuleValue * rate;
+            sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+            //console.log(currencytitle, carpaninvalue * rate);
+
+            $("#" + currencytitle).html(
+              new Intl.NumberFormat("de-DE").format(carpaninvalue * rate)
+            );
+            sabitcarpanlıIcon(
+              currencytitle,
+              carpaninvalue,
+              carpaninbeforevalue,
+              sellingRuleValue
+            );
+          } else {
+            //console.log("burada", carpaninvalue)
+            $("#" + currencytitle).html(
+              new Intl.NumberFormat("de-DE").format(carpaninvalue)
+            );
+            katsayıCarpanlıIcon(
+              currencytitle,
+              carpaninvalue,
+              carpaninbeforevalue
+            );
+          }
+        }
+      }
+    });
+  }
+}
+
+//
+function prepareMarqueeHas(rules, data) {
+  var tempSlipyCur = "";
+  for (const currencyCodea in data) {
+    if (Object.hasOwnProperty.call(data, currencyCodea)) {
+      const currencya = data[currencyCodea];
+      if (currencya.code.includes("EURT") || currencya.code.includes("USDT")) {
+        currencya.code = currencya.code.replace("TRY", "");
+        $("#" + currencya.code.toLowerCase() + "sell").html(currencya.satis);
+        $("#" + currencya.code.toLowerCase() + "buy").html(currencya.alis);
+      }
+      for (
+        var secondCounter = 0;
+        secondCounter < rules.allSymbols.length;
+        secondCounter++
+      ) {
+        var currency = rules.allSymbols[secondCounter];
+
+        currencya.code = currencya.code.replace("TRY", "");
+        if (currencya.code == currency.currencyCode) {
+          //console.log("Burada", currency);
+          var currencyIcon = currency.currencyIcon;
+          var currencyCode = currency.currencyCode;
+          var currencyvalue = pad(currencya.alis, 7);
+          var currencysvalue = pad(currencya.satis, 7);
+          //<img src="" alt="" class="avatar-sm currency_image" id="currency_image" data-id="${currencyCode}">${currencyIcon}
+          tempSlipyCur += `
+            <span class="currency_title"  data-id="${currencyCode}">${currencyCode}</span>
+            <span class="currency_alis"  data-id="${currencyCode}"> Alış :</span> <span style="width: 60px;" id="${currencyCode}buy">${currencyvalue}</span>
+            <span class="currency_satis"  data-id="${currencyCode}">- Satış :</span><span style="width: 60px;" id="${currencyCode}sell">${currencysvalue}</span>&nbsp;`;
+        }
+      }
+    }
+  }
+  //document.getElementById('testacc').innerHTML = fixedCurrHtml
+  var currDom = $("#announcements");
+  if (currDom.innerHTML != tempSlipyCur) {
+    currDom.append(tempSlipyCur);
+    currDom.marquee(options);
+    // $('#testacc').append(html)
+  }
+  var announcementsDom = $("#duyurlardiv");
+  if (announcementsDom.innerHTML != rules.announcement) {
+    announcementsDom.append(rules.announcement);
+    announcementsDom.marquee(mOptions);
+    // $('#testacc').append(html)
+  }
+}
+
+function updateCurrencyMarqueeHarem(data) {
+  for (const currencyCodea in data) {
+    if (Object.hasOwnProperty.call(data, currencyCodea)) {
+      try {
+        const currencya = data[currencyCodea];
+        if (
+          currencya.code.includes("EURT") ||
+          currencya.code.includes("USDT")
+        ) {
+          currencya.code = currencya.code.replace("TRY", "");
+          $("#" + currencya.code.toLowerCase() + "sell").html(currencya.satis);
+          $("#" + currencya.code.toLowerCase() + "buy").html(currencya.alis);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+}

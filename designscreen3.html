@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover"
+    data-sidebar-image="none" data-preloader="disable">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SBYS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/SBYS.png" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" />
+
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script>
+        var socketUrl = "ws://78.187.173.201:11280/echo";
+    </script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .avatar-sm {
+            height: 3rem;
+            width: 3rem;
+        }
+
+        .job-navbar .dropdown-menu .dropdown-item .avatar-sm {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        .fullscreen-enable [data-toggle="fullscreen"] .bx-fullscreen::before {
+            content: "\eacb";
+        }
+
+        .stretch-card>.card {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        /* .owl-carousel .item {
+            margin: 3px
+        } */
+
+        .owl-carousel .item img {
+            /* display: block; */
+            width: 100%;
+            height: 100%;
+        }
+
+        /* .owl-carousel .item {
+            margin: 3px
+        } */
+
+        /* .owl-carousel {
+            margin-bottom: 5px;
+
+        }  */
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+            background-color: #273255;
+            color: #fff;
+        }
+
+        td,
+        th {
+            border: 1px solid #e9e3e3;
+            text-align: left;
+            overflow: hidden;
+            padding: 5px;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        tr:nth-child(even) {
+            /* background-color: #e6e3e3; */
+            background-color: #273255;
+            height: 40px;
+        }
+
+        table tr td:first-child {
+            /* background-color: darkgoldenrod; */
+            color: darkgoldenrod;
+            /* İsteğe bağlı: metin rengini beyaz yapabilirsiniz */
+            /* Diğer özel stillendirmeleri ekleyebilirsiniz */
+        }
+
+        table tr td:nth-child(2) {
+            background-color: gray;
+            color: black;
+        }
+
+        .marquee3 {
+            width: auto;
+            overflow: hidden;
+        }
+
+        .marquee3 span.line {
+            /* padding-top: 6px; */
+            color: rgb(22, 20, 20);
+            /* font-size: xx-large; */
+            text-decoration: white;
+        }
+
+        #table_div {
+            font-size: 3vh;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        /* 
+        td {
+            margin: 0;
+            padding: 0;
+        } */
+
+        #images {
+            height: 100%;
+        }
+
+        /* body {
+            overflow: hidden;
+        } */
+
+        ::-webkit-scrollbar {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        #image-container {
+            position: relative;
+            /* width: 200px;
+  height: 200px; */
+            /* overflow: hidden; */
+        }
+
+        #image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: rotateY(0deg);
+            transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+        }
+
+        #image-container img.active {
+            opacity: 1;
+            transform: rotateX(360deg);
+        }
+
+
+
+        @media screen and (max-width: 750px) {
+            .currencytab span {
+                font-size: small;
+            }
+
+            #currencytab thead tr {
+                height: 45px;
+            }
+
+            #currencytab thead tr th {
+                font-size: medium;
+            }
+
+            #currencytab div {
+                margin-left: 0px;
+            }
+
+            #currencytab td {
+                border: none;
+            }
+
+            #currencytab tr {
+                height: 50px;
+            }
+
+            #currencytab1 span {
+                font-size: small;
+            }
+
+
+            #currencytab1 td {
+                border: none;
+            }
+
+            #currencytab1 td {
+                border: none;
+            }
+
+            #currencytab1 .tb2td2 {
+                margin-left: 0px;
+                padding-left: 0px;
+            }
+
+            #currencytab1 .tb2td1 {
+                width: 68%;
+            }
+
+            #currencytab1 tr {
+                height: 50px;
+            }
+
+            #userlogoarea img {
+                height: 40px;
+            }
+
+            #afaclogoarea img {
+                height: 40px;
+            }
+
+            #baslikarea {
+                font-size: medium;
+            }
+
+            #tavsiyearea {
+                font-size: medium;
+            }
+
+            #date_show {
+                font-size: medium;
+            }
+
+            #currencytab1 thead tr {
+                display: none;
+            }
+
+            #testacc span {
+                font-size: medium;
+            }
+
+            #testacc img {
+                height: 25px;
+            }
+
+            #testacc div {
+                padding: 0;
+                margin-bottom: 5px;
+            }
+
+            #announcements img {
+                height: 20px;
+            }
+
+            #announcements span {
+                font-size: medium;
+                padding: 1;
+            }
+
+            .currencytab tr td:first-child {
+                width: 69%;
+            }
+
+            #currencytab1 tr td:first-child {
+                width: 69%;
+            }
+        }
+
+
+        #clock ul {
+            list-style: none;
+            top: 0;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            text-align: center;
+        }
+
+        #clock li {
+            position: absolute;
+            transform-origin: 50% 100%;
+            height: 160px;
+        }
+
+        .hours {
+            left: 120px;
+            font-size: 23.3333333333px;
+            letter-spacing: -1.6px;
+            line-height: 45px;
+        }
+
+        .hours li {
+            width: 80px;
+        }
+
+        .hours span {
+            display: block;
+        }
+
+        .hours li:nth-of-type(1) {
+            transform: rotate(30deg);
+        }
+
+        .hours li:nth-of-type(1) span {
+            transform: rotate(-30deg);
+        }
+
+        .hours li:nth-of-type(2) {
+            transform: rotate(60deg);
+        }
+
+        .hours li:nth-of-type(2) span {
+            transform: rotate(-60deg);
+        }
+
+        .hours li:nth-of-type(3) {
+            transform: rotate(90deg);
+        }
+
+        .hours li:nth-of-type(3) span {
+            transform: rotate(-90deg);
+        }
+
+        .hours li:nth-of-type(4) {
+            transform: rotate(120deg);
+        }
+
+        .hours li:nth-of-type(4) span {
+            transform: rotate(-120deg);
+        }
+
+        .hours li:nth-of-type(5) {
+            transform: rotate(150deg);
+        }
+
+        .hours li:nth-of-type(5) span {
+            transform: rotate(-150deg);
+        }
+
+        .hours li:nth-of-type(6) {
+            transform: rotate(180deg);
+        }
+
+        .hours li:nth-of-type(6) span {
+            transform: rotate(-180deg);
+        }
+
+        .hours li:nth-of-type(7) {
+            transform: rotate(210deg);
+        }
+
+        .hours li:nth-of-type(7) span {
+            transform: rotate(-210deg);
+        }
+
+        .hours li:nth-of-type(8) {
+            transform: rotate(240deg);
+        }
+
+        .hours li:nth-of-type(8) span {
+            transform: rotate(-240deg);
+        }
+
+        .hours li:nth-of-type(9) {
+            transform: rotate(270deg);
+        }
+
+        .hours li:nth-of-type(9) span {
+            transform: rotate(-270deg);
+        }
+
+        .hours li:nth-of-type(10) {
+            transform: rotate(300deg);
+        }
+
+        .hours li:nth-of-type(10) span {
+            transform: rotate(-300deg);
+        }
+
+        .hours li:nth-of-type(11) {
+            transform: rotate(330deg);
+        }
+
+        .hours li:nth-of-type(11) span {
+            transform: rotate(-330deg);
+        }
+
+        .hours li:nth-of-type(12) {
+            transform: rotate(360deg);
+        }
+
+        .hours li:nth-of-type(12) span {
+            transform: rotate(-360deg);
+        }
+
+        #clock {
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            position: relative;
+            width: 319px;
+            height: 324px;
+            margin: auto;
+        }
+
+        /* JavaScript pre-rotates these wrappers instead of the hands when getting the time at load. If it pre-rotates the hands, then the hands will not perform 1 turn at their normal speeds. */
+        .hr-wrapper,
+        .min-wrapper,
+        .sec-wrapper {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            transform-origin: 50% 100%;
+        }
+
+        .hr {
+            background: #222;
+            left: 152px;
+            width: 13px;
+            height: 89px;
+            border-radius: 10px;
+            animation: rotateHand 43200s linear infinite;
+        }
+
+        .hr:after {
+            background: #222;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -8px;
+            width: 13px;
+            height: 16px;
+        }
+
+        .min {
+            background: #222;
+            left: 155px;
+            width: 9px;
+            height: 97px;
+            border-radius: 8px;
+            animation: rotateHand 3600s linear infinite;
+        }
+
+        .min:after {
+            background: #222;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -8px;
+            width: 9px;
+            height: 16px;
+        }
+
+        .sec {
+            background: #d00;
+            left: 156.5px;
+            width: 5px;
+            height: 100px;
+            border-radius: 8px;
+            animation: rotateHand 60s linear infinite;
+        }
+
+        .sec:after {
+            background: #d00;
+            border-radius: 50%;
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -3.5px;
+            width: 5px;
+            height: 7px;
+        }
+
+        @keyframes rotateHand {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        /* .col-xxl-8{
+            width: 69%;
+        }
+        .col-xxl-4{
+            width: 30%;
+        } */
+
+        /* #cardheader {
+            background-image: url("assets/images/footer.png");
+
+        } */
+
+        #clockarea {
+            background: linear-gradient(#9f9f9f, #273255);
+            color: white;
+            /* background-image: url("assets/images/sanatsal3.jpeg"); */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="forextypeare" style="height: 0px; width: 0px; display: none" data-id="{wstype}"></div>
+    <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="NotificationModalbtn-close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 text-center">
+                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px"></lord-icon>
+                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                            <h4>Are you sure ?</h4>
+                            <p class="text-muted mx-4 mb-0">
+                                Are you sure you want to remove this Notification ?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn w-sm btn-danger" id="delete-notification">
+                            Yes, Delete It!
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="app-menu navbar-menu" style="display: none">
+        <div class="navbar-brand-box">
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
+        </div>
+
+        <div id="scrollbar">
+            <div class="container-fluid">
+                <div id="two-column-menu"></div>
+                <ul class="navbar-nav" id="navbar-nav"></ul>
+            </div>
+        </div>
+        <div class="sidebar-background"></div>
+    </div>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        <div class="">
+            <div class="row">
+                <div id="notfounddiv" style="text-align: center; display: none">
+                    <img src="./assets/images/multiply-cross.svg" alt="" height="700px" class="mt-5" />
+                    <h2 class="mt-5" style="color: #e21b1b">
+                        Bu Sayfaya Erişim İzniniz Bulunmamaktadır
+                    </h2>
+                </div>
+                <div id="licanceend" style="text-align: center; display: none">
+                    <h2 style="color: #e21b1b; margin-top: 20%">
+                        <strong>Lisans süreniz sona ermiştir lütfen lisansınızı
+                            yenileyin.</strong>
+                    </h2>
+                </div>
+                <div id="authanticationdiv" style="text-align: center; display: none">
+                    <div
+                        class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+                        <div class="bg-overlay"></div>
+                        <!-- auth-page content -->
+                        <div class="auth-page-content overflow-hidden" style="width: 100%">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-xl-5">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body p-4">
+                                                <div class="text-center">
+                                                    <img src="./assets/images/user-with-cross-sign.svg" alt=""
+                                                        height="210" />
+                                                    <h2 class="mt-4 fw-semibold" style="color: red">
+                                                        Kimlik Doğrulama Hatası
+                                                    </h2>
+                                                    <h5 class="mb-4 fs-14" style="color: red">
+                                                        Kimliğiniz doğrulanamadı lütfen
+                                                        <strong>iletişime geçin!</strong>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end card -->
+                                    </div>
+                                    <!-- end col -->
+                                </div>
+                                <!-- end row -->
+                            </div>
+                            <!-- end container -->
+                        </div>
+                        <!-- end auth page content -->
+                    </div>
+                </div>
+
+                <div class="col-xxl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="maindiv">
+                    <div class="card" style="margin-bottom: 0; padding-left: 2%; padding-right: 2%; padding-bottom: 1%;">
+                        <div class="card-header" style=" margin-top: 0;" id="cardheader">
+                            <div class="row">
+                                <div id="afaclogoarea"
+                                    class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
+                                    <button type="button" class="btn btn-icon btn-topbar rounded-circle mt-2"
+                                        data-toggle="fullscreen" id="image-container">
+                                        <!-- <div id="image-container">
+                                            <img src="./assets/images/about.jpg" class="active" alt="Image 1">
+                                            <img src="./assets/images/auth-offline.gif" alt="Image 2">
+                                        </div> -->
+                                        <img src="assets/images/SBYS.png" alt="" height="70" class="active" />
+                                        <img src="assets/images/afaclogo.jpg" alt="" height="70" />
+                                    </button>
+                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        setInterval(changeImage, 10000);
+
+                                        function changeImage() {
+                                            var activeImage = $("#image-container img.active");
+                                            var nextImage = activeImage.next("img");
+
+                                            if (nextImage.length === 0) {
+                                                nextImage = $("#image-container img:first-child");
+                                            }
+
+                                            activeImage.removeClass("active");
+                                            nextImage.addClass("active");
+                                        }
+                                    });
+                                </script>
+
+                                <div class="col-xxl-10 col-xxl-10 col-lg-10 col-md-10 col-sm-10 text-center"
+                                    style="padding: 0; margin-top: 1.5vh; margin-bottom: 0px">
+                                    <h1 id="baslikarea" style="
+                                        font-size: 4vh;
+                                        margin-bottom: 0px;
+                                        padding-top: 2px;
+                                    ">
+                                        {baslik}
+                                    </h1>
+                                    <h5 id="tavsiyearea">{tavsiye}</h5>
+                                    <!-- <h1 id="date_show"></h1> -->
+                                    <h6 class="mt-5" id="socket_error"
+                                        style="color: #e21b1b; float: left; display: none">
+                                        Socket Bağlantısı Sonlandı!
+                                    </h6>
+                                    <h6 class="mt-5" id="socket_again"
+                                        style="color: #4fb70b; float: right; display: none">
+                                        Bağlantı tekrar deneniyor...
+                                    </h6>
+                                </div>
+
+                                <div id="userlogodivarea"
+                                    class="col-xxl-1 col-xxl-1 col-lg-1 col-md-1 col-sm-1 mt-0 text-center">
+                                    <div id="configurezonephoto">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-8 col-cl-8 col-xxl-8 mb-0" style="
+                                        max-height: 750px;
+                                        overflow: hidden;
+                                        padding-right: 0;
+                                        ">
+                                    <!-- Striped Rows -->
+                                    <!-- table 1 -->
+                                    <table id="currencytab" class="table-responsive currencytab" style="overflow: hidden">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fs-3"></th>
+                                                <th scope="col" class="fs-3">ALIŞ</th>
+                                                <th scope="col" class="fs-3">SATIŞ</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodydeger" style="overflow: hidden">
+                                            <tr id="33472ad8-a94d-4e64-9f9c-7b74a1090b28"
+                                            data-id="33472ad8-a94d-4e64-9f9c-7b74a1090b28" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="1">
+
+                                            <td id="2">
+                                                <div id="table_div" data-id="22Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="22Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102"
+                                            data-id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="2">
+                                            <td id="3">
+                                                <div id="table_div" data-id="18Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="18Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <!-- <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span> -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="6bc167a8-df1b-480e-82ab-ea00947e6e6a"
+                                            data-id="6bc167a8-df1b-480e-82ab-ea00947e6e6a" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="3">
+                                            <td id="4">
+                                                <div id="table_div" data-id="14Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div> -->
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="4">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div> -->
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-4 col-cl-4 col-xxl-4 mb-0 "
+                                    style="max-height: 750px; overflow: hidden; padding-left: 0" id="clockarea">
+                                    <div class="">
+                                        <img src="assets/images/beyazlogoemre.png" alt="" width="100%" height="310vh">
+                                        <!-- <div id="clock">
+                                            <ul class="hours">
+                                                <li>
+                                                    <span>
+                                                        1
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        2
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        3
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        4
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        5
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        6
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        7
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        8
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        9
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        10
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        11
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span>
+                                                        12
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                            <div class="hr-wrapper">
+                                                <div class="hand hr"></div>
+                                            </div>
+                                            <div class="min-wrapper">
+                                                <div class="hand min"></div>
+                                            </div>
+                                            <div class="sec-wrapper">
+                                                <div class="hand sec"></div>
+                                            </div>
+                                        </div> -->
+                                        <!-- <script>
+                                            // get current time
+                                            var dateInfo = new Date();
+                                            var hr =
+                                                dateInfo.getHours() > 12 ? dateInfo.getHours() - 12 : dateInfo.getHours(),
+                                                min = dateInfo.getMinutes(),
+                                                sec = dateInfo.getSeconds(),
+                                                milsec = dateInfo.getMilliseconds();
+
+                                            /*
+                                            1 hr = 30°, 1 min = 6°, 1 sec = 6°, 1 millisec = 0.36°
+                                            Even though we can calculate the proper angles of the hour, minute, and second hands, we can determine more accurately where the hands are between the current and next ticks. For example, if it is 6:30, we know that the hour hand is at least 180°, yet it should be between the 6 and 7. To get that, we divide the angle of the current minute by 12 ((30 * 6°) / 12) and add the result (15) to 180. Therefore, the hour hand should be at 195°.
+                                            */
+                                            var hrAngle = hr * 30 + (min * 6) / 12,
+                                                minAngle = min * 6 + (sec * 6) / 60,
+                                                secAngle = sec * 6 + (milsec * 0.36) / 1000;
+
+                                            // set initial angles of the hand wrappers
+                                            function setAngle(wrapper, angle) {
+                                                document.querySelector("." + wrapper).style.transform =
+                                                    "rotate(" + angle + "deg)";
+                                            }
+                                            setAngle("hr-wrapper", hrAngle);
+                                            setAngle("min-wrapper", minAngle);
+                                            setAngle("sec-wrapper", secAngle);
+
+                                        </script> -->
+                                    </div>
+                                    <!-- Striped Rows -->
+                                    <!-- table2 -->
+
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-8 col-cl-8 col-xxl-8 mb-0 " style="padding-right: 0px;">
+                                    <table id="currencytab1" class="table-responsive currencytab" style="overflow: hidden">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fs-3"></th>
+                                                <th scope="col" class="fs-3">ALIŞ</th>
+                                                <th scope="col" class="fs-3">SATIŞ</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodydeger" style="overflow: hidden">
+                                            <tr id="33472ad8-a94d-4e64-9f9c-7b74a1090b28"
+                                            data-id="33472ad8-a94d-4e64-9f9c-7b74a1090b28" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="5">
+
+                                            <td id="2">
+                                                <div id="table_div" data-id="22Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="22Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102"
+                                            data-id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="6">
+                                            <td id="3">
+                                                <div id="table_div" data-id="18Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="18Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="6bc167a8-df1b-480e-82ab-ea00947e6e6a"
+                                            data-id="6bc167a8-df1b-480e-82ab-ea00947e6e6a" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="7">
+                                            <td id="4">
+                                                <div id="table_div" data-id="14Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="8">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="9">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="10">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="11">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-4 col-cl-4 col-xxl-4 mb-0" style="padding-left: 0px;">
+                                    <table id="currencytab1" class="table-responsive currencytab" style="overflow: hidden">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fs-3"></th>
+                                                <th scope="col" class="fs-3">ALIŞ</th>
+                                                <th scope="col" class="fs-3">SATIŞ</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodydeger" style="overflow: hidden">
+                                            <tr id="33472ad8-a94d-4e64-9f9c-7b74a1090b28"
+                                            data-id="33472ad8-a94d-4e64-9f9c-7b74a1090b28" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="12">
+
+                                            <td id="2">
+                                                <div id="table_div" data-id="22Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="22Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102"
+                                            data-id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="13">
+                                            <td id="3">
+                                                <div id="table_div" data-id="18Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="18Ayr">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="6bc167a8-df1b-480e-82ab-ea00947e6e6a"
+                                            data-id="6bc167a8-df1b-480e-82ab-ea00947e6e6a" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="14">
+                                            <td id="4">
+                                                <div id="table_div" data-id="14Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="15">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="16">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="17">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4"
+                                            data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr"
+                                            style="overflow: hidden" data-order="18">
+                                            <td id="5">
+                                                <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                                                    <i class="" id="icon" data-id="0" style="color: red"></i><span
+                                                        class="table_currency_title" data-id="">
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="overflow: hidden">
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_alis" id="table_currency_alisid"></span>
+                                                    <span class="" id="newiconalis"></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="table_div" class="text-end">
+                                                    <span class="table_currency_satis"
+                                                        id="table_currency_satisid"></span>
+                                                    <span class="" id="newiconsatis"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                        <span class="marquee4 text-white" id="duyurlardiv" style="
+                                background: #eb0b0b;
+                                font-size: 4.5vh;
+                                padding: 0;
+                                margin-bottom: 0;
+                                
+                                overflow: hidden;
+                                color: white;
+                                ">
+                            <span></span>
+                        </span>
+
+                        <div class="announcementsmarquee text-white" id="announcements" style="
+                            background: #273255;
+                            font-size: 4.5vh;
+                            padding: 0;
+                            margin-bottom: 0;
+                            margin-top: 0;
+                            overflow: hidden;
+                            color: white;
+                            "></div>
+                        <div style="display: flex;  background: #273255; color: white;">
+                            <div class="col-4"><span style="margin-left: 10%; font-size: larger;
+                                    font-weight: bold;">www.sbys.com</span></div>
+                            <div class="col-4 text-center" style="font-size: larger;
+                                font-weight: bold;">0850 255 13 12</div>
+                            <div class="col-4 text-end">
+                                <img style="margin-right: 10%;" src="assets/images/afaclogo.jpg" height="40" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+        // function tarihSaatGuncelle() {
+        //     var suan = new Date();
+        //     var gun = suan.getDate();
+        //     var ay = suan.getMonth() + 1;
+        //     var yil = suan.getFullYear();
+        //     if (gun < 10) {
+        //         gun = "0" + gun;
+        //     }
+        //     if (ay < 10) {
+        //         ay = "0" + ay;
+        //     }
+
+        //     var tarih = gun + "/" + ay + "/" + yil;
+
+        //     var saat = suan.toLocaleTimeString([], {
+        //         hour12: false,
+        //         hour: "2-digit",
+        //         minute: "2-digit",
+        //         second: "2-digit",
+        //     });
+        //     // tarih + " - " +
+        //     document.getElementById("date_show").innerHTML = saat;
+        // }
+        // // İlk çalıştırma
+        // tarihSaatGuncelle();
+        // setInterval(tarihSaatGuncelle, 1000);
+
+        const mOptions = {
+            duration: 10000,
+            gap: 550,
+            delayBeforeStart: 0,
+            direction: "left",
+        };
+
+        const options = {
+            duration: 11000,
+            gap: 50,
+            delayBeforeStart: 0,
+            direction: "left",
+            duplicated: true,
+        };
+
+        var rules;
+        var notAuth = false;
+        var slipyCurrencies;
+        var initMarq = false;
+        var beforeversion = "05/01";
+        var result1;
+
+        let isRequestPending = false;
+        let lastRequestTime = null;
+        let blockedUntilTime = null;
+        let ceyrekval = "";
+        async function renderRules(data) {
+            if (notAuth) {
+                return;
+            } else if (rules == null) {
+                rules = await JSON.parse(result1);
+                //rules = await getallrules();
+
+                if (rules.statusCode == 101) {
+                    //window.location.reload();
+                    $("#authanticationdiv").css("display", "");
+                    $("#notfounddiv").css("display", "none");
+                    $("#maindiv").css("display", "none");
+                    notAuth = true;
+                    return;
+                } else if (rules.statusCode == -98) {
+                    $("#licanceend").css("display", "");
+                    $("#maindiv").css("display", "none");
+                    notAuth = true;
+                    return;
+                }
+                if (rules.statusCode != -99) {
+                    if (!initMarq) {
+                        prepareMarquee(rules, data);
+                        initMarq = true;
+                        if (beforeversion != rules.version) {
+                            window.location.reload();
+                        }
+                        setInterval(async () => {
+                            const currentTime = Date.now();
+                            if (
+                                !lastRequestTime ||
+                                currentTime - lastRequestTime >= 60000
+                            ) {
+                                rules = JSON.parse(result1);
+                                //rules = await getallrules();
+                                if (rules.statusCode == 101) {
+                                    $("#authanticationdiv").css("display", "");
+                                    $("#notfounddiv").css("display", "none");
+                                    $("#maindiv").css("display", "none");
+                                }
+                                //getallrules();
+                            } else if (!blockedUntilTime) {
+                                blockedUntilTime = currentTime + 60000;
+                            }
+                        }, 60000);
+                    }
+                } else {
+                    $("#notfounddiv").css("display", "");
+                    $("#maindiv").css("display", "none");
+                    notAuth = true;
+                    return;
+                }
+            }
+            updateCurrencyMarquee(data, rules);
+            if (rules.data != undefined) {
+                rules.data.forEach((rule) => {
+                    //rule aldım
+
+                    var currencyfk = rule.map.currencyfk;
+                    var currencyflag = rule.map.currencyflag;
+                    var currencypk = rule.map.currencypk;
+                    var currencytitle = rule.map.currencytitle;
+
+                    var currencyRuleCurrencyStep = rule.map.ruleStep;
+                    var currencyRuleCode = rule.map.ruleCode;
+
+                    var max = rule.map.max;
+                    var min = rule.map.min;
+                    var rate = rule.map.rate;
+                    var rulefk = rule.map.rulefk;
+                    var rulepk = rule.map.rulepk;
+                    var status = rule.map.status;
+                    var step = rule.map.step;
+                    var ruleOrder = rule.map.order;
+                    var type = rule.map.type;
+                    var value = rule.map.value;
+                    var carpanintypefk = rule.map.carpanintypefk;
+                    var carpaninvalue = rule.map.carpaninvalue;
+                    var carpaninbeforevalue = rule.map.carpaninbeforevalue;
+                    var carpaninoran = rule.map.carpaninoran;
+                    var carpanincurrencyfk = rule.map.carpanincurrencyfk;
+                    var rulePercentage = rule.map.rulePercentage;
+
+                    //before values
+
+                    if (currencytitle === "EUR") {
+                        getRulesEur(rule, data);
+                    } else if (currencytitle === "USD") {
+                        getRulesUSD(rule, data);
+                    }
+
+                    var beforevalue = rule.map.beforevalue;
+
+                    if (type == "1") {
+                        //OTO
+                        //Forex
+                        for (var b = 0; b < data.length; b++) {
+                            var wsData = data[b];
+                            if (wsData.currency == currencytitle) {
+                                var sellingValue = parseFloat(wsData.sell);
+                                sellingValue = getSteppedValue(sellingValue, step);
+                                if (
+                                    rulePercentage != undefined &&
+                                    rulePercentage != null &&
+                                    rulePercentage != 0
+                                ) {
+                                    let yuzde =
+                                        sellingValue + sellingValue * (rulePercentage / 100);
+
+                                    var trElementsWithDataOrder = $("tr[data-order]");
+                                    var element = $('tr[data-order="' + ruleOrder + '"]');
+                                    if (element.length > 0) {
+                                        element.find(".table_currency_title").html(currencytitle);
+                                        element
+                                            .find(".table_currency_satis")
+                                            .html(
+                                                new Intl.NumberFormat("de-DE").format(yuzde) + " "
+                                            );
+                                    }
+                                    prepareIcon(currencytitle, sellingValue, ruleOrder);
+                                } else {
+                                    var trElementsWithDataOrder = $("tr[data-order]");
+                                    var element = $('tr[data-order="' + ruleOrder + '"]');
+                                    if (element.length > 0) {
+                                        element.find(".table_currency_title").html(currencytitle);
+                                        element
+                                            .find(".table_currency_satis")
+                                            .html(
+                                                new Intl.NumberFormat("de-DE").format(sellingValue) +
+                                                " "
+                                            );
+                                    }
+                                    prepareIcon(currencytitle, sellingValue, ruleOrder);
+                                }
+                                //change22Back(currencytitle, sellingRuleValue, ruleOrder);
+                                break;
+                            }
+                        }
+                    } else if (type == "2") {
+                        //SABİT
+                        // $("#" + currencytitle).html(
+                        //   new Intl.NumberFormat("de-DE").format(value)
+                        // );
+                        var trElementsWithDataOrder = $("tr[data-order]");
+                        var element = $('tr[data-order="' + ruleOrder + '"]');
+                        if (element.length > 0) {
+                            element.find(".table_currency_title").html(currencytitle);
+                            element
+                                .find(".table_currency_satis")
+                                .html(new Intl.NumberFormat("de-DE").format(value) + " ");
+                        }
+
+                        logPrepareIcon(currencytitle, value, beforevalue, ruleOrder);
+                    } else {
+                        //KATSAYI
+                        if (carpanintypefk == "1") {
+                            for (var b = 0; b < data.length; b++) {
+                                var wsData = data[b];
+                                if (wsData.currency == currencyRuleCode) {
+                                    var sellingRuleValue = parseFloat(wsData.sell);
+                                    sellingRuleValue = getSteppedValue(
+                                        sellingRuleValue,
+                                        currencyRuleCurrencyStep
+                                    );
+                                    sellingRuleValue = sellingRuleValue * rate;
+                                    sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+
+                                    if (currencytitle == "CEYREK") {
+                                        ceyrekval = sellingRuleValue;
+                                    }
+                                    //22AYAR
+                                    if (currencytitle == "22Ayr") {
+                                        //console.log("22burada", sellingRuleValue)
+                                        change22Back(currencytitle, sellingRuleValue, ruleOrder);
+                                    }
+                                    if (currencytitle == "HAS") {
+                                        change22Back(currencytitle, sellingRuleValue, ruleOrder);
+                                    }
+                                    //
+                                    if (currencytitle == "YARIM") {
+                                        var ceyrek = ceyrekval;
+
+                                        var trElementsWithDataOrder = $("tr[data-order]");
+                                        var element = $('tr[data-order="' + ruleOrder + '"]');
+                                        if (element.length > 0) {
+                                            element
+                                                .find(".table_currency_title")
+                                                .html(currencytitle);
+                                            element
+                                                .find(".table_currency_satis")
+                                                .html(
+                                                    new Intl.NumberFormat("de-DE").format(ceyrek * 2) +
+                                                    " "
+                                                );
+                                        }
+
+                                        prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                                    } else if (currencytitle == "TAM") {
+                                        var ceyrek = ceyrekval;
+
+                                        var trElementsWithDataOrder = $("tr[data-order]");
+                                        var element = $('tr[data-order="' + ruleOrder + '"]');
+                                        if (element.length > 0) {
+                                            element
+                                                .find(".table_currency_title")
+                                                .html(currencytitle);
+                                            element
+                                                .find(".table_currency_satis")
+                                                .html(
+                                                    new Intl.NumberFormat("de-DE").format(ceyrek * 4) +
+                                                    " "
+                                                );
+                                        }
+
+                                        prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                                    } else if (currencytitle == "GREMSE") {
+                                        var ceyrek = ceyrekval;
+
+                                        var trElementsWithDataOrder = $("tr[data-order]");
+                                        var element = $('tr[data-order="' + ruleOrder + '"]');
+                                        if (element.length > 0) {
+                                            element
+                                                .find(".table_currency_title")
+                                                .html(currencytitle);
+                                            element
+                                                .find(".table_currency_satis")
+                                                .html(
+                                                    new Intl.NumberFormat("de-DE").format(ceyrek * 10) +
+                                                    " "
+                                                );
+                                        }
+                                        prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                                    } else {
+                                        var trElementsWithDataOrder = $("tr[data-order]");
+                                        var element = $('tr[data-order="' + ruleOrder + '"]');
+                                        if (element.length > 0) {
+                                            element
+                                                .find(".table_currency_title")
+                                                .html(currencytitle);
+                                            element
+                                                .find(".table_currency_satis")
+                                                .html(
+                                                    new Intl.NumberFormat("de-DE").format(
+                                                        sellingRuleValue
+                                                    ) + " "
+                                                );
+                                        }
+                                        prepareIcon(currencytitle, sellingRuleValue, ruleOrder);
+                                        break;
+                                    }
+                                }
+                            }
+                        } else if (carpanintypefk == "2") {
+                            //burada çarpanın eski değeri lazım
+                            var sellingRuleValue = carpaninvalue;
+                            sellingRuleValue = getSteppedValue(
+                                sellingRuleValue,
+                                currencyRuleCurrencyStep
+                            );
+                            sellingRuleValue = sellingRuleValue * rate;
+                            sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+                            $("#" + currencytitle).html(
+                                new Intl.NumberFormat("de-DE").format(sellingRuleValue)
+                            );
+                            //prepareIcon(currencytitle, sellingRuleValue);
+                            if (carpaninbeforevalue != undefined) {
+                                sabitcarpanlıIcon(
+                                    currencytitle,
+                                    carpaninvalue,
+                                    carpaninbeforevalue,
+                                    sellingRuleValue
+                                );
+                            }
+                        } else {
+                            if (rulefk != carpanincurrencyfk) {
+                                //console.log("burada")
+                                var carpansimdikivalue = carpaninvalue * carpaninoran;
+                                var sellingRuleValue = carpaninvalue;
+                                sellingRuleValue = getSteppedValue(
+                                    sellingRuleValue,
+                                    currencyRuleCurrencyStep
+                                );
+                                sellingRuleValue = sellingRuleValue * rate;
+                                sellingRuleValue = getSteppedValue(sellingRuleValue, step);
+                                //console.log(currencytitle, carpaninvalue * rate);
+
+                                $("#" + currencytitle).html(
+                                    new Intl.NumberFormat("de-DE").format(carpaninvalue * rate)
+                                );
+                                sabitcarpanlıIcon(
+                                    currencytitle,
+                                    carpaninvalue,
+                                    carpaninbeforevalue,
+                                    sellingRuleValue
+                                );
+                            } else {
+                                //console.log("burada", carpaninvalue)
+                                $("#" + currencytitle).html(
+                                    new Intl.NumberFormat("de-DE").format(carpaninvalue)
+                                );
+                                katsayıCarpanlıIcon(
+                                    currencytitle,
+                                    carpaninvalue,
+                                    carpaninbeforevalue
+                                );
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function getDigitsOfNumber(number, digitCount) {
+            if (isNaN(number)) {
+                return "Geçersiz sayı";
+            }
+
+            const numString = number.toString().replace(".", ""); // Sayıyı stringe dönüştürüp noktayı kaldırır
+            const decimalIndex = numString.indexOf("."); // Ondalık ayırıcıyı bul
+
+            if (decimalIndex !== -1) {
+                return numString.substring(0, decimalIndex).substring(0, digitCount); // Noktadan önceki kısmı ve istenen basamak sayısı kadarını al
+            } else {
+                return numString.substring(0, digitCount); // Ondalık kısmı olmayan sayı ise doğrudan istenen basamak sayısı kadarını al
+            }
+        }
+
+        function change22Back(currencytitle, sellingValue, ruleOrder) {
+            //tr yi al
+            var tr = $("#33472ad8-a94d-4e64-9f9c-7b74a1090b28");
+            var trElementsWithDataOrder = $("tr[data-order]");
+            var element = $('tr[data-order="' + ruleOrder + '"]');
+
+            //var currencyIcon = $("#" + currencyTitle + "-icon");
+            var currencyIcon = element.find("#icon");
+            //console.log(currencytitle)
+            //var currencyIcon = $("#" + currencytitle + "-icon");
+            var oldVal = parseFloat(currencyIcon.attr("data-id"));
+            var change = oldVal != sellingValue ? "bg-warning" : "";
+
+            setTimeout(function () {
+                element.removeClass();
+                element.addClass(change);
+            }, 10000);
+            setTimeout(function () {
+                element.removeClass();
+                element.addClass(change);
+            }, 10000);
+            setTimeout(function () {
+                element.removeClass();
+                element.addClass(change);
+            }, 10000);
+            setTimeout(function () {
+                element.removeClass();
+                element.addClass(change);
+            }, 10000);
+            //console.log(sellingValue);
+            currencyIcon.attr("data-id", sellingValue + "");
+            //clearInterval(intervalId);
+        }
+        function updateCurrencyMarquee(data) {
+            for (var counter = 0; counter < data.length; counter++) {
+                var wsData = data[counter];
+                if (wsData.category == "DOVIZ") {
+                    try {
+                        if (wsData.currency == "EUR" || wsData.currency == "USD") {
+                            $("#" + wsData.currency.toLowerCase() + "sell").html(
+                                wsData.sell
+                            );
+                            $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+                        }
+                        $("#" + wsData.currency + "sell").html(pad(wsData.sell, 7));
+                        $("#" + wsData.currency + "buy").html(pad(wsData.buy, 7));
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            }
+        }
+
+        function getRulesEur(rule, data) {
+            const {
+                currencytitle,
+                ruleStep: currencyRuleCurrencyStep,
+                ruleCode: currencyRuleCode,
+                rate,
+                rulefk,
+                step,
+                order: ruleOrder,
+                type,
+                value,
+                carpanintypefk,
+                carpaninvalue,
+                carpaninbeforevalue,
+                carpaninoran,
+                carpanincurrencyfk,
+                rulePercentage,
+                rulebuymore,
+                rulesellmore,
+                rulebuyRuleFK,
+                ruleBuyRate,
+                ruleBuyTypeFK,
+                beforevalue,
+
+                aliscarpanincurrencyfk,
+                aliscarpanintypefk,
+                aliscarpanintype,
+                aliscarpaninvalue,
+                aliscarpaninbeforevalue,
+            } = rule.map;
+
+
+            for (var counter = 0; counter < data.length; counter++) {
+                var wsData = data[counter];
+                if (wsData.category == "DOVIZ") {
+                    try {
+                        if (wsData.currency == "EUR") {
+                            var satis = wsData.sell;
+                            satis = parseFloat(satis);
+                            var mod = satis % step;
+                            var yuvarla = step - mod;
+                            satis = satis + yuvarla;
+                            satis = Math.round(satis * 100) / 100;
+                            satis = satis.toFixed(2);
+
+                            $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
+                            $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            }
+        }
+        function getRulesUSD(rule, data) {
+            var currencyfk = rule.map.currencyfk;
+            var currencyflag = rule.map.currencyflag;
+            var currencypk = rule.map.currencypk;
+            var currencytitle = rule.map.currencytitle;
+
+            var currencyRuleCurrencyStep = rule.map.ruleStep;
+            var currencyRuleCode = rule.map.ruleCode;
+
+            var max = rule.map.max;
+            var min = rule.map.min;
+            var rate = rule.map.rate;
+            var rulefk = rule.map.rulefk;
+            var rulepk = rule.map.rulepk;
+            var status = rule.map.status;
+            var step = rule.map.step;
+            var ruleOrder = rule.map.order;
+            var type = rule.map.type;
+            var value = rule.map.value;
+            var carpanintypefk = rule.map.carpanintypefk;
+            var carpaninvalue = rule.map.carpaninvalue;
+            var carpaninbeforevalue = rule.map.carpaninbeforevalue;
+            var carpaninoran = rule.map.carpaninoran;
+            var carpanincurrencyfk = rule.map.carpanincurrencyfk;
+
+            for (var counter = 0; counter < data.length; counter++) {
+                var wsData = data[counter];
+                if (wsData.category == "DOVIZ") {
+                    try {
+                        if (wsData.currency == "USD") {
+                            var satis = wsData.sell;
+                            satis = parseFloat(satis);
+                            var mod = satis % step;
+                            var yuvarla = step - mod;
+                            satis = satis + yuvarla;
+                            satis = Math.round(satis * 100) / 100;
+                            satis = satis.toFixed(2);
+
+                            $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
+                            $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
+            }
+        }
+
+        function prepareMarquee(rules, data) {
+            var tempSlipyCur = "";
+            for (var counter = 0; counter < data.length; counter++) {
+                var wsData = data[counter];
+                if (wsData.currency == "EUR" || wsData.currency == "USD") {
+                    $("#" + wsData.currency.toLowerCase() + "sell").html(wsData.sell);
+                    $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+                }
+                for (
+                    var secondCounter = 0;
+                    secondCounter < rules.allSymbols.length;
+                    secondCounter++
+                ) {
+                    var currency = rules.allSymbols[secondCounter];
+                    if (wsData.currency == currency.currencyCode) {
+                        var currencyIcon = currency.currencyIcon;
+                        var currencyCode = currency.currencyCode;
+                        var currencyvalue = pad(wsData.buy, 7);
+                        var currencysvalue = pad(wsData.sell, 7);
+                        tempSlipyCur += `<img src="${currencyIcon}" alt="" class="avatar-sm currency_image" id="currency_image" data-id="${currencyCode}">
+                              <span class="currency_title" data-id="${currencyCode}">${currencyCode}</span>
+                              <span class="currency_alis" data-id="${currencyCode}"> Alış :</span> <span style="width: 60px;" id="${currencyCode}buy">${currencyvalue}</span>
+                              <span class="currency_satis" data-id="${currencyCode}">- Satış :</span><span style="width: 60px;" id="${currencyCode}sell">${currencysvalue}</span>&nbsp;`;
+                    }
+                }
+            }
+            //document.getElementById('testacc').innerHTML = fixedCurrHtml
+            var currDom = $("#announcements");
+            if (currDom.innerHTML != tempSlipyCur) {
+                currDom.append(tempSlipyCur);
+                currDom.marquee(options);
+                // $('#testacc').append(html)
+            }
+
+            var announcementsDom = $("#duyurlardiv");
+            if (announcementsDom.innerHTML != rules.announcement) {
+                announcementsDom.append(rules.announcement);
+                announcementsDom.marquee(mOptions);
+                // $('#testacc').append(html)
+            }
+        }
+
+        function pad(num, size) {
+            num = num.toString();
+            while (num.length < size) num += "0";
+            return num;
+        }
+
+        function prepareIcon(currencyTitle, sellingValue, ruleOrder) {
+            var trElementsWithDataOrder = $("tr[data-order]");
+            var element = $('tr[data-order="' + ruleOrder + '"]');
+
+            //var currencyIcon = $("#" + currencyTitle + "-icon");
+            var currencyIcon = element.find("#newiconsatis");
+            var test = element.find('#table_currency_satisid');
+            var oldVal = parseFloat(currencyIcon.attr("data-id"));
+            var change =
+                oldVal > sellingValue
+                    ? "▼"
+                    : "▲";
+            var changeClass = oldVal > sellingValue
+                ? "#b41414"
+                : "#147814";
+            //console.log(change)
+            $(currencyIcon).html(change)
+            currencyIcon.innerHTML = change;
+            // currencyIcon.removeClass();
+            // currencyIcon.addClass(changeClass);
+            currencyIcon.css('color', changeClass)
+
+            // test.removeClass();
+            // test.addClass(changeClass);
+            test.css('color', changeClass)
+
+
+            currencyIcon.attr("data-id", sellingValue + "");
+        }
+        function prepareIconAlis(currencyTitle, sellingValue, ruleOrder) {
+            var trElementsWithDataOrder = $("tr[data-order]");
+            var element = $('tr[data-order="' + ruleOrder + '"]');
+
+            //var currencyIcon = $("#" + currencyTitle + "-icon");
+            var currencyIcon = element.find("#newiconalis");
+            var test = element.find('#table_currency_alisid');
+            var oldVal = parseFloat(currencyIcon.attr("data-id"));
+            var change =
+                oldVal > sellingValue
+                    ? "▼"
+                    : "▲";
+            var changeClass = oldVal > sellingValue
+                ? "#b41414"
+                : "#147814";
+            //console.log(change)
+            $(currencyIcon).html(change)
+            currencyIcon.innerHTML = change;
+            // currencyIcon.removeClass();
+            // currencyIcon.addClass(changeClass);
+            currencyIcon.css('color', changeClass)
+
+            // test.removeClass();
+            // test.addClass(changeClass);
+            test.css('color', changeClass)
+
+
+            currencyIcon.attr("data-id", sellingValue + "");
+        }
+
+        function katsayıCarpanlıIcon(
+            currencytitle,
+            carpaninvalue,
+            carpaninbeforevalue
+        ) {
+            var currencyIcon = $("#" + currencytitle + "-icon");
+            var oldVal = parseFloat(carpaninbeforevalue);
+            var change =
+                carpaninbeforevalue > carpaninvalue
+                    ? "mdi mdi-arrow-down-thin text-danger"
+                    : "mdi mdi-arrow-up-thin text-success";
+            currencyIcon.removeClass();
+            currencyIcon.addClass(change);
+            currencyIcon.attr("data-id", carpaninvalue + "");
+        }
+
+        function sabitcarpanlıIcon(
+            currencytitle,
+            carpaninvalue,
+            carpaninbeforevalue,
+            sellingRuleValue
+        ) {
+            var currencyIcon = $("#" + currencytitle + "-icon");
+            var oldVal = parseFloat(carpaninbeforevalue);
+            var change =
+                carpaninbeforevalue > carpaninvalue
+                    ? "mdi mdi-arrow-down-thin text-danger"
+                    : "mdi mdi-arrow-up-thin text-success";
+            currencyIcon.removeClass();
+            currencyIcon.addClass(change);
+            currencyIcon.attr("data-id", sellingRuleValue + "");
+        }
+
+        //buradayım
+        //logdan gelen değere göre value
+        // function logPrepareIcon(currencytitle, value, beforevalue) {
+        //   var currencyIcon = $("#" + currencytitle + "-icon");
+        //   var oldVal = parseFloat(currencyIcon.attr("data-id"));
+        //   var change =
+        //     beforevalue > value
+        //       ? "mdi mdi-arrow-down-thin text-danger"
+        //       : "mdi mdi-arrow-up-thin text-success";
+        //   currencyIcon.removeClass();
+        //   currencyIcon.addClass(change);
+        //   currencyIcon.attr("data-id", value + "");
+        // }
+        function logPrepareIcon(currencytitle, value, beforevalue, ruleOrder) {
+            var trElementsWithDataOrder = $("tr[data-order]");
+            var element = $('tr[data-order="' + ruleOrder + '"]');
+
+            var currencyIcon = element.find("#icon");
+            var oldVal = parseFloat(currencyIcon.attr("data-id"));
+            var change =
+                beforevalue > value
+                    ? "mdi mdi-arrow-down-thin text-danger"
+                    : "mdi mdi-arrow-up-thin text-success";
+            currencyIcon.removeClass();
+            currencyIcon.addClass(change);
+            currencyIcon.attr("data-id", value + "");
+
+            //element.find('.mdi').addClass(change);
+        }
+        function sleep(ms) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        $(document).ready(function () {
+            // var data=[]
+            //renderRules(data);
+
+            initWebSocketRules();
+            let wstype = $("#forextypeare").attr("data-id");
+            console.log(wstype);
+            if (wstype == "forex") {
+                connectWebSocket();
+            } else {
+                initWebSocket2();
+            }
+            //startRefreshing();
+        });
+
+        //boşta
+        // function startRefreshing() {
+        //   function getRulesAndSetTimeout() {
+        //     initWebSocketRules();
+        //     setTimeout(getRulesAndSetTimeout, 60000);
+        //   }
+
+        //   // İlk çağrıyı yap ve 30 saniye sonra devam et
+        //   getRulesAndSetTimeout();
+        // }
+        //ajax request iptal
+        async function getallrules() {
+            if (isRequestPending) {
+                // İstek hala devam ediyorsa yeni bir istek oluşturmayın
+                return { error: true, message: "İstek hala devam ediyor" };
+            }
+
+            if (blockedUntilTime && Date.now() < blockedUntilTime) {
+                // Sorgular engellenmiş durumda, yeni bir istek oluşturmayın
+                return { error: true, message: "Sorgular engelleniyor" };
+            }
+
+            let url = "/AjaxInformation?msg=getallrules&code={code}";
+
+            try {
+                const controller = new AbortController();
+                const signal = controller.signal;
+
+                const timeoutPromise = new Promise((resolve, reject) => {
+                    timeoutId = setTimeout(() => {
+                        controller.abort(); // Timeout süresi aşıldı, istek iptal edildi
+                        reject(new Error("İstek zaman aşımına uğradı"));
+                    }, 60000); // Timeout süresini burada ayarlayın (milisaniye cinsinden)
+                });
+
+                isRequestPending = true; // İstek başladı, sorgu atma durumunu etkinleştir
+                lastRequestTime = Date.now(); // Son istek zamanını kaydet
+
+                let res = await Promise.race([
+                    fetch(url, { signal }),
+                    timeoutPromise,
+                ]);
+                clearTimeout(timeoutId); // Timeout süresi aşılmadı, timeout işlemi iptal edildi
+
+                isRequestPending = false; // İstek tamamlandı, sorgu atma durumunu devre dışı bırak
+
+                return await res.json();
+            } catch (error) {
+                console.log(error);
+                isRequestPending = false; // İstek tamamlanmadı, sorgu atma durumunu devre dışı bırak
+                // Hata durumunda isteğin zaman aşımına uğradığını belirtmek için ek bir alan eklenebilir
+                return { error: true, message: "İstek zaman aşımına uğradı" };
+            }
+        }
+
+        function getSteppedValue(val, step) {
+            if (step != 0) {
+                val = parseFloat(val);
+                var mod = val % step;
+                var yuvarla = step - mod;
+                val = val + yuvarla;
+
+                return Math.round(val * 100) / 100;
+            } else {
+                return val;
+            }
+        }
+
+        function parsePrices(rawData) {
+            var fieldData = [
+                {
+                    index: 0,
+                    key: "currency",
+                },
+                {
+                    index: 1,
+                    key: "category",
+                },
+                {
+                    index: 3,
+                    key: "buy",
+                },
+                {
+                    index: 4,
+                    key: "sell",
+                },
+            ];
+            var rows = [];
+            rawData.split("\r\n").map((row) => {
+                var fields = row.split(";");
+                //console.log(fields)
+                var parsedData = {};
+                fieldData.map(function (d) {
+                    parsedData[d.key] = fields[d.index];
+                });
+                rows.push(parsedData);
+            });
+            return rows;
+        }
+
+        //function select socket
+
+        function connectWebSocket() {
+            //sleep(1000);
+            if ("WebSocket" in window) {
+                var ws = new WebSocket(socketUrl);
+
+                ws.onerror = function (error) {
+                    console.log("error ws", error);
+                    if (error) {
+                        $("#socket_again").css("display", "");
+                        setInterval(function () {
+                            ws.onopen();
+                        }, 60000);
+                    } else {
+                        $("#socket_again").css("display", "none");
+                    }
+                };
+
+                ws.onopen = function () {
+                    console.log("connected forex socket");
+                    $("#socket_error").css("display", "none");
+                    $("#socket_again").css("display", "none");
+                };
+
+                ws.onmessage = function (evt) {
+                    $("#socket_error").css("display", "none");
+                    $("#socket_again").css("display", "none");
+                    var received_msg = evt.data;
+                    var data = parsePrices(received_msg);
+                    renderRules(data); //proccess the message
+                    //console.log("BURADAAAA");
+                };
+
+                ws.onclose = function () {
+                    $("#socket_error").css("display", "");
+                    console.log("closed");
+                };
+            } else {
+                console.log("WebSocket NOT supported by your Browser!");
+            }
+        }
+
+        async function handleMessage(message) {
+            //console.log("Gelen mesaj:", message);
+
+            return message;
+        }
+
+        let socket;
+        var pingInterval = 60000;
+        var waitTimeout;
+        var lastSpeedUpdate = 0;
+        function initWebSocketRules() {
+            socket = new WebSocket("ws://192.168.0.43:9091");
+            const cookieValue = document.cookie
+                .split("; ")
+                .find((row) => row.startsWith("ark="))
+                ?.split("=")[1];
+            socket.addEventListener("open", (event) => {
+                console.log("WebSocket bağlantısı başarılı.");
+                // Veriyi gönderme
+                const data = {
+                    code: "{code}",
+                    cookie: cookieValue,
+                };
+                socket.send(JSON.stringify(data));
+                startWait();
+            });
+
+            socket.addEventListener("message", async (event) => {
+                // Gelen mesaj üzerinde işlem yapmak için handleMessage fonksiyonunu çağırabiliriz
+                try {
+                    result1 = await handleMessage(event.data);
+                    //await handleMessage(event.data);
+                } catch (error) {
+                    console.error("Mesaj işlenirken hata oluştu:", error);
+                }
+                clearTimeout(waitTimeout);
+                startWait();
+            });
+
+            socket.addEventListener("close", (event) => {
+                console.log(
+                    "WebSocket bağlantısı kapandı. Tekrar bağlanmaya çalışılıyor..."
+                );
+                // alert("socket bağlantısı koptu! ")
+                //setTimeout(initSocket, 5000); // 5 saniye sonra tekrar bağlan
+            });
+        }
+
+        function startWait() {
+            waitTimeout = setTimeout(() => {
+                let currentTime = new Date().getTime();
+                if (currentTime - lastSpeedUpdate >= pingInterval) {
+                    const cookieValue = document.cookie
+                        .split(";")
+                        .find((row) => row.startsWith("ark="))
+                        ?.split("=")[1];
+                    const data = {
+                        code: "{code}",
+                        cookie: cookieValue,
+                    };
+                    socket.send(JSON.stringify(data));
+                }
+            }, pingInterval);
+        }
+
+        /*var socketUrl2 =
+          "wss://socket.haremaltin.com/socket.io?EIO=4&transport=websocket";
+        let socket2;*/
+        function initWebSocket2() {
+            let socket2 = new WebSocket(
+                "wss://socket.haremaltin.com/socket.io/?EIO=4&transport=websocket"
+            );
+
+            socket2.addEventListener("open", (event) => {
+                console.log("WebSocket bağlantısı başarılı.");
+                sendMessage();
+                setInterval(sendMessage, 40000);
+            });
+
+            socket2.addEventListener("message", async (event) => {
+                let yeniStr = event.data.slice(2);
+                try {
+                    if (isJSON(yeniStr)) {
+                        yeniStr = JSON.parse(yeniStr);
+                        if (yeniStr && yeniStr[1] && yeniStr[1].data) {
+                            let veri = yeniStr[1].data;
+
+                            if (veri) {
+                                renderRules2(veri);
+                            }
+                        } else {
+                            //console.log("Beklenmeyen veri yapısı");
+                            //sendMessage();
+                        }
+                    } else {
+                        //console.log("Alınan veri JSON formatında değil:", yeniStr);
+                        //sendMessage();
+
+                    }
+                } catch (error) {
+                    //console.error("JSON parse hatası:", error);
+                    sendMessage();
+                }
+            });
+
+            socket2.addEventListener("close", (event) => {
+                console.log(
+                    "WebSocket bağlantısı kapandı. Tekrar bağlanmaya çalışılıyor..."
+                );
+                //setTimeout(initWebSocket2, 5000); // 5 saniye sonra tekrar bağlan
+            });
+
+            function sendMessage() {
+                socket2.send("40");
+                console.log("40 mesajı gönderildi.");
+            }
+
+            function isJSON(str) {
+                try {
+                    JSON.parse(str);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+        }
+
+        /* 
+            // socket2.addEventListener("message", async (event) => {
+            //     let yeniStr = event.data.slice(2);
+            //     try {
+            //         yeniStr = JSON.parse(yeniStr);
+            //         if (yeniStr && yeniStr[1] && yeniStr[1].data) {
+            //             let veri = yeniStr[1].data;
+
+            //             if (veri) {
+            //                 renderRules2(veri);
+            //             }
+            //         } else {
+            //             console.log("Beklenmeyen veri yapısı");
+            //         }
+            //     } catch (error) {
+            //         console.error("JSON parse hatası:", error);
+            //     }
+            // });*/
+
+    </script>
+    <!-- JAVASCRIPT -->
+    <!-- <script src="/assets/js/prices.js"></script> -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="./Harem.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>SBYS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          content="Premium Multipurpose Admin & Dashboard Template"
+          name="description"
+        />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/SBYS.png" />
+        <link
+          href="assets/css/bootstrap.min.css"
+          rel="stylesheet"
+          type="text/css"
+        />
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+        <script
+          src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js"
+          type="text/javascript"
+        ></script>
+    
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"
+          rel="stylesheet"
+        />
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css"
+        />
+    
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+        <script src="https://momentjs.com/downloads/moment.min.js"></script>
+        <script>
+          var socketUrl = "ws://78.187.173.201:11280/echo";
+        </script>
+    
+        <style>
+          .avatar-sm {
+            height: 3rem;
+            width: 3rem;
+          }
+    
+          .job-navbar .dropdown-menu .dropdown-item .avatar-sm {
+            height: 2.5rem;
+            width: 2.5rem;
+          }
+    
+          .fullscreen-enable [data-toggle="fullscreen"] .bx-fullscreen::before {
+            content: "\eacb";
+          }
+    
+          .stretch-card > .card {
+            width: 100%;
+            min-width: 100%;
+          }
+    
+          /* .owl-carousel .item {
+                margin: 3px
+            } */
+    
+          .owl-carousel .item img {
+            /* display: block; */
+            width: 100%;
+            height: 100%;
+          }
+    
+          /* .owl-carousel .item {
+                margin: 3px
+            } */
+    
+          /* .owl-carousel {
+                margin-bottom: 5px;
+    
+            }  */
+    
+          table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+          }
+    
+          td,
+          th {
+            border: 1px solid #e9e3e3;
+            text-align: left;
+            overflow: hidden;
+            padding: 5px;
+          }
+    
+          tr {
+            height: 80px;
+          }
+    
+          tr:nth-child(even) {
+            background-color: #e6e3e3;
+            height: 80px;
+          }
+    
+          .marquee3 {
+            width: auto;
+            overflow: hidden;
+          }
+    
+          .marquee3 span.line {
+            /* padding-top: 6px; */
+            color: rgb(22, 20, 20);
+            /* font-size: xx-large; */
+            text-decoration: white;
+          }
+    
+          #table_div {
+            font-size: 5.3vh;
+            margin-left: 10px;
+            font-weight: bold;
+          }
+    
+          /* 
+            td {
+                margin: 0;
+                padding: 0;
+            } */
+    
+          #images {
+            height: 100%;
+          }
+    
+          /* body {
+                overflow: hidden;
+            } */
+    
+          ::-webkit-scrollbar {
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+          }
+    
+          #image-container {
+            position: relative;
+            /* width: 200px;
+      height: 200px; */
+            /* overflow: hidden; */
+          }
+    
+          #image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: rotateY(0deg);
+            transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+          }
+    
+          #image-container img.active {
+            opacity: 1;
+            transform: rotateX(360deg);
+          }
+          @media screen and (max-width: 750px) {
+                #currencytab span {
+                    font-size: small;
+                }
+    
+                #currencytab thead tr {
+                    height: 45px;
+                }
+    
+                #currencytab thead tr th {
+                    font-size: medium;
+                }
+    
+                #currencytab div {
+                    margin-left: 0px;
+                }
+    
+                #currencytab td {
+                    border: none;
+                }
+    
+                #currencytab tr {
+                    height: 50px;
+                }
+    
+                #currencytab1 span {
+                    font-size: small;
+                }
+    
+    
+                #currencytab1 td {
+                    border: none;
+                }
+    
+                #currencytab1 td {
+                    border: none;
+                }
+    
+                #currencytab1 .tb2td2 {
+                    margin-left: 0px;
+                    padding-left: 0px;
+                }
+    
+                #currencytab1 .tb2td1 {
+                    width: 68%;
+                }
+    
+                #currencytab1 tr {
+                    height: 50px;
+                }
+    
+                #userlogoarea img {
+                    height: 40px;
+                }
+    
+                #afaclogoarea img {
+                    height: 40px;
+                }
+    
+                #baslikarea {
+                    font-size: medium;
+                }
+    
+                #tavsiyearea {
+                    font-size: medium;
+                }
+    
+                #date_show {
+                    font-size: medium;
+                }
+    
+                #currencytab1 thead tr {
+                    display: none;
+                }
+    
+                #testacc span {
+                    font-size: medium;
+                }
+    
+                #testacc img {
+                    height: 25px;
+                }
+    
+                #testacc div {
+                    padding: 0;
+                    margin-bottom: 5px;
+                }
+    
+                #announcements img {
+                    height: 20px;
+                }
+    
+                #announcements span {
+                    font-size: medium;
+                    padding: 1;
+                }
+    
+                #currencytab tr td:first-child {
+                    width: 69%;
+                }
+    
+                #currencytab1 tr td:first-child {
+                    width: 69%;
+                }
+            }
+        </style>
+      </head>
+<body>
+    <div id="forextypeare" style="height: 0px; width: 0px; display: none" data-id="forex"></div>
+    <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="NotificationModalbtn-close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mt-2 text-center">
+                <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width: 100px; height: 100px"></lord-icon>
+                <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                  <h4>Are you sure ?</h4>
+                  <p class="text-muted mx-4 mb-0">
+                    Are you sure you want to remove this Notification ?
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">
+                  Close
+                </button>
+                <button type="button" class="btn w-sm btn-danger" id="delete-notification">
+                  Yes, Delete It!
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <div class="app-menu navbar-menu" style="display: none">
+        <div class="navbar-brand-box">
+          <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+            <i class="ri-record-circle-line"></i>
+          </button>
+        </div>
+    
+        <div id="scrollbar" data-simplebar="" class="h-100">
+          <div class="container-fluid">
+            <div id="two-column-menu"></div>
+            <ul class="navbar-nav" id="navbar-nav" data-simplebar=""></ul>
+          </div>
+        </div>
+        <div class="sidebar-background"></div>
+      </div>
+      <div id="notfounddiv" style="text-align: center; display: none">
+        <img src="./assets/images/multiply-cross.svg" alt="" height="700px" class="mt-5">
+        <h2 class="mt-5" style="color: #e21b1b">
+          Bu Sayfaya Erişim İzniniz Bulunmamaktadır
+        </h2>
+      </div>
+      <div id="licanceend" style="text-align: center; display: none">
+        <h2 style="color: #e21b1b; margin-top: 20%">
+          <strong>Lisans süreniz sona ermiştir lütfen lisansınızı
+            yenileyin.</strong>
+        </h2>
+      </div>
+      <div id="authanticationdiv" style="text-align: center; display: none">
+        <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+          <div class="bg-overlay"></div>
+          <!-- auth-page content -->
+          <div class="auth-page-content overflow-hidden" style="width: 100%">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-xl-5">
+                  <div class="card overflow-hidden">
+                    <div class="card-body p-4">
+                      <div class="text-center">
+                        <img src="./assets/images/user-with-cross-sign.svg" alt="" height="210">
+                        <h2 class="mt-4 fw-semibold" style="color: red">
+                          Kimlik Doğrulama Hatası
+                        </h2>
+                        <h5 class="mb-4 fs-14" style="color: red">
+                          Kimliğiniz doğrulanamadı lütfen
+                          <strong>iletişime geçin!</strong>
+                          </h5><h6 style="font-size: small;">0850 255 13 12</h6>
+                          <p style="color: red;">Bu hata aynı kod ile birden fazla ekran çalıştırma durumunda gerçekleşir.
+                          </p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end card -->
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- end container -->
+          </div>
+          <!-- end auth page content -->
+        </div>
+      </div>
+      <div class="card" style="margin-bottom: 0; margin-top: 1.5vh; width: 102%;">
+        <div class="card-header" style="padding: 2px; margin-top: 0">
+          <div class="row">
+            <div class="col-xxl-2 col-xxl-2 col-lg-2 col-md-2 col-sm-2 mt-0 text-center">
+              <button type="button" class="btn btn-icon btn-topbar rounded-circle mt-2" data-toggle="fullscreen" id="image-container">
+                <!-- <div id="image-container">
+                                        <img src="./assets/images/about.jpg" class="active" alt="Image 1">
+                                        <img src="./assets/images/auth-offline.gif" alt="Image 2">
+                                    </div> -->
+                <img src="assets/images/SBYS.png" alt="" height="70" class="">
+                <img src="assets/images/afaclogo.jpg" alt="" height="70" class="active">
+              </button>
+            </div>
+            <script>
+              $(document).ready(function () {
+                setInterval(changeImage, 10000);
+    
+                function changeImage() {
+                  var activeImage = $("#image-container img.active");
+                  var nextImage = activeImage.next("img");
+    
+                  if (nextImage.length === 0) {
+                    nextImage = $("#image-container img:first-child");
+                  }
+    
+                  activeImage.removeClass("active");
+                  nextImage.addClass("active");
+                }
+              });
+            </script>
+    
+            <div class="col-xxl-7 col-xxl-7 col-lg-7 col-md-7 col-sm-7 text-center">
+              <img id="userlogoarea" src="/uploads/9fe2cc2f0e124b2ca305489f93314051.png" class="mt-2" alt="" width="150">
+              <!-- <h1 id="baslikarea" style="
+                    font-size: 4vh;
+                    margin-bottom: 0px;
+                    padding-top: 2px;
+                  ">
+                TAHAL KUYUMCULUK
+              </h1> -->
+              <!-- <h5 id="tavsiyearea">Tavsiye Edilen Satış Fiyatlarıdır</h5> -->
+              <!-- <h1 id="date_show"></h1> -->
+              <h6 class="mt-5" id="socket_error" style="color: rgb(226, 27, 27); float: left; display: none;">
+                Socket Bağlantısı Sonlandı!
+              </h6>
+              <h6 class="mt-5" id="socket_again" style="color: rgb(79, 183, 11); float: right; display: none;">
+                Bağlantı tekrar deneniyor...
+              </h6>
+            </div>
+    
+            <div class="col-xxl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 mt-0 text-center">
+              <!-- <img id="userlogoarea" src="/uploads/9fe2cc2f0e124b2ca305489f93314051.png" class="mt-2" alt="" style="padding-right: 10px; max-height: 75px"
+                height="100" /> -->
+                <h3 style="padding-right: 10%;" id="date_show">31/01/2024 10:13:42</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table id="currencytab" class="table-responsive" style="overflow: hidden; height: 1632px;">
+        <thead>
+          <tr style="height: 10px;">
+            <th scope="col"></th>
+            <th scope="col" class="" style="padding-left: 20px; font-size: large;">Satış</th>
+          </tr>
+        </thead>
+        <tbody id="tbodydeger" style="overflow: hidden">
+          <tr id="33472ad8-a94d-4e64-9f9c-7b74a1090b28" data-id="33472ad8-a94d-4e64-9f9c-7b74a1090b28" class="tbodydegertr" style="overflow: hidden" data-order="1">
+            <td id="2">
+              <div id="table_div" data-id="22Ayr" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="1070" style="color: red"></i><span class="table_currency_title" data-id="22Ayr">24 AYAR</span>
+              </div>
+            </td>
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">1.070 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102" data-id="ec6f26a4-8f03-44a3-ae5d-1c07f28d8102" class="tbodydegertr" style="overflow: hidden" data-order="2">
+            <td id="3">
+              <div id="table_div" data-id="18Ayr" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="2140" style="color: red"></i><span class="table_currency_title" data-id="18Ayr">24 AYAR</span>
+              </div>
+            </td>
+    
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">2.140 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="6bc167a8-df1b-480e-82ab-ea00947e6e6a" data-id="6bc167a8-df1b-480e-82ab-ea00947e6e6a" class="tbodydegertr" style="overflow: hidden" data-order="3">
+            <td id="4">
+              <div id="table_div" data-id="14Ayr" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="990" style="color: red"></i><span class="table_currency_title" data-id="">22 AYAR</span>
+              </div>
+            </td>
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">990 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="103bb87c-1ccb-42f9-b0be-8322541a03c4" data-id="103bb87c-1ccb-42f9-b0be-8322541a03c4" class="tbodydegertr" style="overflow: hidden" data-order="4">
+            <td id="5">
+              <div id="table_div" data-id="8Ayr" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="1980" style="color: red"></i><span class="table_currency_title" data-id="">22 AYAR</span>
+              </div>
+            </td>
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">1.980 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="f07b4ed1-fbb5-4db1-8226-62bcae9f20be" data-id="f07b4ed1-fbb5-4db1-8226-62bcae9f20be" class="tbodydegertr" style="overflow: hidden" data-order="5">
+            <td id="6">
+              <div id="table_div" data-id="GUMUS" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="1980" style="color: red"></i><span class="table_currency_title" data-id="GUMUS">22 AYAR BİLEZİK</span>
+              </div>
+            </td>
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">1.980 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="3d11bf8e-10a4-49a0-a3fd-6e6d4f868f9b" data-id="3d11bf8e-10a4-49a0-a3fd-6e6d4f868f9b" class="tbodydegertr" style="overflow: hidden" data-order="6">
+            <td id="1">
+              <div id="table_div" data-id="HAS" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="3480" style="color: red"></i><span class="table_currency_title" data-id="HAS">ESKİ ÇEYREK</span>
+              </div>
+            </td>
+            <td>
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">3.480 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="5af7ab3f-ad4f-4b34-a155-0ebe32224de7" data-id="5af7ab3f-ad4f-4b34-a155-0ebe32224de7" class="tbodydegertr" style="overflow: hidden" data-order="7">
+            <td id="1">
+              <div id="table_div" data-id="CEYREK" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="3520" style="color: red"></i><span class="table_currency_title" data-id="CEYREK">YENİ ÇEYREK</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">3.520 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="3af01f6b-a4d5-4bf2-834c-a16a9d33d4fb" data-id="3af01f6b-a4d5-4bf2-834c-a16a9d33d4fb" class="tbodydegertr" style="overflow: hidden" data-order="8">
+            <td id="2">
+              <div id="table_div" data-id="YARIM" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="6960" style="color: red"></i><span class="table_currency_title" data-id="">ESKİ YARIM</span>
+              </div>
+            </td>
+    
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">6.960 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="f8f0a6e3-5951-4017-943d-4b3baeb2caa8" data-id="f8f0a6e3-5951-4017-943d-4b3baeb2caa8" class="tbodydegertr" style="overflow: hidden" data-order="9">
+            <td id="3">
+              <div id="table_div" data-id="TAM(LIRA)" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="7040" style="color: red"></i><span class="table_currency_title" data-id="TAM(LIRA)">YENİ YARIM</span>
+              </div>
+            </td>
+    
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">7.040 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="4726fa4b-bc87-405c-86a8-44ad28fb2108" data-id="4726fa4b-bc87-405c-86a8-44ad28fb2108" class="tbodydegertr" style="overflow: hidden" data-order="10">
+            <td id="4">
+              <div id="table_div" data-id="GREMSE (2.5)" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="13910" style="color: red"></i><span class="table_currency_title" data-id="GREMSE (2.5)">ESKİ TAM</span>
+              </div>
+            </td>
+    
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">13.910 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="222df401-fb07-4e9f-96d4-27380251c3e5" data-id="222df401-fb07-4e9f-96d4-27380251c3e5" class="tbodydegertr" style="overflow: hidden" data-order="11">
+            <td id="5">
+              <div id="table_div" data-id="ATA LIRA(CUMHURIYET)" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="14190" style="color: red"></i><span class="table_currency_title" data-id="ATA LIRA(CUMHURIYET)">ATALIRA</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">14.190 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" data-id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" class="tbodydegertr" style="overflow: hidden" data-order="12">
+            <td id="6">
+              <div id="table_div" data-id="Reşat" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="14400" style="color: red"></i><span style="font-size: smaller;" class="table_currency_title" data-id="Reşat">CUMHURİYET ALTINI</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">14.400 ₺</span>
+              </div>
+            </td>
+          </tr>
+      <!--test-->
+          <tr id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" data-id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" class="tbodydegertr" style="overflow: hidden" data-order="13">
+            <td id="6">
+              <div id="table_div" data-id="Reşat" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="14400" style="color: red"></i><span class="table_currency_title" data-id="Reşat">RESAT</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">14.400 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" data-id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" class="tbodydegertr" style="overflow: hidden" data-order="14">
+            <td id="6">
+              <div id="table_div" data-id="Reşat" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="34760" style="color: red"></i><span class="table_currency_title" data-id="Reşat">ESKİ GREMSE</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">34.760 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" data-id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" class="tbodydegertr" style="overflow: hidden" data-order="15">
+            <td id="6">
+              <div id="table_div" data-id="Reşat" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="35170" style="color: red"></i><span class="table_currency_title" data-id="Reşat">YENİ GREMSE</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">35.170 ₺</span>
+              </div>
+            </td>
+          </tr>
+          <tr id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" data-id="d39acddc-dbfb-4467-9c90-ee3f88d7aafd" class="tbodydegertr" style="overflow: hidden" data-order="16">
+            <td id="6">
+              <div id="table_div" data-id="Reşat" class="liveCurrency">
+                <i class="mdi mdi-arrow-up-thin text-success" id="icon" data-id="2056.2152" style="color: red"></i><span class="table_currency_title" data-id="Reşat">HAS</span>
+              </div>
+            </td>
+            <td style="overflow: hidden">
+              <div id="table_div" class="">
+                <span class="table_currency_satis" id="">2.056,215 ₺</span>
+              </div>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-cl-12 col-xxl-12 mb-0" style="max-height: 750px; margin-top: 5px">
+        <div class="container-fluid">
+                       <div id="testacc" style="
+                               background: #18719b;
+                               font-size: 3.5vh;
+                               padding: 7px 1px 1px 1px;
+                               margin-bottom: 0;
+                               margin-top: 0;
+                               overflow: hidden;
+                               color: white;
+                               
+                           " class="row">
+                           <div class="col-sm-12 col-lg-12 col-md-12"><img src="/uploads/1126752e8b3a4930afd7816f397ee294.svg" alt="" class="avatar-sm currency_image mt-2" id="currency_image" data-id="USD">
+                               <span class="currency_title" data-id="USD">USD</span>
+                               <span class="currency_alis" data-id="USD">Alış :</span><span id="usdbuy">30.2838</span>
+                               <span class="currency_satis" data-id="USD">&nbsp; Satış :</span><span id="usdsell">30.4016</span>
+                           </div>
+                           <div class="col-sm-12 col-lg-12 col-md-12"><img src="/uploads/4883a104410b4776bb2fd33bf5579509.svg" alt="" class="avatar-sm currency_image mt-2" id="currency_image" data-id="EUR">
+                               <span class="currency_title" data-id="EUR">EUR</span>
+                               <span class="currency_alis" data-id="EUR">Alış :</span><span id="eurbuy">32.7004</span>
+                               <span class="currency_satis" data-id="EUR">&nbsp; Satış :</span><span id="eursell">32.8293</span>
+                           </div>
+                       </div>
+                   </div>
+     </div>
+     <span class="marquee4 text-white" id="duyurlardiv" style="
+          background: #eb0b0b;
+          font-size: 4.5vh;
+          padding: 0;
+          margin-bottom: 0;
+          margin-top: 1vh;
+          overflow: hidden;
+          color: white;
+          width: 102%;
+        "><div style="width: 100000px; transform: translateX(0px);" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 0px; float: left;">
+    <span></span>
+  </div></div></span>
+  
+</body>
+</html>

@@ -1,0 +1,461 @@
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="h-100">
+                        <div class="row mb-3 pb-1">
+                            <div class="col-12">
+                                <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+                                    <div class="flex-grow-1">
+                                        <!-- <h4 class="fs-16 mb-1">Ana Sayfa</h4> -->
+                                        <h5 class=" mb-0">Ekran Tasarımı</h5>
+                                    </div>
+                                    <div class="mt-3 mt-lg-0">
+                                        <form action="javascript:void(0);">
+                                            <div class="row g-3 mb-0 align-items-center">
+                                                <div class="col-sm-auto">
+                                                    <div class="input-group">
+
+                                                        <div class="form-control border-0 fs-13 dash-filter-picker shadow"
+                                                            id="fake_takvim" style="text-align: center;">
+                                                            06/04/2023
+                                                        </div>
+                                                        <script>
+                                                            var date = new Date();
+                                                            var day = date.getDate();
+                                                            var maunth = date.getMonth();
+                                                            var ay = maunth + 1;
+                                                            var year = date.getFullYear();
+                                                            console.log(day)
+                                                            document.getElementById('fake_takvim').innerHTML = day + "-" + ay + "-" + year
+                                                        </script>
+                                                        <div
+                                                            class="input-group-text bg-secondary border-secondary text-white">
+                                                            <i class="ri-calendar-2-line"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--end row-->
+                                        </form>
+                                    </div>
+                                </div><!-- end card header -->
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
+                        <div class="row" style="overflow-x: hidden;">
+                            <div class="alert alert-secondary" role="alert">
+                                Temalar
+                            </div>
+
+
+                            <div class="col-md-6 col-xl-6 col-sm-12 text-center mt-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <h4 class="text-primary">Mavi Tema</h4>
+                                        </div>
+                                        <img class="templateimage" src="assets/images/mavitema.png" alt="" height="300">
+                                        <div class="mt-2">
+                                            <button id="mavi" value="designscreen3.html" class="btn btn-sm btn-primary btn-block"
+                                                style="width: 71%;" onclick="changetemplate(this.id, this.value)">SEÇ</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6 col-xl-6 col-sm-12 text-center mt-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <h4 class="text-danger">Sarı Tema</h4>
+                                        </div>
+                                        <img class="templateimage" src="assets/images/sarıtema.png" alt="" height="300">
+                                        <div class="mt-2">
+                                            <button id="sari" value="desgnscreen2.html" class="btn btn-sm btn-danger btn-block"
+                                                style="width: 71%;"  onclick="changetemplate(this.id, this.value)">SEÇ</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-6 col-sm-12 text-center mt-3 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <h4 class="text-info">Turkuaz Tema</h4>
+                                        </div>
+                                        <img class="templateimage" src="assets/images/turkuaztema.png" alt=""
+                                            height="300">
+                                        <div class="mt-2">
+                                            <button  id="turkuaz" value="designscreen1.html" class="btn btn-sm btn-info btn-block"
+                                                style="width: 71%;"  onclick="changetemplate(this.id, this.value)">SEÇ</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-6 col-xl-6 col-sm-12 text-center mt-3 mb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <h4 class="text-secondary">Gri Tema</h4>
+                                        </div>
+                                        <img class="templateimage" src="assets/images/yatay.png" alt="" height="300">
+                                        <div class="mt-2">
+                                            <button id="gri" value="viewinformation.html" class="btn btn-sm btn-secondary btn-block"
+                                                style="width: 62%;"  onclick="changetemplate(this.id,this.value)">SEÇ</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- <div class="col-6 mt-2 mb-3 text-center">
+                                <button id="savevertical" class="btn btn-sm btn-primary">Uygula</button>
+                                <button id="edithtmlvertical" class="btn btn-sm btn-warning">Düzenle ve Uygula</button>
+                            </div> -->
+                        </div>
+
+                        <!--  Dikey Ekran  -->
+                        <div class="row" style="overflow: hidden; max-height: 700px;">
+                            <div class="alert alert-secondary" role="alert">
+                                Dikey Ekran Görünümü
+                            </div>
+
+
+                            <div class="col-12 text-center mt-2">
+                                <img src="assets/images/Dikey.png" alt="" height="300">
+                            </div>
+                            <div class="col-12 mt-2 mb-3 text-center">
+                                <button id="savevertical" class="btn btn-sm btn-primary">Uygula</button>
+                                <button id="edithtmlvertical" class="btn btn-sm btn-warning">Düzenle ve Uygula</button>
+                            </div>
+                        </div>
+                        <!--   Yatay Ekran  -->
+                        <div class="row" style="overflow: hidden; max-height: 700px;">
+                            <div class="alert alert-secondary" role="alert">
+                                Yatay Ekran Görünümü
+                            </div>
+
+                            <div class="col-12  text-center mt-2">
+                                <img class="updatable" src="assets/images/yatay.png" alt="" height="300">
+                            </div>
+
+                            <div class="col-12 mt-2 mb-3 text-center">
+                                <button id="savehorizontal" class="btn btn-sm btn-primary">Uygula</button>
+                                <button id="edithtmlhorizontal" class="btn btn-sm btn-warning">Düzenle ve
+                                    Uygula</button>
+                            </div>
+                        </div>
+                        <!--   Mobil Ekran  -->
+                        <div class="row" style="overflow: hidden; max-height: 700px;">
+                            <div class="alert alert-secondary" role="alert">
+                                Mobil Görünümü
+                            </div>
+
+                            <div class="col-6 mt-3 text-center">
+                                <img src="assets/images/mobil2.png" alt="" height="300">
+                                <div class="col-12 mt-2 mb-3 text-center">
+                                    <button id="savemobile" class="btn btn-sm btn-primary">Uygula</button>
+                                    <button id="edithtmlmobile" class="btn btn-sm btn-warning">Düzenle ve Uygula</button>
+                                </div>
+                            </div>
+                           
+                            <div class="col-6 mt-3 text-center">
+                                <div class="col-12 mt-3 text-center">
+                                    <img src="assets/images/beyazMobilTema.png" alt="" height="300">
+                                </div>
+                                <div class="col-12 mt-2 mb-3 text-center">
+                                    <button id="savemobile2" class="btn btn-sm btn-primary">Uygula</button>
+                                    <button id="edithtmlmobile2" class="btn btn-sm btn-warning">Düzenle ve Uygula</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div> <!-- end .h-100-->
+                </div> <!-- end col -->
+            </div>
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12" style="text-align: center;">
+                    <script>document.write(new Date().getFullYear())</script> © SBYS
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+
+
+<!--start back-to-top-->
+<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+</button>
+<!--end back-to-top-->
+
+<!--preloader-->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-border text-primary avatar-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
+
+<!--Sil Modal-->
+<div class="modal fade" id="confirmmodal" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title text-danger" id="exampleModalgridLabel">Fiyat ekranı değişek emin misniz?</h5>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="confirm_button" class="btn btn-success">Uygula</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edithtmlmodal" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title text-danger" id="exampleModalgridLabel">Sayfa Tasarımını Değiştir</h5>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-12">
+                        <textarea name="" id="parsehtml" cols="100" rows="20" onkeyup="compileHTML(this)"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <div id="output"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 mt-2">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="htmlconfirm_button" class="btn btn-success">Uygula</button>
+                        <button type="button" id="resethtml" class="btn btn-warning">Değişiklikleri Sıfırla</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    let pk = window.location.href;
+    pk = pk.split("=");
+    let id = pk[1];
+
+    function changetemplate(x,y){
+        console.log(y)
+        let templateName = x;
+        let templatePath = y;
+        $.post("/screendesign",{
+            msg : "changeTemplate",
+            templatename : templateName,
+            templatePath : templatePath,
+            id : id
+        }).done(function(res){
+            console.log(res);
+        })
+
+    }
+
+
+    /* compile */
+    function compileHTML(field, e) {
+        document.getElementById('output').innerHTML = field.value;
+        checkBody()
+    }
+    /* compile */
+
+    /! sadece uygula/
+    
+    let screenType;
+
+    $("#savehorizontal").click(function () {
+        $("#confirmmodal").modal('show');
+        screenType = "horizontal"
+    });
+    $("#savevertical").click(function () {
+        $("#confirmmodal").modal('show');
+        screenType = "vertical"
+    });
+    $("#savemobile").click(function () {
+        $("#confirmmodal").modal('show');
+        screenType = "mobile"
+    });
+
+    $("#savemobile2").click(function () {
+        $("#confirmmodal").modal('show');
+        screenType = "mobile2"
+    });
+
+    $("#confirm_button").click(function () {
+        let type = "mobile";
+        setterScreen(screenType);
+    });
+
+    function setterScreen(typeFK) {
+        $.post("/screendesign", {
+            msg: "changescreen",
+            id: id,
+            type: typeFK
+        }).done(function (res) {
+            let response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem Başarılı");
+                $("#confirmmodal").modal('toggle');
+            } else {
+                toastr.error(response);
+                $("#confirmmodal").modal('toggle');
+            }
+        }).fail(function (res) {
+            alert("işlem başarısız!")
+        });
+    }
+
+    /! HTML değiştir/
+    $("#edithtmlmobile").click(function () {
+        $("#edithtmlmodal").modal('show');
+        let target = "mobile";
+        editHtml(target, id);
+    });
+
+    $("#edithtmlvertical").click(function () {
+        $("#edithtmlmodal").modal('show');
+        let target = "vertical";
+        editHtml(target, id);
+    });
+
+
+    $("#edithtmlhorizontal").click(function () {
+        $("#edithtmlmodal").modal('show');
+        let target = "horizontal";
+        editHtml(target, id);
+    });
+
+
+    function editHtml(target, id) {
+        $.post("/screendesign", {
+            msg: "edithtml",
+            type: target,
+            id: id
+        }).done(function (res) {
+            document.getElementById('parsehtml').value = res;
+        })
+    }
+
+    function checkBody() {
+        var allElements = document.querySelectorAll('*');
+        allElements.forEach(function (element) {
+            var elementTransform = window.getComputedStyle(element).getPropertyValue("transform");
+            if (elementTransform !== "none") {
+                element.style.transform = "none";
+            }
+        });
+    }
+
+    $("#htmlconfirm_button").click(function () {
+        let html = document.getElementById('parsehtml').value;
+        $.post("/screendesign", {
+            msg: "savehtml",
+            html: html,
+            id: id
+        }).done(function (res) {
+            let response = JSON.parse(res);
+            if (202 == response) {
+                toastr.success("Ekran Tasarımı Güncellendi.")
+                $("#edithtmlmodal").modal('toggle');
+            } else if (203 == response) {
+                toastr.success("Ekran Tasarımı Yükelndi.");
+                $("#edithtmlmodal").modal('toggle');
+
+            } else {
+                toastr.error(response);
+                $("#edithtmlmodal").modal('toggle');
+            }
+        })
+
+    });
+
+    $("#resethtml").click(function () {
+        $.post("/screendesign", {
+            msg: "resetHtml",
+            id: id
+        }).done(function (res) {
+            console.log(res);
+            let response = JSON.parse(res);
+            if ("ok" == response) {
+                toastr.success("Ekran tasarımı sıfırlandı.");
+                $("#edithtmlmodal").modal('toggle');
+            } else {
+                toastr.error(response)
+                $("#edithtmlmodal").modal('toggle');
+            }
+        })
+    })
+
+
+</script>
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="assets/js/plugins.js"></script>
+
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<!-- Vector map-->
+<script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+<script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+<!--Swiper slider js-->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+<!-- Dashboard init -->
+<script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+</body>
+
+</html>

@@ -19,20 +19,20 @@
                     <div class="row g-4">
                         <div class="col-auto">
                             <div class="avatar-lg">
-                                <img src="assets/images/SBYS.png" alt="user-img" class=" rounded-circle" height="90"/>
+                                <img style="margin-top: 20%;" id="userlogoarea" src="assets/images/SBYS.png" alt="user-img" class=" rounded-circle" height="90"/>
                             </div>
                         </div>
                         <!--end col-->
                         <div class="col">
                             <div class="p-2">
-                                <h3 class="text-white mb-1">Kayseri Sarraflar ve Kuyumcular Derneği</h3>
+                                <h3 id="baslik" style="margin-top: 2%;" class="text-white mb-1">Kayseri Sarraflar ve Kuyumcular Derneği</h3>
                                 <!-- <p class="text-white-75">Owner & Founder</p> -->
-                                <div class="hstack text-white-50 gap-1">
+                               <!-- <div class="hstack text-white-50 gap-1">
                                     <div class="me-2"><i class="ri-map-pin-user-line me-1 text-white-75 fs-16 align-middle"></i>Kayseri,
                                        Türkiye</div>
-                                    <!-- <div><i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>Themesbrand
-                                    </div> -->
-                                </div>
+                                     <div><i class="ri-building-line me-1 text-white-75 fs-16 align-middle"></i>Themesbrand
+                                    </div> 
+                                </div>-->
                             </div>
                         </div>
                         <!--end col-->
@@ -94,7 +94,7 @@
                             <div class="tab-content pt-4 text-muted">
                                 <div class="tab-pane active" id="overview-tab" role="tabpanel">
                                     <div class="row">
-                                        <div class="col-xxl-3">
+                                        <!-- <div class="col-xxl-3">
                                            
 
                                             <div class="card">
@@ -120,20 +120,16 @@
                                                                     <td class="text-muted">Cumhuriyet Mah. Vatan Cad. Belediye İş Merkezi Kat:6 No : 601 38040 Melikgazi / Kayseri
                                                                     </td>
                                                                 </tr>
-                                                                <!-- <tr>
-                                                                    <th class="ps-0" scope="row">Joining Date</th>
-                                                                    <td class="text-muted">24 Nov 2021</td>
-                                                                </tr> -->
+                                                               
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                </div><!-- end card body -->
-                                            </div><!-- end card -->
-
+                                                </div>
+                                            </div>
                                            
-                                        </div>
+                                        </div> -->
                                         <!--end col-->
-                                        <div class="col-xxl-9">
+                                        <!-- <div class="col-xxl-9">
                                             <div class="card" style="height: 270px;">
                                                 <div class="card-body">
                                                     <h5 class="card-title mb-3">Hakkımızda</h5>
@@ -157,33 +153,103 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
+                                                       
                                                         <div class="col-6 col-md-4">
                                                             <div class="d-flex mt-4">
-                                                                <!-- <div class="flex-shrink-0 avatar-xs align-self-center me-3">
-                                                                    <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
-                                                                        <i class="ri-global-line"></i>
-                                                                    </div>
-                                                                </div> -->
-                                                                <!-- <div class="flex-grow-1 overflow-hidden">
-                                                                    <p class="mb-1">Website :</p>
-                                                                    <a href="#" class="fw-semibold">www.velzon.com</a>
-                                                                </div> -->
+                                                               
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
+                                                        
                                                     </div>
-                                                    <!--end row-->
+                                                   
                                                 </div>
-                                                <!--end card-body-->
-                                            </div><!-- end card -->
+                                               
+                                            </div>
 
                                            
 
                                           
 
-                                        </div>
+                                        </div> -->
                                         <!--end col-->
+
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="mt-3" style="margin-left: 15%;" id="photouploadarea">
+                                                            <h5>Logo Seç</h5>
+                                                            <code>Fiyat ekranında görüntülemek istedğiniz logoyu seçin</code>
+                                                            <div class="form-group">
+                                                                <div class="mb-2">
+                                                                    <input style="width: 72%;" type="file" class="form-control" id="logophotoinp"
+                                                                    placeholder="Lütfen Icon seçiniz.">
+                                                                </div>                                                           
+                                                            </div>
+                                                            <div>
+                                                                <button id="addphoto" class="btn btn-sm btn-success">Yükle</button>
+                                                            </div>
+                                                        </div>
+    
+                                                        <div class="mt-3" style="margin-left: 15%; overflow: hidden;"  id="baslikarea">
+                                                            <h5>Başlık Oluştur</h5>
+                                                            <code>Fiyat ekranında görüntülemek istedğiniz başlığı seçin, başlık seçerken 40 karakterden uzun olmamasına dikkat edin.</code>
+                                                            <div class="form-group">
+                                                                <div class="mb-2">
+                                                                    <textarea style="width:  72%;"  id="baslikval"rows="5"></textarea>
+                                                                </div>                                                           
+                                                            </div>
+                                                            <div>
+                                                                <button id="addbaslik" class="btn btn-sm btn-success">Yükle</button>
+                                                            </div>
+                                                        </div>
+    
+    
+                                                        <div class="mt-3" style="margin-left: 15%; overflow: hidden;"  id="tavsiyearea" >
+                                                            <h5>Tevsiye Yazısı Oluştur</h5>
+                                                            <code>Fiyat ekranında görüntülemek istedğiniz tavsiye/metin seçin.</code>
+                                                            <div class="form-group">
+                                                                <div class="mb-2">
+                                                                    <textarea  id="tavsiyeval" style="width:  72%;"  rows="5"></textarea>
+                                                                </div>                                                           
+                                                            </div>
+                                                            <div>
+                                                                <button id="addtavsiye" class="btn btn-sm btn-success">Yükle</button>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3" hidden>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div id="connectionType" class="mt-3">
+                                                        <h5>Bağlantı Türü Seç</h5>
+                                                        <p class="text-danger">Bağlantı Türü Verileri ne şekilde çekeceğinizle alakalıdır.</p>                                          
+                                                        <p class="text-danger">Bağlantı Türünü WS yapmak sizi online/anlık olarak çalışan ve ham altın fiyatını forex den alan bir alt yapıya taşır.</p>
+                                                        <p class="text-danger">Bağlantı Türünü Sabit yaparak ham altın fiyatını kendiniz belirler ve bu fiyatlandırma üzerinden işlemlerinize devam edebilirsiniz.</p>
+                                                      
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="ws" checked>
+                                                            <label class="form-check-label" for="ws">
+                                                             WS/Forex
+                                                            </label>
+                                                          </div>
+                                                          <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="sabit" >
+                                                            <label class="form-check-label" for="sabit">
+                                                             Sabit
+                                                            </label>
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                     <!--end row-->
                                 </div>
@@ -215,6 +281,26 @@
             </div>
         </footer>
     </div><!-- end main content-->
+
+
+    <div class="modal" tabindex="-1" id="connectionTypeModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Bağlantı Türünü Değiştir</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger">Bağlantı Türü Değişecek Eminmisiniz !</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+              <button type="button" id="changeconnection" class="btn btn-success">Değiştir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
 </div>
 <!-- END layout-wrapper -->
@@ -307,6 +393,138 @@
     </div>
 </div>
 
+
+<script>
+      var symbolIcon;
+    $('#logophotoinp').change(function () {
+        console.log($(this))
+        var test = $('#logophotoinp').prop('files')[0];
+        var picReader = new FileReader();
+        picReader.addEventListener("load", function (event) {
+            var picFile = event.target;
+            symbolIcon = picFile.result;
+
+        })
+        picReader.readAsDataURL(test);
+    });
+
+
+    /////////
+    $("#addphoto").on('click', function(){
+        $.post("/settings", {
+            msg: "addphoto",
+            symbolIcon: symbolIcon
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+
+            //if (response == "ok") {
+            //     toastr.success("İşlem başarılı");
+            //     $("#ipeditmoadal").modal('toggle');
+            // } else {
+            //     toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            // }
+        })
+    });
+
+
+
+
+    //
+    $("#addbaslik").on('click', function(){
+        $.post("/settings", {
+            msg: "addbaslik",
+            text: $("#baslikval").val()
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                //$("#baslikval").val("")
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+
+    $("#addtavsiye").on('click', function(){
+        $.post("/settings", {
+            msg: "addtavsiye",
+            text: $("#tavsiyeval").val()
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+               // $("#tavsiyeval").val("")
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+
+    $.get("/settings?msg=getbaslik").done(function (res) {
+        console.log(res);
+        let path = JSON.parse(res);
+        $("#baslik").html(path)
+      });
+
+      $.get("/settings?msg=getbaslik").done(function (res) {
+        console.log(res);
+        let path = JSON.parse(res);
+        $("#baslikval").html(path)
+      });
+
+      $.get("/settings?msg=gettavsiye").done(function (res) {
+        console.log(res);
+        let path = JSON.parse(res);
+        $("#tavsiyeval").html(path)
+      });
+
+
+      var connection = "";
+      $('#ws').on('change', function() {
+        connection = $(this).attr('id');
+        if ($(this).is(':checked')) {
+        $('#sabit').prop('checked', false);
+            $("#connectionTypeModal").modal('show');
+           
+        }
+  });
+
+  $('#sabit').on('change', function() {
+    connection = $(this).attr('id');
+    if ($(this).is(':checked')) {
+      $('#ws').prop('checked', false);
+      $("#connectionTypeModal").modal('show')
+    }
+  });
+
+  $("#changeconnection").on('click', function(){
+    console.log(connection)
+    $.post("/settings", {
+            msg: "changeConnection",
+            text: connection
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#connectionTypeModal").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+  });
+
+  $.get("/settings?msg=getphoto").done(function (res) {
+        console.log(res);
+        let path = JSON.parse(res);
+        $("#userlogoarea").attr("src", path);
+      });
+
+</script>
 
 
 <!-- Theme Settings -->

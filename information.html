@@ -88,8 +88,9 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
-                                            data-bs-target="#addmember">Ekran Ekle</button>
+                                        <!-- <button id="changescreentype" class="btn btn-sm btn-primary mb-2">Ekran Tasarımı</button> -->
+                                            
+                                            {memberBtn}
                                         <br><br>
                                         <table id="datatable"
                                             class="table table-bordered dt-responsive nowrap table-striped align-middle"
@@ -161,22 +162,31 @@
             <div class="modal-body">
                 <form action="javascript:void(0);">
                     <div class="row g-3">
-                        <div class="col-xxl-6">
+                      <!--  <div class="col-xxl-6">
                             <div>
                                 <label for="screentitle" class="form-label">Ekran Adı</label>
                                 <input type="text" class="form-control" id="screentitle"
                                     placeholder="Lütfen Ekran adı giriniz.">
                             </div>
-                        </div><!--end col-->
+                        </div>end col
                         <div class="col-xxl-6">
                             <div>
                                 <label for="screencode" class="form-label">Ekran Kodu</label>
                                 <input type="text" class="form-control" id="screencode"
                                     placeholder="Lütfen Ekran kodu giriniz.">
                             </div>
-                        </div><!--end col-->
-
+                        </div>-->
                         <div class="col-xxl-12">
+                            <label for="screenoparatingsystem" class="form-label">Ekran Seçimi</label>
+                            <div class="input-group">
+                                <select class="form-select" id="screenoparatingsystem">
+                                    <option value="1">Dikey Ekran</option>
+                                    <option value="2">Tasarlanan Ekran1</option>
+                                    <option value="3">Normal Ekran</option>
+                                </select>
+                            </div>
+                        </div>
+                       <!-- <div class="col-xxl-12">
                             <label for="screenoparatingsystem" class="form-label">Ekran İşetim Sistemi</label>
                             <div class="input-group">
                                 <select class="form-select" id="screenoparatingsystem">
@@ -185,13 +195,13 @@
                                     <option value="3">Ln</option>
                                 </select>
                             </div>
-                        </div><!--end col-->
+                        </div>end col-->
                         <div class="col-xxl-12">
-                            <label for="screenstatus" class="form-label">Ekran Statüsü</label>
+                            <label for="screenstatus" class="form-label">Kurum Seç</label>
                             <div class="input-group">
                                 <select class="form-select" id="screenstatus">
-                                    <option value="1">Aktif</option>
-                                    <option value="2">Taslak</option>
+                                    <option value="1">Kurum1</option>
+                                    <option value="2">Kurum2</option>
                                 </select>
                             </div>
                         </div><!--end col-->
@@ -285,6 +295,28 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="changescreentypemodal" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="">
+                <h5 class="modal-title" id="exampleModalgridLabel">Ekranınızı Tasarlayın</h5>
+
+            </div>
+            <div class="modal-body">
+                <div style="transform: rotate(90deg);">
+                    <img src="assets/images/Dikey.png" width="650" alt="">
+                </div>
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 ">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="delete_button" class="btn btn-danger">Sil</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var table = $("#datatable").DataTable({
         language: {
@@ -316,7 +348,10 @@
                         aria-expanded="false">
                         <i class="ri-more-fill align-middle"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu">                                                               
+                    <ul class="dropdown-menu dropdown-menu" style="cursor : pointer;">    
+                        <li><a class="dropdown-item edit-item-btn" data-id="${screenpk}" onclick="godesignpage()"><i
+                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                Ekran Tasarımı</a></li>                                                           
                         <li><a class="dropdown-item edit-item-btn" data-id="${screenpk}" onclick="editcurrent()"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editmember"><i
@@ -476,6 +511,10 @@
         console.log(screencode)
         window.open(`/viewinformation?code=${screencode}`, '_blank');
     }
+
+   function godesignpage(){
+    window.location.href = "/screendesign?id="+secreenpk+""
+   }
 
 
 </script>

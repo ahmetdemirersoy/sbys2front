@@ -1486,60 +1486,52 @@
       }
 
       function getRulesEur(rule, data) {
-            const {
-        currencytitle,
-        ruleStep: currencyRuleCurrencyStep,
-        ruleCode: currencyRuleCode,
-        rate,
-        rulefk,
-        step,
-        order: ruleOrder,
-        type,
-        value,
-        carpanintypefk,
-        carpaninvalue,
-        carpaninbeforevalue,
-        carpaninoran,
-        carpanincurrencyfk,
-        rulePercentage,
-        rulebuymore,
-        rulesellmore,
-        rulebuyRuleFK,
-        ruleBuyRate,
-        ruleBuyTypeFK,
-        beforevalue,
+        var currencyfk = rule.map.currencyfk;
+        var currencyflag = rule.map.currencyflag;
+        var currencypk = rule.map.currencypk;
+        var currencytitle = rule.map.currencytitle;
 
-        aliscarpanincurrencyfk,
-        aliscarpanintypefk,
-        aliscarpanintype,
-        aliscarpaninvalue,
-        aliscarpaninbeforevalue,
-      } = rule.map;
+        var currencyRuleCurrencyStep = rule.map.ruleStep;
+        var currencyRuleCode = rule.map.ruleCode;
 
-      
+        var max = rule.map.max;
+        var min = rule.map.min;
+        var rate = rule.map.rate;
+        var rulefk = rule.map.rulefk;
+        var rulepk = rule.map.rulepk;
+        var status = rule.map.status;
+        var step = rule.map.step;
+        var ruleOrder = rule.map.order;
+        var type = rule.map.type;
+        var value = rule.map.value;
+        var carpanintypefk = rule.map.carpanintypefk;
+        var carpaninvalue = rule.map.carpaninvalue;
+        var carpaninbeforevalue = rule.map.carpaninbeforevalue;
+        var carpaninoran = rule.map.carpaninoran;
+        var carpanincurrencyfk = rule.map.carpanincurrencyfk;
 
-            for (var counter = 0; counter < data.length; counter++) {
-                var wsData = data[counter];
-                if (wsData.category == "DOVIZ") {
-                    try {
-                        if (wsData.currency == "EUR") {
-                            var satis = wsData.sell;
-                            satis = parseFloat(satis);
-                            var mod = satis % step;
-                            var yuvarla = step - mod;
-                            satis = satis + yuvarla;
-                            satis = Math.round(satis * 100) / 100;
-                            satis = satis.toFixed(2);
+        for (var counter = 0; counter < data.length; counter++) {
+          var wsData = data[counter];
+          if (wsData.category == "DOVIZ") {
+            try {
+              if (wsData.currency == "EUR") {
+                var satis = wsData.sell;
+                satis = parseFloat(satis);
+                var mod = satis % step;
+                var yuvarla = step - mod;
+                satis = satis + yuvarla;
+                satis = Math.round(satis * 100) / 100;
+                satis = satis.toFixed(2);
 
-                            $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
-                            $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
+                $("#" + wsData.currency.toLowerCase() + "sell").html(satis);
+                $("#" + wsData.currency.toLowerCase() + "buy").html(wsData.buy);
+              }
+            } catch (error) {
+              console.log(error);
             }
+          }
         }
+      }
       function getRulesUSD(rule, data) {
         var currencyfk = rule.map.currencyfk;
         var currencyflag = rule.map.currencyflag;
@@ -1651,36 +1643,6 @@
         currencyIcon.addClass(change);
         currencyIcon.attr("data-id", sellingValue + "");
       }
-
-      function prepareIconAlis(currencyTitle, sellingValue, ruleOrder) {
-            var trElementsWithDataOrder = $("tr[data-order]");
-            var element = $('tr[data-order="' + ruleOrder + '"]');
-
-            //var currencyIcon = $("#" + currencyTitle + "-icon");
-            var currencyIcon = element.find("#newiconalis");
-            var test = element.find('#table_currency_alisid');
-            var oldVal = parseFloat(currencyIcon.attr("data-id"));
-            var change =
-                oldVal > sellingValue
-                    ? "▼"
-                    : "▲";
-                    var changeClass = oldVal > sellingValue
-                ? "#b41414"
-                : "#147814";
-            //console.log(change)
-            $(currencyIcon).html(change)
-            currencyIcon.innerHTML = change;
-            // currencyIcon.removeClass();
-            // currencyIcon.addClass(changeClass);
-            currencyIcon.css('color', changeClass)
-
-            // test.removeClass();
-            // test.addClass(changeClass);
-            test.css('color', changeClass)
-
-
-            currencyIcon.attr("data-id", sellingValue + "");
-        }
 
       function katsayıCarpanlıIcon(
         currencytitle,
@@ -1959,7 +1921,7 @@
           let currentTime = new Date().getTime();
           if (currentTime - lastSpeedUpdate >= pingInterval) {
             const cookieValue = document.cookie
-              .split(";")
+              .split("; ")
               .find((row) => row.startsWith("ark="))
               ?.split("=")[1];
             const data = {
@@ -1988,22 +1950,18 @@
         });
 
         socket2.addEventListener("message", async (event) => {
-                let yeniStr = event.data.slice(2);
-                try {
-                    yeniStr = JSON.parse(yeniStr);
-                    if (yeniStr && yeniStr[1] && yeniStr[1].data) {
-                        let veri = yeniStr[1].data;
-
-                        if (veri) {
-                            renderRules2(veri);
-                        }
-                    } else {
-                        console.log("Beklenmeyen veri yapısı");
-                    }
-                } catch (error) {
-                    console.error("JSON parse hatası:", error);
-                }
-            });
+          let response = JSON.stringify(event.data);
+          response = JSON.parse(response);
+          let yeniStr = response.slice(2);
+          yeniStr = JSON.parse(yeniStr);
+          console.log(yeniStr[1].data);
+          if (yeniStr != undefined) {
+            let veri = yeniStr[1]?.data;
+            if (veri != undefined) {
+              renderRules2(veri);
+            }
+          }
+        });
 
         socket2.addEventListener("close", (event) => {
           console.log(

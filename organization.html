@@ -1,0 +1,750 @@
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col">
+
+                    <div class="h-100">
+                        <div class="row mb-3 pb-1">
+                            <div class="col-12">
+                                <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+                                    <div class="flex-grow-1">
+                                        <!-- <h4 class="fs-16 mb-1">Ana Sayfa</h4> -->
+
+                                    </div>
+                                    <div class="mt-3 mt-lg-0">
+                                        <form action="javascript:void(0);">
+                                            <div class="row g-3 mb-0 align-items-center">
+                                                <div class="col-sm-auto">
+                                                    <div class="input-group">
+                                                        <!-- <input type="text"
+                                                                    class="form-control border-0 fs-13 dash-filter-picker shadow"
+                                                                    data-provider="flatpickr"
+                                                                    data-date-format="d-M, Y"
+                                                                    > -->
+                                                        <div class="form-control border-0 fs-13 dash-filter-picker shadow"
+                                                            id="fake_takvim" style="text-align: center;">
+                                                            06/04/2023
+                                                        </div>
+                                                        <script>
+                                                            var date = new Date();
+                                                            var day = date.getDate();
+                                                            var maunth = date.getMonth();
+                                                            var ay = maunth + 1;
+                                                            var year = date.getFullYear();
+                                                            console.log(day)
+                                                            document.getElementById('fake_takvim').innerHTML = day + "-" + ay + "-" + year
+                                                        </script>
+                                                        <div
+                                                            class="input-group-text bg-secondary border-secondary text-white">
+                                                            <i class="ri-calendar-2-line"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--end row-->
+                                        </form>
+                                    </div>
+                                </div><!-- end card header -->
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+
+
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Kurum Yönetimi</h5>
+
+                                    </div>
+
+                                    <div class="card-body">
+                                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
+                                            data-bs-target="#addmember">Kurum Ekle</button>
+                                        <br><br>
+                                        <table id="datatable"
+                                            class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>İşlemler</th>
+                                                    <th>Kurum Adı</th>
+                                                    <th>Kurum Tipi</th>
+                                                    <th>Bağlantı Türü</th>
+                                                    <th>WS Tipi</th>
+                                                    <th>Kullanıcı/Ekran Sayısı </th>
+                                                    <th>Oluşturulma Tarihi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Kurum Yöneticisi ve Üye Listesi</h5>
+
+                                    </div>
+
+                                    <div class="card-body">
+                                        <!-- Yönetici buraya gelsin -->
+                                        <div id="orgManagetArea"></div>
+                                        <br><br>
+                                        <code>Üyeler</code>
+                                        <table id=""
+                                            class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>Adı</th>
+                                                    <th>Üye Kodu</th>
+                                                    <th>İP Adresi</th>
+                                                    <th>Oluşturulma Tarihi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbody">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end .h-100-->
+                </div> <!-- end col -->
+            </div>
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12" style="text-align: center;">
+                    <script>document.write(new Date().getFullYear())</script> © SBYS
+                </div>
+                <!-- <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by Themesbrand
+                            </div>
+                        </div> -->
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- end main content-->
+
+</div>
+<!-- END layout-wrapper -->
+
+
+
+<!--start back-to-top-->
+<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+</button>
+<!--end back-to-top-->
+
+<!--preloader-->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner-border text-primary avatar-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Kurum Yöneticisi Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3">
+
+
+
+                        <div class="col-xxl-12" id="">
+                            <div>
+                                <label for="name" id="forrulevalue" class="form-label">Adı</label>
+                                <input type="text" class="form-control" id="nameuser" placeholder="" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12" id="">
+                            <div>
+                                <label for="surname" id="forrulevalue" class="form-label">SoyAdı</label>
+                                <input type="text" class="form-control" id="surname" placeholder="" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12" id="">
+                            <div>
+                                <label for="email" id="forrulevalue" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12" id="">
+                            <div>
+                                <label for="password" id="forrulevalue" class="form-label">Passwod</label>
+                                <input type="text" class="form-control" id="password" placeholder="" required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="addUserBtn" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Ekle Modal-->
+<div class="modal fade" id="addmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Yeni Kurum Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3">
+
+                        <div class="col-xxl-128" id="organizationNameDiv">
+                            <div>
+                                <label for="organizationName" id="forrulevalue" class="form-label">Kurum Adı</label>
+                                <input type="text" class="form-control" id="organizationName"
+                                    placeholder="Lütfen kurum adı girin." required>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12">
+                            <label for="organizationType" class="form-label">Kurum Tipi</label>
+                            <div class="input-group">
+                                <select class="form-select" id="organizationType">
+                                    <option value="1">Çoklu/Grup</option>
+                                    <option value="2">Tek</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12">
+                            <label for="orgConnectionType" class="form-label">Bağlantı Türü</label>
+                            <div class="input-group">
+                                <select class="form-select" id="orgConnectionType">
+                                    <option value="2">Sabit</option>
+                                    <option value="1">Ws/Forex</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12" id="forextypearea" style="display: none;">
+                            <label for="forextype" class="form-label">WS Seçeneği</label>
+                            <div class="input-group">
+                                <select class="form-select" id="forextype">
+                                    <option value="forex">Forex</option>
+                                    <option value="harem">Harem</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-128" id="">
+                            <div>
+                                <label for="promiseAffialite" id="forrulevalue" class="form-label">Ekran/Kullanıcı
+                                    Adet</label>
+                                <input type="text" class="form-control" id="promiseAffialite"
+                                    placeholder="Organizasyonun Talep Ettiği Kullanıcı/Ekran Sayısı" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="submit_button" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Düzenle Modal-->
+<div class="modal fade" id="editmember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalgridLabel">Kurum Bilgilerini Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col-xxl-128" id="organizationNameDivEd">
+                            <div>
+                                <label for="organizationNameEd" id="forrulevalue" class="form-label">Kurum Adı</label>
+                                <input type="text" class="form-control" id="organizationNameEd"
+                                    placeholder="Lütfen kurum adı girin." required>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12">
+                            <label for="organizationTypeEd" class="form-label">Kurum Tipi</label>
+                            <div class="input-group">
+                                <select class="form-select" id="organizationTypeEd">
+                                    <option value="1">Çoklu/Grup</option>
+                                    <option value="2">Tek</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-12">
+                            <label for="orgConnectionTypeEd" class="form-label">Bağlantı Türü</label>
+                            <div class="input-group">
+                                <select class="form-select" id="orgConnectionTypeEd">
+                                    <option value="1">Ws/Forex</option>
+                                    <option value="2">Sabit</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--buraya-->
+
+                        <div class="col-xxl-12" id="forextypearea">
+                            <label for="forextypeedit" class="form-label">WS Seçeneği</label>
+                            <div class="input-group">
+                                <select class="form-select" id="forextypeedit">
+                                    <option value="forex">Forex</option>
+                                    <option value="harem">Harem</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xxl-128" id="">
+                            <div>
+                                <label for="promiseAffialiteEd" id="forrulevalue" class="form-label">Ekran/Kullanıcı
+                                    Adet</label>
+                                <input type="text" class="form-control" id="promiseAffialiteEd"
+                                    placeholder="Organizasyonun Talep Ettiği Kullanıcı/Ekran Sayısı" required>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-12">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                                <button type="button" id="edit_button" class="btn btn-soft-success">Düzenle</button>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Sil Modal-->
+<div class="modal fade" id="deletemember" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title" id="exampleModalgridLabel">Kurum <strong>kalıcı</strong> olarak silinecek emin
+                    misiniz?</h5>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="delete_button" class="btn btn-danger">Sil</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //datatable initialize
+    var table = $("#datatable").DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+        //   dom: '<"toolbar">frtip',
+        scrollY: "true"
+
+    });
+
+    var table1 = $("#datatable1").DataTable({
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+        //   dom: '<"toolbar">frtip',
+        // scrollY: "true"
+
+    });
+
+
+    $("#orgConnectionType").change(function () {
+        if ($(this).val() == 1) {
+            $("#forextypearea").css("display", "");
+        }
+    });
+
+    //kurum ekle
+    $("#submit_button").click(function () {
+        let organizationName = $("#organizationName").val();
+        let organizationType = $("#organizationType").val();
+        let orgConnectionType = $("#orgConnectionType").val();
+        let promiseAffialite = $("#promiseAffialite").val();
+        let wstype = "";
+        if ($("#forextype").val() != "" && $("#forextype").val() != undefined) {
+            wstype = $("#forextype").val();
+        }
+
+        $.post("/organization", {
+            msg: "addorganization",
+            organizationName: organizationName,
+            organizationType: organizationType,
+            orgConnectionType: orgConnectionType,
+            promiseAffialite: promiseAffialite,
+            wstype: wstype
+        }).done(function (res) {
+            let resp = JSON.parse(res);
+            if (resp == "ok") {
+                $("#addmember").modal('toggle');
+                toastr.success("Kurum Eklendi");
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+
+    });
+
+
+    // select table row
+    var rulespk;
+    $("#datatable tbody").on("click", "tr", function () {
+        $("#datatable tbody tr").css("background-color", "");
+        $(this).css("background-color", "#57d0e3");
+        var a_button = $(this).children("td")[0].children.item(0).children.item(1).children.item(1).children.item(0);
+        rulespk = $(a_button).attr('data-id');
+
+        //table tıkla kurum yönetici bilgisi
+        $.post("/organization", {
+            msg: "getUser",
+            organizationPK: rulespk
+        }).done(function (res) {
+            let response = JSON.parse(res);
+            let createdDate = response.map.createdDate;
+            createdDate = moment(createdDate).format('DD-MM-YYYY');
+            let table =
+                `
+             <code>Yönetici</code>
+            <table id=""
+                class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Kurum</th>
+                        <th> Adı</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Yönetici Tipi </th>
+                        <th>Oluşturulma Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${response.map.organization}</td>   
+                        <td>${response.map.username}</td>   
+                        <td>${response.map.email}</td>   
+                        <td>${response.map.password}</td>   
+                        <td>${response.map.userType}</td>   
+                        <td>${createdDate}</td>    
+                    </tr>
+                </tbody>
+            </table>
+            `;
+            $("#orgManagetArea").html(table)
+        });
+        //table tık kurum üyeleri affialite bilgisi
+        $.post("/organization", {
+            msg: "getAffialite",
+            organizationPK: rulespk
+        }).done(function (res) {
+            let response = JSON.parse(res);
+            let html;
+            for (var i = 0; i < response.length; i++) {
+                var member = response[i];
+                var obj = {};
+                obj = response[i].map;
+
+                let name = member.map.name;
+                let code = member.map.code;
+                let ip = member.map.ip;
+                let createdDate = member.map.createdDate;
+                createdDate = moment(createdDate).format('DD-MM-YYYY');
+                let table = `
+               
+                    <tr>
+                        <td>${name}</td>   
+                        <td>${code}</td>   
+                        <td>${ip}</td>   
+                        <td>${createdDate}</td>   
+                    </tr>
+               `
+
+                html += table;
+            }
+
+            $("#tbody").html(html)
+        })
+
+    });
+
+
+
+    // //get all rules
+    $.get("/organization?msg=getorganization").done(function (res) {
+        var response = JSON.parse(res);
+        console.log(response)
+        for (var i = 0; i < response.length; i++) {
+            var rules = response[i];
+            var obj = {};
+            obj = response[i].map;
+            //console.log(response[i].map)
+            var orgPK = rules.map.orgPK;
+            var name = rules.map.name;
+            var orgType = rules.map.orgType;
+            var wsType = rules.map.wstype;
+            var orgConType = rules.map.orgConType;
+            var orgAffialiteCount = rules.map.orgAffialiteCount;
+            var createdDate = rules.map.date;
+            createdDate = moment(createdDate).format('DD-MM-YYYY');
+            var rawnode = table.row
+                .add([`
+            <td style="text-align: center;">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-soft-secondary btn-sm dropdown"
+                        type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="ri-more-fill align-middle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu">   
+                        <li><a class="dropdown-item edit-item-btn" data-id="${orgPK}" 
+                                data-bs-toggle="modal"
+                                data-bs-target="#addUser"><i
+                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                Sorumlu Ekle</a></li>                                                            
+                        <li><a class="dropdown-item edit-item-btn" data-id="${orgPK}"
+                                data-bs-toggle="modal"
+                                data-bs-target="#editmember"><i
+                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+                                Düzenle</a></li>
+                        <li>
+                            <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${orgPK}" data-bs-toggle="modal"data-bs-target="#deletemember" >
+                                <i
+                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+                                Sil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            `,
+                    name,
+                    orgType,
+                    orgConType,
+                    wsType,
+                    orgAffialiteCount,
+                    createdDate,
+
+                ])
+                .draw()
+                .node();
+            $(rawnode).attr("id", orgPK);
+            $(rawnode).attr('data-id', obj);
+
+        }
+    });
+
+
+    //Yönetici Ekle
+    $("#addUserBtn").click(function () {
+        let name = $("#nameuser").val();
+        let surname = $("#surname").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let organizationPK = rulespk;
+
+        $.post("/organization", {
+            msg: "addUser",
+            name: name,
+            surname: surname,
+            email: email,
+            password: password,
+            organizationPK: organizationPK
+        }).done(function (res) {
+            let resp = JSON.parse(res);
+            if (resp == "ok") {
+                $("#addUser").modal('toggle');
+                toastr.success("Yönetici Eklendi");
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //delete rules
+    $("#delete_button").on("click", function (e) {
+        e.preventDefault()
+        console.log(rulespk)
+        $.post("/organization", {
+            msg: "deleteorganization",
+            organizationPK: rulespk
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#deletemember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+
+    // edit
+    // var kuraltip1;
+    // $("#editrulestype").on('change', function () {
+    //     $("#editrulestype option:selected").each(function () {
+    //         kuraltip1 = $(this).val();
+
+    //         switch (kuraltip1) {
+    //             case "1":
+    //                 $("#editrulevaluediv").css("display", "none");
+    //                 $("#editruleratediv").css("display", "none");
+    //                 $("#editrulefkdiv").css("display", "none");
+    //                 break;
+    //             case "2":
+    //                 $("#editrulevaluediv").css("display", "");
+    //                 $("#editruleratediv").css("display", "none");
+    //                 $("#editrulefkdiv").css("display", "none");
+    //                 break;
+    //             case "3":
+    //                 $("#editrulevaluediv").css("display", "none");
+    //                 $("#editruleratediv").css("display", "");
+    //                 $("#editrulefkdiv").css("display", "");
+    //                 $.get("/symbolrules?msg=getallcurrency").done(function (res) {
+    //                     var response = JSON.parse(res);
+    //                     console.log(response)
+    //                     let html;
+    //                     for (var i = 0; i < response.length; i++) {
+    //                         var rules = response[i];
+    //                         var rulespk = rules.map.currencypk;
+    //                         let htmlSegment = `<option value="${rulespk}">${rules.map.currencytitle}</option>`;
+    //                         html += htmlSegment;
+    //                     }
+    //                     document.getElementById("rulefk").innerHTML = html;
+    //                 })
+    //                 break;
+    //         }
+    //     });
+    // });
+
+
+
+    $("#edit_button").on('click', function () {
+        console.log(rulespk)
+        var organizationNameEd = $("#organizationNameEd").val();
+        var organizationTypeEd = $('#organizationTypeEd').val();
+        var orgConnectionTypeEd = $("#orgConnectionTypeEd").val();
+        var promiseAffialiteEd = $("#promiseAffialiteEd").val();
+        var forextypeedit = $("#forextypeedit").val();
+        $.post("/organization", {
+            msg: "editorganization",
+            organizationPK: rulespk,
+            organizationNameEd: organizationNameEd,
+            organizationTypeEd: organizationTypeEd,
+            orgConnectionTypeEd: orgConnectionTypeEd,
+            promiseAffialiteEd: promiseAffialiteEd,
+            forextypeedit: forextypeedit
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#editmember").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    });
+
+
+</script>
+
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="assets/js/plugins.js"></script>
+
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<!-- Vector map-->
+<script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+<script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+<!--Swiper slider js-->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+<!-- Dashboard init -->
+<script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+</body>
+
+</html>

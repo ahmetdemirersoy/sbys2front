@@ -80,19 +80,17 @@
                                                     <th>İşlemler</th>
                                                     <th>Birim</th>
                                                     <th>Kural Tipi</th>
-                                                    <th>Kural Oran</th>
-                                                    <th>Kural Değeri</th>
-                                                    <th>Kural Statüsü</th>
-                                                    <th>Bölge</th>
-                                                    <th>Kural Adım</th>
-                                                    <th>Kural Max</th>
-                                                    <th>Kural Min</th>
+                                                    <th>Kural Alış Milyem</th>
+                                                    <th>Kural Alış Ekstra</th>
+                                                    <th>Kural Sırası</th>
+                                                    <th>Kural Satış Milyem</th>
+                                                    <th>Kural Satış Ekstra</th>
                                                     <th>Oluşturulma Tarihi</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                [[TABLE]]
                                             </tbody>
                                         </table>
                                     </div>
@@ -147,70 +145,139 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalgridLabel">Yeni Kural Ekle</h5>
+                <h5 class="modal-title" id="modal_title">Yeni Kural Ekle</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="addsaverule" action="/symbolrules" method="POST">
                     <div class="row g-3">
+                        <div class="col-xxl-12" style="display: none;">
+                            <input type="text" class="" id="pk_area" name="pk" value="">
+                            <input type="text" class="" id="saverule" name="msg" value="saverule">
+                        </div>
                         <div class="col-xxl-12">
                             <label for="currencyfk" class="form-label">Sembol</label>
                             <div class="input-group">
-                                <select class="form-select" id="currencyfk">
+                                <select class="form-select" id="currencyfk" name="currencyfk">
                                     <!-- <option value="1">Aktif</option>
                                     <option value="2">Pasif</option> -->
                                 </select>
                             </div>
-                        </div><!--end col-->
+                        </div>
+
+                        <hr style="margin-bottom: 2px;">
+                        <h6 style="margin-top: 0px; margin-bottom: 0px; color: #5ea3cb;">Alış Değerleri</h6>
                         <div class="col-xxl-4">
                             <label for="rulestype" class="form-label">Kural Tipi</label>
                             <div class="input-group">
-                                <select class="form-select" id="rulestype">
+                                <select class="form-select" name="rulestype" id="rulestype"
+                                    onchange="changeTypeAndZone(this)">
                                     <option value="1">Otomatik</option>
                                     <option value="2">Sabit</option>
                                     <option value="3">Katsayılı</option>
                                 </select>
                             </div>
-                        </div><!--end col-->
+                        </div>
 
                         <div class="col-xxl-8" id="rulevaluediv">
                             <div>
                                 <label for="rulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
-                                <input type="number" class="form-control" id="rulevalue"
-                                    placeholder="Lütfen kural değeri girin." required>
+                                <input type="number" class="form-control" id="rulevalue" name="rulevalue"
+                                    placeholder="Lütfen kural değeri girin.">
 
                             </div>
-                        </div><!--end col-->
-
+                        </div>
                         <div class="col-xxl-4" id="rulefkdiv" style="display: none;">
                             <div>
                                 <label for="rulefk" id="forrulefk" class="form-label">Hedef Sembol</label>
-
-                                <select class="form-select" id="rulefk">
+                                <select class="form-select" id="rulefk" name="rulefk">
                                     <!-- <option value="1">Aktif</option>
                                         <option value="2">Pasif</option> -->
                                 </select>
                             </div>
-                        </div><!--end col-->
+                        </div>
                         <div class="col-xxl-4" id="ruleratediv" style="display: none;">
-                            <div>
+                            <!-- <div>
                                 <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
                                 <input type="number" class="form-control" id="rulerate"
-                                    placeholder="Lütfen kural oranı seçiniz.">
-                            </div>
-                        </div><!--end col-->
+                                    placeholder="Lütfen kural oranı seçiniz." name="rulerate">
+                            </div> -->
 
+                            <div>
+                                <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
+                                <input type="text" class="form-control" id="ruleratesatis"
+                                    placeholder="Lütfen kural oranı seçiniz." name="ruleratesatis">
+                                <div class="errorMessag" style="display: none;"></div>
+                            </div>
+                        </div>
                         <div class="col-xxl-12">
-                            <label for="rulestatus" class="form-label">Kural Statü</label>
+                            <label for="rulestatus" class="form-label">Artı Değer Ekle</label>
+                            <input type="checkbox" id="myCheckbox" onchange="toggleInput()">
+                        </div>
+
+                        <div class="col-xxl-12" id="additionalInput" style="display: none;">
+                            <label for="additionalField">Artı Değer</label>
+                            <input class="form-control" type="number" id="rulemore" name="rulemore">
+                        </div>
+
+                        <hr style="margin-bottom: 2px;">
+                        <h6 style="margin-top: 0px; margin-bottom: 0px; color: #5ea3cb;">Satış Değerleri</h6>
+                        <div class="col-xxl-4">
+                            <label for="rulestype" class="form-label">Kural Tipi</label>
                             <div class="input-group">
-                                <select class="form-select" id="rulestatus">
-                                    <option value="1">Aktif</option>
-                                    <option value="2">Pasif</option>
+                                <select class="form-select" onchange="changeTypeAndZone(this)" id="rulestypesaatis"
+                                    name="rulestypesaatis">
+                                    <option value="1">Otomatik</option>
+                                    <option value="2">Sabit</option>
+                                    <option value="3">Katsayılı</option>
                                 </select>
                             </div>
-                        </div><!--end col-->
+                        </div>
+
+                        <div class="col-xxl-8" id="rulevaluedivsatis">
+                            <div>
+                                <label for="rulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
+                                <input type="number" class="form-control" id="rulevaluesatis"
+                                    placeholder="Lütfen kural değeri girin." name="rulevaluesatis">
+
+                            </div>
+                        </div>
+                        <div class="col-xxl-4" id="rulefkdivsatis" style="display: none;">
+                            <div>
+                                <label for="rulefk" id="forrulefk" class="form-label">Hedef Sembol</label>
+                                <select class="form-select" id="rulefksatis" name="rulefksatis">
+                                    <!-- <option value="1">Aktif</option>
+                                        <option value="2">Pasif</option> -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4" id="ruleratedivsatis" style="display: none;">
+                            <div>
+                                <label for="rulerate" id="forrulerate" class="form-label">Kural Oran</label>
+                                <input type="text" class="form-control" id="rulerate"
+                                    placeholder="Lütfen kural oranı seçiniz." name="rulerate">
+                                <div class="errorMessag" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12">
+                            <label for="rulestatus" class="form-label">Artı Değer Ekle</label>
+                            <input type="checkbox" id="myCheckboxsatis" onchange="toggleInput(this)">
+                        </div>
+
+                        <div class="col-xxl-12" id="additionalInputsatis" style="display: none;">
+                            <label for="additionalField">Artı Değer</label>
+                            <input class="form-control" type="number" id="rulemoresatis" name="rulemoresatis">
+                        </div>
+                        <hr>
 
                         <div class="col-xxl-12">
+                            <label for="addruleOrder" class="form-label">Kural Sırası</label>
+                            <input type="number" class="form-control" id="addruleOrder"
+                                placeholder="Lütfen Kural Sırası bilgisi girin." name="addruleOrder">
+                        </div>
+
+
+                        <div class="col-xxl-12" hidden>
                             <label for="affiliatestatus" class="form-label">Bölge</label>
                             <div class="input-group">
                                 <select class="form-select" id="zonefk">
@@ -223,27 +290,28 @@
                             <div>
                                 <label for="rulestep" class="form-label">Kural Adım</label>
                                 <input type="number" class="form-control" id="rulestep"
-                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                                    placeholder="Lütfen sorumlu bilgisi girin." name="rulestep">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-4">
                             <div>
                                 <label for="rulemax" class="form-label">Kural Max</label>
                                 <input type="number" class="form-control" id="rulemax"
-                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                                    placeholder="Lütfen sorumlu bilgisi girin." name="rulemax">
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-4">
                             <div>
                                 <label for="rulesmin" class="form-label">Kural Min</label>
                                 <input type="number" class="form-control" id="rulesmin"
-                                    placeholder="Lütfen sorumlu bilgisi girin.">
+                                    placeholder="Lütfen sorumlu bilgisi girin." name="rulemin">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
-                                <button type="button" id="submit_button" class="btn btn-primary">Kaydet</button>
+                                <!--submit_button-->
+                                <button type="submit" id="" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -287,7 +355,7 @@
                             <div>
                                 <label for="editrulevalue" id="forrulevalue" class="form-label">Kural Değer</label>
                                 <input type="number" class="form-control" id="editrulevalue"
-                                    placeholder="Lütfen kural değeri girin." required>
+                                    placeholder="Lütfen kural değeri girin.">
 
                             </div>
                         </div><!--end col-->
@@ -314,7 +382,7 @@
 
 
 
-                        <div class="col-xxl-12">
+                        <div class="col-xxl-6">
                             <label for="editrulestatus" class="form-label">Kural Statü</label>
                             <div class="input-group">
                                 <select class="form-select" id="editrulestatus">
@@ -323,8 +391,13 @@
                                 </select>
                             </div>
                         </div><!--end col-->
+                        <div class="col-xxl-6">
+                            <label for="editrulestatus" class="form-label">Kural Sırası</label>
+                            <input type="number" class="form-control" id="ruleOrder"
+                                placeholder="Lütfen Kural Sırası bilgisi girin.">
+                        </div><!--end col-->
 
-                        <div class="col-xxl-12">
+                        <div class="col-xxl-12" hidden>
                             <label for="editzonefk" class="form-label">Bölge</label>
                             <div class="input-group">
                                 <select class="form-select" id="editzonefk">
@@ -353,7 +426,15 @@
                                 <input type="number" class="form-control" id="editrulesmin"
                                     placeholder="Lütfen sorumlu bilgisi girin.">
                             </div>
-                        </div><!--end col-->
+                        </div>
+                        <!--YENİ-->
+                        <div class="col-xxl-4" id="rulePercentageDiv" style="display: none;">
+                            <div>
+                                <label for="rulePercentage" class="form-label">Oran Ekle</label>
+                                <input type="number" class="form-control" id="rulePercentage"
+                                    placeholder="Lütfen artı oran değeri belirleyin">
+                            </div>
+                        </div>
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
@@ -387,6 +468,68 @@
     </div>
 </div>
 <script>
+
+
+    function validateInput(value) {
+        // Sadece sayısal değerler ve virgülü içeriyorsa, girişi kabul et
+        if (/^[0-9,]*$/.test(value)) {
+            //document.getElementById("errorMessage").textContent = "";
+            $(".errorMessage").css('display', 'none')
+        } else {
+            // Değilse, hata mesajı göster
+            // document.getElementById("errorMessage").textContent = "Geçersiz karakter! Sadece sayısal değerler ve virgül kullanabilirsiniz.";
+            $(".errorMessage").css('display', '')
+            $(".errorMessage").text('Geçersiz karakter! Sadece sayısal değerler ve virgül kullanabilirsiniz.')
+        }
+    }
+
+    $(document).ready(function () {
+        $("#addsaverule").submit(function (event) {
+            event.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                type: "POST",
+                url: "/symbolrules",
+                data: formData,
+                success: function (response) {
+                    let res = JSON.parse(response)
+                    if (res == "ok") {
+                        toastr.success("İşlem başarılı");
+                        $("#addmember").modal('toggle');
+                    } else {
+                        toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+                    }
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+    });
+
+    //checkbox
+    function toggleInput(element) {
+        var checkbox = document.getElementById('myCheckbox');
+        var checkbox2 = document.getElementById('myCheckboxsatis');
+        var elementId = $(element).attr("id");
+        if (elementId == "myCheckboxsatis") {
+            if (checkbox2.checked) {
+                $("#additionalInputsatis").css('display', '');
+                // $("#additionalInputsatis").prop('required', true);
+            } else {
+                $("#additionalInputsatis").css('display', 'none');
+                ///$("#additionalInputsatis").prop('required', false);
+            }
+        } else {
+            if (checkbox.checked) {
+                $("#additionalInput").css('display', '');
+                // $("#additionalInput").prop('required', true);
+            } else {
+                $("#additionalInput").css('display', 'none');
+                // $("#additionalInput").prop('required', false);
+            }
+        }
+    }
     //datatable initialize
     var table = $("#datatable").DataTable({
         language: {
@@ -408,6 +551,8 @@
         document.getElementById("currencyfk").innerHTML = html;
         document.getElementById("editforrulefk").innerHTML = html;
         document.getElementById("editcurrencyfk").innerHTML = html;
+        document.getElementById("rulefk").innerHTML = html;
+        document.getElementById('rulefksatis').innerHTML = html;
     });
 
     // get all zone
@@ -425,153 +570,99 @@
 
     //add current rules
     var kuraltip;
-    $("#rulestype").on('change', function () {
-        $("#rulestype option:selected").each(function () {
-            kuraltip = $(this).val();
-            switch (kuraltip) {
-                case "1":
-                    $("#rulevaluediv").css("display", "none");
-                    // $("#ruleratediv").css("display", "none");
-                    $("#rulefkdiv").css("display", "none");
-                    $("#ruleratediv").css("display", "none");
-                    break;
-                case "2":
-                    $("#rulevaluediv").css("display", "");
-                    $("#ruleratediv").css("display", "none");
-                    $("#rulefkdiv").css("display", "none");
-                    break;
-                case "3":
-                    $("#rulevaluediv").css("display", "none");
-                    $("#ruleratediv").css("display", "");
-                    $("#rulefkdiv").css("display", "");
-                    $.get("/symbolrules?msg=getallcurrency").done(function (res) {
-                        var response = JSON.parse(res);
-                        console.log(response)
-                        let html;
-                        for (var i = 0; i < response.length; i++) {
-                            var rules = response[i];
-                            var rulespk = rules.map.currencypk;
-                            let htmlSegment = `<option value="${rulespk}">${rules.map.currencytitle}</option>`;
-                            html += htmlSegment;
-                        }
-                        document.getElementById("rulefk").innerHTML = html;
-                    })
-                    break;
-            }
-        });
-    });
-
-
-
-    // add
-    $("#submit_button").on('click', function () {
-        var currencyfk = $("#currencyfk").val();
-        var rulestype = $("#rulestype").val();
-        var rulevalue = $("#rulevalue").val();
-        var rulerate = $("#rulerate").val();
-        console.log(rulerate);
-        var rulefk = $("#rulefk").val();
-        var rulestatus = $("#rulestatus").val();
-        var zonefk = $("#zonefk").val();
-        var rulestep = $("#rulestep").val();
-
-        var rulemax = $("#rulemax").val();
-        var rulemin = $("#rulesmin").val();
-
-
-
-        $.post("/symbolrules", {
-            msg: "addsymbolrules",
-            currencyfk: currencyfk,
-            rulestype: rulestype,
-            rulevalue: rulevalue,
-            rulerate: rulerate,
-            rulestatus: rulestatus,
-            zonefk: zonefk,
-            rulestep: rulestep,
-            rulemax: rulemax,
-            rulemin: rulemin,
-            rulefk: rulefk
-        }).done(function (res) {
-            var response = JSON.parse(res);
-            if (response == "ok") {
-                toastr.success("İşlem başarılı");
-                $("#addmember").modal('toggle');
-            } else {
-                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
-            }
-        })
-    });
-
-    //get all rules
-    $.get("/symbolrules?msg=getallrules").done(function (res) {
-        var response = JSON.parse(res);
-        console.log(response)
-        for (var i = 0; i < response.length; i++) {
-            var rules = response[i];
-            var obj = {};
-            obj = response[i].map;
-            //console.log(response[i].map)
-            var rulespk = rules.map.rulespk;
-            var currencyfk = rules.map.currencyfk;
-            var rulemax = rules.map.rulemax;
-            var rulemin = rules.map.rulemin;
-
-
-            var rulerate = rules.map.rulerate;
-            var rulestatus = rules.map.rulestatus;
-            var rulestep = rules.map.rulestep;
-            var rulestype = rules.map.rulestype;
-            var rulevalue = rules.map.rulevalue;
-            var rulezone = rules.map.rulezone;
-            
-            var createdDate = rules.map.createdDate;
-            createdDate = moment(createdDate).format('DD-MM-YYYY');
-            var rawnode = table.row
-                .add([`
-            <td style="text-align: center;">
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-soft-secondary btn-sm dropdown"
-                        type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="ri-more-fill align-middle"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${rulespk}" onclick="editcurrent()"
-                                data-bs-toggle="modal"
-                                data-bs-target="#editmember"><i
-                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                Düzenle</a></li>
-                        <li>
-                            <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${rulespk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
-                                <i
-                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                Sil
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </td>
-            `,
-                    currencyfk,
-                    rulestype,
-                    rulerate,
-                    rulevalue,
-                    rulestatus,
-                    rulezone,
-                    rulestep,
-                    rulemax,
-                    rulemin,
-                    createdDate,
-
-                ])
-                .draw()
-                .node();
-            $(rawnode).attr("id", rulespk);
-            $(rawnode).attr('data-id', obj);
-
+    function changeTypeAndZone(element) {
+        console.log($(element).val());
+        var elementId = $(element).attr("id");
+        if (elementId == "rulestype") {
+            $("#" + elementId + " option:selected").each(function () {
+                kuraltip = $(element).val();
+                switch (kuraltip) {
+                    case "1":
+                        $("#rulevaluediv").css("display", "none");
+                        $("#rulefkdiv").css("display", "none");
+                        //$("#addruleOrder").prop('required', true);
+                        //$("#ruleratediv").css("display", "none");
+                        break;
+                    case "2":
+                        $("#rulevaluediv").css("display", "");
+                        //$("#rulevalue").prop('required', true);
+                        $("#ruleratediv").css("display", "none");
+                        $("#rulefkdiv").css("display", "none");
+                        //$("#addruleOrder").prop('required', true);
+                        
+                        break;
+                    case "3":
+                        $("#rulevaluediv").css("display", "none");
+                        $("#ruleratediv").css("display", "");
+                        $("#rulefkdiv").css("display", "");
+                        // $("#rulestype").prop('required', true);
+                        // $("#rulefk").prop('required', true);
+                        //$("#ruleratesatis").prop('required', true);
+                        // $("#ruleratediv").prop('required', true);
+                        //$("#rulefk").prop('required', true);
+                        //$("#addruleOrder").prop('required', true);
+                        $.get("/symbolrules?msg=getallcurrency").done(function (res) {
+                            var response = JSON.parse(res);
+                            console.log(response)
+                            let html;
+                            for (var i = 0; i < response.length; i++) {
+                                var rules = response[i];
+                                var rulespk = rules.map.currencypk;
+                                let htmlSegment = `<option value="${rulespk}">${rules.map.currencytitle}</option>`;
+                                html += htmlSegment;
+                            }
+                            document.getElementById("rulefk").innerHTML = html;
+                        })
+                        break;
+                }
+            });
+        } else {
+            $("#" + elementId + " option:selected").each(function () {
+                kuraltip = $(element).val();
+                switch (kuraltip) {
+                    case "1":
+                        $("#rulevaluedivsatis").css("display", "none");
+                        $("#rulefkdivsatis").css("display", "none");
+                        $("#ruleratedivsatis").css("display", "none");
+                       // $("#addruleOrder").prop('required', true);
+                        break;
+                    case "2":
+                        $("#rulevaluedivsatis").css("display", "");
+                        $("#ruleratedivsatis").css("display", "none");
+                        $("#rulefkdivsatis").css("display", "none");
+                       // $("#rulevaluesatis").prop('required', true);
+                       //$("#addruleOrder").prop('required', true);
+                        break;
+                    case "3":
+                        $("#rulevaluedivsatis").css("display", "none");
+                        $("#ruleratedivsatis").css("display", "");
+                        $("#rulefkdivsatis").css("display", "");
+                     
+                        // $("#rulestypesaatis").prop('required', true);
+                        // $("#rulefksatis").prop('required', true);
+                       // $("#addruleOrder").prop('required', true);
+                        //$("#rulerate").prop('required', true);
+                        $.get("/symbolrules?msg=getallcurrency").done(function (res) {
+                            var response = JSON.parse(res);
+                            console.log(response)
+                            let html;
+                            for (var i = 0; i < response.length; i++) {
+                                var rules = response[i];
+                                var rulespk = rules.map.currencypk;
+                                let htmlSegment = `<option value="${rulespk}">${rules.map.currencytitle}</option>`;
+                                html += htmlSegment;
+                            }
+                            document.getElementById("rulefksatis").innerHTML = html;
+                        })
+                        break;
+                }
+            });
         }
-    });
+    }
+
+
+
+
 
     // select table row
     var rulespk;
@@ -610,6 +701,7 @@
                     $("#editrulevaluediv").css("display", "none");
                     $("#editruleratediv").css("display", "none");
                     $("#editrulefkdiv").css("display", "none");
+                    $("#rulePercentageDiv").css("display", "");
                     break;
                 case "2":
                     $("#editrulevaluediv").css("display", "");
@@ -645,88 +737,143 @@
         }).done(function (res) {
 
             var response = JSON.parse(res);
-            //console.log(response)
-            var getCurrencyFK = response[0].map.getCurrencyFK;
-            var getCurrencyRulePK = response[0].map.getCurrencyRulePK;
-            var getRuleFK = response[0].map.getRuleFK;
-            var getRuleMax = response[0].map.getRuleMax;
-            var getRuleMin = response[0].map.getRuleMin;
-            var getRuleRate = response[0].map.getRuleRate;
-            var getRuleStatusFK = response[0].map.getRuleStatusFK;
+            console.log(response)
 
-            var getRuleTypeFK = response[0].map.getRuleTypeFK;
-            var getRuleStep = response[0].map.getRuleStep;
-            var getZoneFK = response[0].map.getZoneFK;
+            const {
+                CurrencyRulePK,
+                beforeValue,
+                buyRuleFK,
+                buyRuleTypeFK,
+                createdDate,
+                currencyFK,
+                lastUpdate,
+                organizationFK,
+                ruleBuyMValue,
+                ruleBuyRate,
+                ruleFK,
+                ruleMax,
+                ruleMin,
+                ruleOrder,
+                rulePercentage,
+                ruleRate,
+                ruleSellMValue,
+                ruleStatusFK,
+                ruleStep,
+                ruleTypeFK,
+                ruleValue,
+                visible,
+                zoneFK
+            } = response;
+
+            document.getElementById('pk_area').setAttribute('value', CurrencyRulePK);
+            document.getElementById('modal_title').innerHTML = "Kural Düzenle";
 
 
-            $("#editcurrencyfk").each(function () {
+            if (ruleTypeFK == "1") {
+                $("#rulePercentageDiv").css("display", "");
+            }
+
+            $("#currencyfk").each(function () {
+                $(this).children("option").each(function () {
+                    //console.log($(this).val())
+                    if ($(this).val() == currencyFK) {
+                        $(this).attr('selected', 'selected');                       
+                    }
+                });
+                //$(this).prop('disabled' ,true);
+                //$('#currencyfk').val() = currencyfk;
+
+            });
+            //document.getElementById('currencyfk').setAttribute('value', currencyfk);
+
+            $("#rulestype").each(function () {
                 $(this).children("option").each(function () {
                     console.log($(this).val())
-                    if ($(this).val() == getCurrencyFK) {
+                    if ($(this).val() == ruleTypeFK) {
+                        $(this).attr('selected', 'selected')
+                    }
+                    if (ruleTypeFK == "3") {
+                        $("#rulevaluediv").css('display', 'none');
+                        $('#rulefkdiv').css("display", '');
+                        $("#rulestype").prop('required', true);
+                        $("#rulefk").prop('required', true);
+                        $("#ruleratesatis").prop('required', true);
+                        
+                        $('#ruleratediv').css("display", '');
+                    } else if (ruleTypeFK == "1") {
+                        $("#rulevaluediv").css("display", 'none')
+                    }
+
+                });
+            });
+            $("#rulefk").each(function () {
+                $(this).children("option").each(function () {
+                    console.log($(this).val())
+                    if ($(this).val() == ruleFK) {
                         $(this).attr('selected', 'selected')
                     }
 
                 });
             });
+            document.getElementById('ruleratesatis').setAttribute('value',ruleBuyRate);
+            if(ruleBuyMValue != ""){
+                $("#additionalInput").css('display', '');
+                document.getElementById('rulemore').setAttribute('value', ruleBuyMValue);
+            }
 
-            $("#editrulestype").each(function () {
+
+            //satislar
+            
+            $("#rulestypesaatis").each(function () {
                 $(this).children("option").each(function () {
-                    console.log($(this).val())
-                    if ($(this).val() == getRuleTypeFK) {
+                    //console.log($(this).val())
+                    if ($(this).val() == buyRuleTypeFK) {
                         $(this).attr('selected', 'selected')
                     }
-                    if (getRuleTypeFK == "3") {
-                        $("#editrulevaluediv").css('display', 'none');
-                        $('#editrulefkdiv').css("display", '');
-                        $('#editruleratediv').css("display", '');
-                    } else if (getRuleTypeFK == "1") {
-                        $("#editrulevaluediv").css("display", 'none')
+                    if (buyRuleTypeFK == "3") {
+                        $("#rulevaluedivsatis").css('display', 'none');
+                        $('#rulefkdivsatis').css("display", '');
+                        $('#ruleratedivsatis').css("display", '');
+
+                        $("#rulestypesaatis").prop('required', true);
+                        $("#rulefksatis").prop('required', true);
+                        $("#rulerate").prop('required', true);
+
+                    } else if (buyRuleTypeFK == "1") {
+                        $("#rulevaluediv").css("display", 'none')
                     }
 
                 });
             });
-            $("#editforrulefk").each(function () {
+            $("#rulefksatis").each(function () {
                 $(this).children("option").each(function () {
-                    console.log($(this).val())
-                    if ($(this).val() == getRuleFK) {
-                        $(this).attr('selected', 'selected')
-                    }
-
-                });
-            });
-
-            // $.get("/symbolrules?msg=getallzone").done(function (res) {
-            //     var response = JSON.parse(res);
-            //     let html = "";
-            //     for (var i = 0; i < response.length; i++) {
-            //         var zone = response[i];
-            //         let htmlSegment = `<option value="${zone.map.zonepk}">${zone.map.zonetitle}</option>`;
-            //         html += htmlSegment;
-            //     }
-            //     //document.getElementById("zonefk").innerHTML = html;
-            //     document.getElementById("editzonefk").innerHTML = html;
-            // });
-
-            $("#editzonefk").each(function () {              
-                $(this).children("option").each(function () {
-                    console.log($(this).val())
-                    if($(this).val() == getZoneFK){
+                    //console.log($(this).val())
+                    if ($(this).val() == buyRuleFK) {
                         $(this).attr('selected', 'selected')
                     }
                 });
             });
+            document.getElementById('ruleratesatis').setAttribute('value',ruleBuyRate);
+            if(ruleSellMValue != ""){
+                $("#additionalInputsatis").css('display', '');
+                document.getElementById('rulemoresatis').setAttribute('value', ruleSellMValue);
+            }
 
-            document.getElementById("editrulerate").setAttribute('placeholder', getRuleRate);
-            document.getElementById("editrulerate").setAttribute('value', getRuleRate);
+            document.getElementById("rulerate").setAttribute('placeholder', ruleRate);
+            document.getElementById("rulerate").setAttribute('value', ruleRate);
 
-            document.getElementById("editrulemax").setAttribute('placeholder', getRuleMax);
-            document.getElementById("editrulemax").setAttribute('value', getRuleMax);
+            document.getElementById("rulemax").setAttribute('placeholder', ruleMax);
+            document.getElementById("rulemax").setAttribute('value', ruleMax);
 
-            document.getElementById("editrulesmin").setAttribute('placeholder', getRuleMin);
-            document.getElementById("editrulesmin").setAttribute('value', getRuleMin);
+            document.getElementById("rulesmin").setAttribute('placeholder', ruleMin);
+            document.getElementById("rulesmin").setAttribute('value', ruleMin);
 
-            document.getElementById("editrulestep").setAttribute('placeholder', getRuleStep);
-            document.getElementById("editrulestep").setAttribute('value', getRuleStep);
+            document.getElementById("rulestep").setAttribute('placeholder', ruleStep);
+            document.getElementById("rulestep").setAttribute('value', ruleStep);
+
+            document.getElementById("addruleOrder").setAttribute('value', ruleOrder);
+            $("#addruleOrder").prop('required', true);
+            
 
         })
     }
@@ -744,6 +891,10 @@
         var rulemax = $("#editrulemax").val();
         var rulemin = $("#editrulesmin").val();
 
+        var ruleOrder = $("#ruleOrder").val();
+
+        var rulePercentage = $("#rulePercentage").val();
+
         $.post("/symbolrules", {
             msg: "editsymbolrules",
             rulespk: rulespk,
@@ -756,7 +907,9 @@
             rulestep: rulestep,
             rulemax: rulemax,
             rulemin: rulemin,
-            rulefk: rulefk
+            rulefk: rulefk,
+            ruleOrder: ruleOrder,
+            rulePercentage: rulePercentage
         }).done(function (res) {
             var response = JSON.parse(res);
             if (response == "ok") {
@@ -767,6 +920,56 @@
             }
         })
     });
+
+
+
+    //
+    // add
+    // $("#submit_button").on('click', function () {
+    //     var currencyfk = $("#currencyfk").val();
+    //     var rulestype = $("#rulestype").val();
+    //     var rulevalue = $("#rulevalue").val();
+    //     var rulerate = $("#rulerate").val();
+    //     console.log(rulerate);
+    //     var rulefk = $("#rulefk").val();
+    //     var rulestatus = $("#rulestatus").val();
+    //     var zonefk = $("#zonefk").val();
+    //     var rulestep = $("#rulestep").val();
+
+    //     var rulemax = $("#rulemax").val();
+    //     var rulemin = $("#rulesmin").val();
+
+    //     var ruleOrder = $("#addruleOrder").val();
+
+    //     //alış satış için
+    //     var ruleTypeFK = $("#ruleTypeFK").val();
+    //     //ek değer
+    //     var rulemore = $("#rulemore").val();
+    //     $.post("/symbolrules", {
+    //         msg: "addsymbolrules",
+    //         currencyfk: currencyfk,
+    //         rulestype: rulestype,
+    //         rulevalue: rulevalue,
+    //         rulerate: rulerate,
+    //         rulestatus: rulestatus,
+    //         zonefk: zonefk,
+    //         rulestep: rulestep,
+    //         rulemax: rulemax,
+    //         rulemin: rulemin,
+    //         rulefk: rulefk,
+    //         ruleOrder: ruleOrder,
+    //         ruleTypeFK: ruleTypeFK,
+    //         rulemore: rulemore
+    //     }).done(function (res) {
+    //         var response = JSON.parse(res);
+    //         if (response == "ok") {
+    //             toastr.success("İşlem başarılı");
+    //             $("#addmember").modal('toggle');
+    //         } else {
+    //             toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+    //         }
+    //     })
+    // });
 
 
 </script>

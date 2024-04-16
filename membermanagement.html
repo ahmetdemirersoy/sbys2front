@@ -78,9 +78,21 @@
                                         <h5 class="card-title mb-0">Üye Listesi</h5>
                                     </div>
                                     <div class="card-body">
-                                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
-                                            data-bs-target="#addmember">Üye Ekle</button>
+                                        <div id="organizationandmember">
+                                            {memberBtn}
+                                        </div>
+                                        <!-- <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal"
+                                            data-bs-target="#addmember">Üye Ekle</button> -->
+                                        <div id="alertarea" style="display: none;">
+                                            <div class="alert alert-danger" role="alert">
+                                                Kullanıcı/Ekran sayısı sınıra ulaştı
+                                            </div>
+
+                                        </div>
                                         <hr>
+
+                                      
+
                                         <table id="datatable"
                                             class="table table-bordered dt-responsive nowrap table-striped align-middle"
                                             style="width:100%">
@@ -100,9 +112,12 @@
                                                     <th>Üye Vergi Dairesi</th>
                                                     <th>Bölge Kodu</th>
                                                     <th>Katılma Tarihi</th>
+                                                    <th>IP Adresi</th>
+                                                    <th>Güncelleme Tarihi</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>                                              
+                                            <tbody>
+                                                {{list}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -132,7 +147,7 @@
                 <div class="col-sm-12" style="text-align: center;">
                     <script>document.write(new Date().getFullYear())</script> © SBYS
                 </div>
-                
+
             </div>
         </div>
     </footer>
@@ -182,13 +197,22 @@
                                 </div>
                             </div>
                         </div><!--end col-->
+                        <div class="col-xxl-12">
+                            <div>
+                                <label for="screen_type_select" class="form-label">Ekran Tipi</label>
+                                <select class="form-select" id="screen_type_select">
+                                     <option value="1">Yatay</option>
+                                        <option value="2">Dikey</option> 
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-xxl-6">
                             <div>
                                 <label for="affiliatemail" class="form-label">Üye Mail</label>
                                 <input type="email" class="form-control" id="affiliatemail"
                                     placeholder="Lütfen mail adresi girin.">
                             </div>
-                        </div><!--end col-->
+                        </div>
 
                         <div class="col-xxl-6">
                             <div>
@@ -204,6 +228,7 @@
                                     placeholder="Lütfen sorumlu bilgisi girin.">
                             </div>
                         </div><!--end col-->
+                        
                         <div class="col-xxl-6">
                             <div>
                                 <label for="zonecode" class="form-label">Bölge Kodu</label>
@@ -215,7 +240,7 @@
                                 </div>
                             </div>
                         </div><!--end col-->
-                      <!--  <div class="col-xxl-6">
+                        <!--  <div class="col-xxl-6">
                             <div>
                                 <label for="affiliatezonecode" class="form-label">Bölge Kodu</label>
                                 <input type="text" class="form-control" id="affiliatezonecode"
@@ -312,14 +337,14 @@
                                 <label for="editaffiliatetitle" class="form-label">Üye Başlık</label>
                                 <input type="text" class="form-control" id="editaffiliatetitle" value=""
                                     placeholder="Lütfen başlık girin." required>
-                                
+
                             </div>
                         </div><!--end col-->
                         <div class="col-xxl-6">
                             <div>
                                 <label for="editaffiliatemail" class="form-label">Üye Mail</label>
                                 <input type="email" class="form-control" id="editaffiliatemail" value=""
-                                    placeholder="Lütfen mail adresi girin."> 
+                                    placeholder="Lütfen mail adresi girin.">
                             </div>
                         </div><!--end col-->
 
@@ -450,15 +475,51 @@
         </div>
     </div>
 </div>
+
+<!-- ipeditmoadal -->
+<div class="modal fade" id="ipeditmoadal" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="align-items: center; text-align: center; display: flex;
+            flex-direction: column;">
+                <h5 class="modal-title" id="exampleModalgridLabel">IP Adresini Temizle</h5>
+
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="hstack gap-2 justify-content-center">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+                        <button type="button" id="delete_button_ip" class="btn btn-success">Onayla</button>
+                    </div>
+                </div><!--end col-->
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 
     //datatable initialize
-    var table = $("#datatable").DataTable({
+    let table = $("#datatable").DataTable({
         language: {
             url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
         },
-
-        //   dom: '<"toolbar">frtip',
+        scrollX : true,
+        dom: "Bfrtip",
+        buttons: [
+            {
+                extend: "excel",
+                className:
+                    "btn btn-sm  btn-primary glyphicon glyphicon-list-alt mt-2",
+                text: '<i class="las la-file-excel  mr-1"></i> EXCEL',
+            },
+            {
+                extend: "pdf",
+                className:
+                    "btn btn-sm  btn-success glyphicon glyphicon-list-alt mt-2",
+                text: '<i class="las la-file-excel  mr-1"></i> PDF',
+            },
+           
+        ],
     });
 
     // get all zone
@@ -471,74 +532,91 @@
             let htmlSegment = `<option value="${zone.map.zonepk}">${zone.map.zonetitle}</option>`;
             html += htmlSegment;
         }
-         document.getElementById("affiliatezonecode").innerHTML = html;
-         document.getElementById("editaffiliatezonecode").innerHTML = html;
+        document.getElementById("affiliatezonecode").innerHTML = html;
+        document.getElementById("editaffiliatezonecode").innerHTML = html;
     });
+
+
+    
 
     //get affiliate
-    $.get("/membermanagement?msg=getaffiliate").done(function (res) {
-        var response = JSON.parse(res);
-        console.log(response)
-        for (var i = 0; i < response.length; i++) {
-            var affiliate = response[i];
-            var affialitepk = affiliate.map.affialitepk;
-            var affialiteTitle = affiliate.map.affialiteTitle;
-            var affiliateAddress = affiliate.map.affiliateAddress;
-            var affiliateCode = affiliate.map.affiliateCode;
-            var affiliateMail = affiliate.map.affiliateMail;
-            var affiliatePhone = affiliate.map.affiliatePhone;
-            var affiliateResponsible = affiliate.map.affiliateResponsible;
-            var affiliateScreenFk = affiliate.map.affiliateScreenFk;
-            var affiliateStatus = affiliate.map.affiliateStatus;
-            var affiliateTaxNo = affiliate.map.affiliateTaxNo;
-            var affiliateTaxOffice = affiliate.map.affiliateTaxOffice;
-            var affiliateZone = affiliate.map.affiliateZone;
-            var createdDate = affiliate.map.createdDate;
-            createdDate = moment(createdDate).format('DD-MM-YYYY')
-            var rawnode = table.row
-                .add([`
-            <td style="text-align: center;">
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-soft-secondary btn-sm dropdown"
-                        type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="ri-more-fill align-middle"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu">                                                               
-                        <li><a class="dropdown-item edit-item-btn" data-id="${affialitepk}" onclick=" editcurrent()"
-                                data-bs-toggle="modal"
-                                data-bs-target="#editmember"><i
-                                    class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                Düzenle</a></li>
-                        <li>
-                            <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${affialitepk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
-                                <i
-                                    class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                Sil
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </td>
-            `,
-                    affiliateCode,
-                    affialiteTitle,
-                    affiliateResponsible,
-                    affiliatePhone,
-                    affiliateMail,
-                    affiliateStatus,
-                `<span class="badge badge-soft-info">${affiliateScreenFk}</span>`,
-                    affiliateTaxNo,
-                    affiliateTaxOffice,
-                    affiliateZone,
-                    createdDate
+    //burada update date tabloya gelecek
+    //bu nedenle burası backend datatable olabilir
+  // $.get("/membermanagement?msg=getaffiliate").done(function (res) {
+        // var response = JSON.parse(res);
+        // console.log(response)
+        // for (const element of response) {
+        //     var affiliate = element;
+        //     var affialitepk = affiliate.map.affialitepk;
 
-                ])
-                .draw()
-                .node();
-            $(rawnode).attr("id", affialitepk);
-        }
-    });
+        //     var ipaddress = affiliate.map.ipAddress;
+
+        //     var affialiteTitle = affiliate.map.affialiteTitle;
+        //     var affiliateAddress = affiliate.map.affiliateAddress;
+        //     var affiliateCode = affiliate.map.affiliateCode;
+        //     var affiliateMail = affiliate.map.affiliateMail;
+        //     var affiliatePhone = affiliate.map.affiliatePhone;
+        //     var affiliateResponsible = affiliate.map.affiliateResponsible;
+        //     var affiliateScreenFk = affiliate.map.affiliateScreenFk;
+        //     var affiliateStatus = affiliate.map.affiliateStatus;
+        //     var affiliateTaxNo = affiliate.map.affiliateTaxNo;
+        //     var affiliateTaxOffice = affiliate.map.affiliateTaxOffice;
+        //     var affiliateZone = affiliate.map.affiliateZone;
+        //     var createdDate = affiliate.map.createdDate;
+        //     var updateDate = affiliate.map.updateDate;
+        //     createdDate = moment(createdDate).format('DD-MM-YYYY')
+        //     updateDate = moment(updateDate).format('DD/MM/YYYY hh-mm-ss')
+        //     var rawnode = table.row
+        //         .add([`
+        //     <td style="text-align: center;">
+        //         <div class="dropdown d-inline-block">
+        //             <button class="btn btn-soft-secondary btn-sm dropdown"
+        //                 type="button" data-bs-toggle="dropdown"
+        //                 aria-expanded="false">
+        //                 <i class="ri-more-fill align-middle"></i>
+        //             </button>
+        //             <ul class="dropdown-menu dropdown-menu">  
+        //                 <li><a class="dropdown-item edit-item-btn" data-id="${affialitepk}" onclick=" ipedit()"
+        //                         data-bs-toggle="modal"
+        //                         data-bs-target="#ipeditmoadal"><i
+        //                             class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+        //                         IP Güncelle</a></li>                                                             
+        //                 <li><a class="dropdown-item edit-item-btn" data-id="${affialitepk}" onclick=" editcurrent()"
+        //                         data-bs-toggle="modal"
+        //                         data-bs-target="#editmember"><i
+        //                             class="ri-pencil-fill align-bottom me-2 text-muted"></i>
+        //                         Düzenle</a></li>
+        //                 <li>
+        //                     <a class="dropdown-item remove-item-btn" id="delete_a"  data-id="${affialitepk}" data-bs-toggle="modal"data-bs-target="#deletemember" >
+        //                         <i
+        //                             class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
+        //                         Sil
+        //                     </a>
+        //                 </li>
+        //             </ul>
+        //         </div>
+        //     </td>
+        //     `,
+        //             affiliateCode,
+        //             affialiteTitle,
+        //             affiliateResponsible,
+        //             affiliatePhone,
+        //             affiliateMail,
+        //             affiliateStatus,
+        //         `<span class="badge badge-soft-info">${affiliateScreenFk}</span>`,
+        //             affiliateTaxNo,
+        //             affiliateTaxOffice,
+        //             affiliateZone,
+        //             createdDate,
+        //             ipaddress,
+        //             updateDate
+
+        //         ])
+        //         .draw()
+        //         .node();
+        //     $(rawnode).attr("id", affialitepk);
+        // }
+   // });
 
 
     // add new affiliate 
@@ -556,7 +634,7 @@
         var affiliatestatus = $("#affiliatestatus").val();
         var affiliatemembercode = $("#affiliatemembercode").val();
         console.log(affiliatestatus)
-        
+
         $.post("/membermanagement", {
             msg: "addaffiliate",
             affiliatetitle: affiliatetitle,
@@ -568,18 +646,23 @@
             affiliataxoffice: affiliataxoffice,
             affiliatescreenfk: affiliatescreenfk,
             affiliateaddress: affiliateaddress,
-            affiliatestatus : affiliatestatus
+            affiliatestatus: affiliatestatus
         }).done(function (res) {
             var response = JSON.parse(res);
             if (response == "ok") {
                 toastr.success("İşlem başarılı");
                 $("#addmember").modal('toggle');
             } else {
-                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+                toastr.error(response);
+                $("#addmember").modal('toggle');
+                getMaxMemberAlert()
             }
         })
     });
 
+    function getMaxMemberAlert() {
+        $("#alertarea").css("display", "")
+    }
 
 
     var affiliatepk;
@@ -604,8 +687,24 @@
                 toastr.error("Hatalı işlem lütfen tekrar deneyin.");
             }
         })
-    })
+    });
 
+
+    $("#delete_button_ip").click(function () {
+        $.post("/membermanagement", {
+            msg: "deleteIpAddress",
+            affiliatepk: affiliatepk
+
+        }).done(function (res) {
+            var response = JSON.parse(res);
+            if (response == "ok") {
+                toastr.success("İşlem başarılı");
+                $("#ipeditmoadal").modal('toggle');
+            } else {
+                toastr.error("Hatalı işlem lütfen tekrar deneyin.");
+            }
+        })
+    })
 
     //edit affiliate
     function editcurrent() {
@@ -614,7 +713,7 @@
             affiliatepk: affiliatepk,
         }).done(function (res) {
             var affiliate = JSON.parse(res);
-           
+
 
             var affiliate = affiliate[0];
             console.log(affiliate)
@@ -631,7 +730,7 @@
             var affiliateTaxOffice = affiliate.map.affiliateTaxOffice;
             var affiliateZone = affiliate.map.affiliateZone;
 
-            
+
             document.getElementById("editaffiliatetitle").setAttribute('value', affialiteTitle);
             document.getElementById("editaffiliatemail").setAttribute('value', affiliateMail);
             document.getElementById("editaffiliatephone").setAttribute('value', affiliatePhone);
@@ -643,10 +742,10 @@
             document.getElementById("editaffiliateaddress").innerHTML = affiliateAddress
         });
     }
-   
+
 
     $("#edit_button").on('click', function () {
-       
+
         var affiliatetitle = $("#editaffiliatetitle").val();
         var affiliatemail = $("#editaffiliatemail").val();
         var affiliatephone = $("#editaffiliatephone").val();
@@ -659,10 +758,10 @@
         var affiliatestatus = $("#editaffiliatestatus").val();
         var affiliatemembercode = $("#editaffiliatemembercode").val();
 
-       
+
         $.post("/membermanagement", {
             msg: "editaffiliate",
-            affiliatepk : affiliatepk,
+            affiliatepk: affiliatepk,
             affiliatetitle: affiliatetitle,
             affiliatemail: affiliatemail,
             affiliatephone: affiliatephone,
@@ -672,8 +771,8 @@
             affiliataxoffice: affiliataxoffice,
             affiliatescreenfk: affiliatescreenfk,
             affiliateaddress: affiliateaddress,
-            affiliatemembercode : affiliatemembercode,
-            affiliatestatus : affiliatestatus
+            affiliatemembercode: affiliatemembercode,
+            affiliatestatus: affiliatestatus
         }).done(function (res) {
             var response = JSON.parse(res);
             if (response == "ok") {
